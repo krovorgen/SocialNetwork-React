@@ -1,17 +1,17 @@
 import React from 'react';
+import Posts from '../Posts';
 
 import styles from './style.module.scss';
-import Posts from '../Posts';
 
 const Profile = () => {
     return (
-        <>
-            <div className={styles['main__bg-wrap']}>
-                <img src="./images/user-bg.jpg" height={300} alt="background" />
+        <div className={styles['profile']}>
+            <div className={styles['profile__bg-wrap']}>
+                <img src="./images/user-bg.jpg" alt="background" />
             </div>
-            <div className={styles['main__info']}>ava + descr</div>
+            <div className={styles['profile__info']}>ava + descr</div>
             <Posts />
-        </>
+        </div>
     );
 };
 
