@@ -1,8 +1,35 @@
 body {
+    position: relative;
+    min-height: 100vh;
     font-family: "Ubuntu", sans-serif;
     font-weight: 400;
     font-size: 16px;
+    color: #ffe;
     line-height: 1.2;
+
+    &::before {
+        content: "";
+        position: fixed;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        z-index: -2;
+        background-image: url("../images/main-bg.jpg");
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+
+    &::after {
+        content: "";
+        position: fixed;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        z-index: -1;
+        background-color: rgba(0, 0, 0, 0.8);
+    }
 }
 
 .container {
@@ -25,10 +52,4 @@ body {
     &--main {
         grid-area: m;
     }
-}
-
-body {
-    background-repeat: no-repeat;
-    background-image: url("/images/main-bg.jpg");
-    background-size: cover;
 }
