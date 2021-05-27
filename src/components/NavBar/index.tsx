@@ -1,10 +1,10 @@
 import React from 'react';
 
-import styles from 'style.module.scss';
+import styles from './style.module.scss';
 
 const NavBar = () => {
     return (
-        <nav className="menu container--menu">
+        <nav className={`${styles['menu']} container--menu`}>
             <ul className="menu__list">
                 <li className="menu__item">
                     <a className="menu__link" href="#">
