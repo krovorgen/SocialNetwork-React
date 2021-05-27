@@ -5,4 +5,8 @@
     &__avatar {
         margin-right: 15px;
     }
+
+    &:not(:last-child) {
+        margin-bottom: 15px;
+    }
 }
