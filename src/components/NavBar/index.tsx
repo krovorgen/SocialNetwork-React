@@ -1,4 +1,5 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 
 import styles from './style.module.scss';
 
@@ -7,41 +8,49 @@ const NavBar = () => {
         <nav className={`${styles['menu']}`}>
             <ul className="menu__list">
                 <li className={styles['menu__item']}>
-                    <a
+                    <NavLink
                         className={`${styles['menu__link']} ${styles['menu__link--profile']}`}
-                        href="#"
+                        activeClassName={styles['menu__link--active']}
+                        to="/profile"
                     >
                         Profile
-                    </a>
+                    </NavLink>
                 </li>
                 <li className={styles['menu__item']}>
-                    <a
+                    <NavLink
                         className={`${styles['menu__link']} ${styles['menu__link--messages']}`}
-                        href="#"
+                        activeClassName={styles['menu__link--active']}
+                        to="/dialogs"
                     >
                         Messages
-                    </a>
+                    </NavLink>
                 </li>
                 <li className={styles['menu__item']}>
-                    <a className={`${styles['menu__link']} ${styles['menu__link--news']}`} href="#">
+                    <NavLink
+                        className={`${styles['menu__link']} ${styles['menu__link--news']}`}
+                        activeClassName={styles['menu__link--active']}
+                        to="/news"
+                    >
                         News
-                    </a>
+                    </NavLink>
                 </li>
                 <li className={styles['menu__item']}>
-                    <a
+                    <NavLink
                         className={`${styles['menu__link']} ${styles['menu__link--music']}`}
-                        href="#"
+                        activeClassName={styles['menu__link--active']}
+                        to="/music"
                     >
                         Music
-                    </a>
+                    </NavLink>
                 </li>
                 <li className={styles['menu__item']}>
-                    <a
+                    <NavLink
                         className={`${styles['menu__link']} ${styles['menu__link--settings']}`}
-                        href="#"
+                        activeClassName={styles['menu__link--active']}
+                        to="/settings"
                     >
                         Settings
-                    </a>
+                    </NavLink>
                 </li>
             </ul>
         </nav>

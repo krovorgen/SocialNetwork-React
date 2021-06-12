@@ -30,6 +30,10 @@
             color: #d86;
         }
 
+        &--active {
+            color: #d86;
+        }
+
         &--profile::before {
             background-image: url("../../images/profile.png");
         }
