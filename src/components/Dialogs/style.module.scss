@@ -1,7 +1,21 @@
+@import "./src/scss/vars";
+
 .dialogs {
     display: flex;
 
     &__items {
         width: 20%;
+    }
+
+    &__link {
+        transition: color 0.5s;
+
+        &--active {
+            color: $accent;
+        }
+
+        &:hover {
+            color: $accent;
+        }
     }
 }

@@ -1,3 +1,4 @@
+@import "./src/scss/vars";
 body {
     position: relative;
     min-height: 100vh;
@@ -5,7 +6,7 @@ body {
     font-weight: 400;
     font-size: 16px;
     line-height: 1.2;
-    color: #ffe;
+    color: $text;
 
     &::before {
         content: "";
