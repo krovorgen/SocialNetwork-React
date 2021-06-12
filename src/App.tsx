@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 
 import Header from './components/Header';
 import NavBar from './components/NavBar';
@@ -16,27 +16,25 @@ interface IAppProps {
 
 const App: FC<IAppProps> = ({ state }) => {
     return (
-        <BrowserRouter>
-            <div className="container">
-                <Header />
-                <main className="main">
-                    <NavBar />
-                    <div className="content">
-                        <Route
-                            path="/profile"
-                            render={() => <Profile profilePage={state.profilePage} />}
-                        />
-                        <Route
-                            path="/dialogs"
-                            render={() => <Dialogs dialogsPage={state.dialogsPage} />}
-                        />
-                        <Route path="/news" render={() => <News />} />
-                        <Route path="/music" render={() => <Music />} />
-                        <Route path="/settings" render={() => <Settings />} />
-                    </div>
-                </main>
-            </div>
-        </BrowserRouter>
+        <div className="container">
+            <Header />
+            <main className="main">
+                <NavBar />
+                <div className="content">
+                    <Route
+                        path="/profile"
+                        render={() => <Profile profilePage={state.profilePage} />}
+                    />
+                    <Route
+                        path="/dialogs"
+                        render={() => <Dialogs dialogsPage={state.dialogsPage} />}
+                    />
+                    <Route path="/news" render={() => <News />} />
+                    <Route path="/music" render={() => <Music />} />
+                    <Route path="/settings" render={() => <Settings />} />
+                </div>
+            </main>
+        </div>
     );
 };
 
