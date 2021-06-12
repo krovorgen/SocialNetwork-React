@@ -1,16 +1,20 @@
-import React from 'react';
+import React, { FC } from 'react';
+
 import Posts from '../Posts';
+import ProfileInfo from './ProfileInfo';
+import { ProfilePageType } from '../../redux/state';
 
 import styles from './style.module.scss';
 
-const Profile = () => {
+interface IProfileProps {
+    profilePage: ProfilePageType;
+}
+
+const Profile: FC<IProfileProps> = ({ profilePage }) => {
     return (
         <div className={styles['profile']}>
-            <div className={styles['profile__bg-wrap']}>
-                <img src="./images/user-bg.jpg" alt="background" />
-            </div>
-            <div className={styles['profile__info']}>ava + descr</div>
-            <Posts />
+            <ProfileInfo />
+            <Posts postItemData={profilePage.postItemData} />
         </div>
     );
 };

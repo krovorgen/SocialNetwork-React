@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
 
 import Header from './components/Header';
@@ -8,8 +8,13 @@ import Dialogs from './components/Dialogs';
 import News from './components/News';
 import Music from './components/Music';
 import Settings from './components/Settings';
+import { RooTStateType } from './redux/state';
 
-const App = () => {
+interface IAppProps {
+    state: RooTStateType;
+}
+
+const App: FC<IAppProps> = ({ state }) => {
     return (
         <BrowserRouter>
             <div className="container">
@@ -17,11 +22,17 @@ const App = () => {
                 <main className="main">
                     <NavBar />
                     <div className="content">
-                        <Route path="/profile" component={Profile} />
-                        <Route path="/dialogs" component={Dialogs} />
-                        <Route path="/news" component={News} />
-                        <Route path="/music" component={Music} />
-                        <Route path="/settings" component={Settings} />
+                        <Route
+                            path="/profile"
+                            render={() => <Profile profilePage={state.profilePage} />}
+                        />
+                        <Route
+                            path="/dialogs"
+                            render={() => <Dialogs dialogsPage={state.dialogsPage} />}
+                        />
+                        <Route path="/news" render={() => <News />} />
+                        <Route path="/music" render={() => <Music />} />
+                        <Route path="/settings" render={() => <Settings />} />
                     </div>
                 </main>
             </div>

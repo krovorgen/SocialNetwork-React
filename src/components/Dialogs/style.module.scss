@@ -10,11 +10,11 @@
     &__link {
         transition: color 0.5s;
 
-        &--active {
+        &:hover {
             color: $accent;
         }
 
-        &:hover {
+        &--active {
             color: $accent;
         }
     }

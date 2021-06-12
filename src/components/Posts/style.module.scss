@@ -1,0 +1,23 @@
+.posts {
+    &__item {
+        position: relative;
+        display: flex;
+        align-items: center;
+
+        &:not(:last-child) {
+            margin-bottom: 15px;
+        }
+    }
+
+    &__avatar {
+        margin-right: 15px;
+    }
+
+
+    &__likes {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+
+    }
+}
