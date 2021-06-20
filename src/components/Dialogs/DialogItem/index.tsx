@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 import styles from '../style.module.scss';
 
 interface IDialogsProps {
-    id: number;
+    id: string;
     name: string;
 }
 

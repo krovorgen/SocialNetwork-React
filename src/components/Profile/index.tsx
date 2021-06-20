@@ -8,13 +8,14 @@ import styles from './style.module.scss';
 
 interface IProfileProps {
     profilePage: ProfilePageType;
+    addPostCallback: (postMessage: string) => void;
 }
 
-const Profile: FC<IProfileProps> = ({ profilePage }) => {
+const Profile: FC<IProfileProps> = ({ profilePage, addPostCallback }) => {
     return (
         <div className={styles['profile']}>
             <ProfileInfo />
-            <Posts postItemData={profilePage.postItemData} />
+            <Posts postItemData={profilePage.postItemData} addPostCallback={addPostCallback} />
         </div>
     );
 };

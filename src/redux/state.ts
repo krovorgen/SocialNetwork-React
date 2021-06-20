@@ -1,16 +1,19 @@
+import { v1 } from 'uuid';
+import { rerenderEntireTree } from '../render';
+
 export type PostItemType = {
-    id: number;
+    id: string;
     message: string;
     likesCount: number;
 };
 
 export type DialogsDataType = {
-    id: number;
+    id: string;
     name: string;
 };
 
 export type MessagesDataType = {
-    id: number;
+    id: string;
     message: string;
 };
 
@@ -31,22 +34,31 @@ export type RooTStateType = {
 let state: RooTStateType = {
     profilePage: {
         postItemData: [
-            { id: 1, message: 'Hallo Welt', likesCount: 1 },
-            { id: 2, message: 'Hallo Welt', likesCount: 10 },
+            { id: v1(), message: 'Hallo Welt', likesCount: 1 },
+            { id: v1(), message: 'Hallo Welt', likesCount: 10 },
         ],
     },
     dialogsPage: {
         messagesData: [
-            { id: 1, message: 'Hallo Welt' },
-            { id: 2, message: 'Hallo Welt' },
-            { id: 3, message: 'Hallo Welt' },
+            { id: v1(), message: 'Hallo Welt' },
+            { id: v1(), message: 'Hallo Welt' },
+            { id: v1(), message: 'Hallo Welt' },
         ],
         dialogsData: [
-            { id: 1, name: 'Roma' },
-            { id: 2, name: 'Maxime' },
-            { id: 3, name: 'Anya' },
+            { id: v1(), name: 'Roma' },
+            { id: v1(), name: 'Maxime' },
+            { id: v1(), name: 'Anya' },
         ],
     },
 };
+
+export let addPostCallback = (postMessage: string) => {
+    let newPost = { id: v1(), message: postMessage, likesCount: 1 };
+    state.profilePage.postItemData.push(newPost);
+    rerenderEntireTree(state);
+};
+
+// @ts-ignore
+window.state = state;
 
 export default state;

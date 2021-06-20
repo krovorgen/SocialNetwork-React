@@ -12,9 +12,10 @@ import { RooTStateType } from './redux/state';
 
 interface IAppProps {
     state: RooTStateType;
+    addPostCallback: (postMessage: string) => void;
 }
 
-const App: FC<IAppProps> = ({ state }) => {
+const App: FC<IAppProps> = ({ state, addPostCallback }) => {
     return (
         <div className="container">
             <Header />
@@ -23,7 +24,12 @@ const App: FC<IAppProps> = ({ state }) => {
                 <div className="content">
                     <Route
                         path="/profile"
-                        render={() => <Profile profilePage={state.profilePage} />}
+                        render={() => (
+                            <Profile
+                                profilePage={state.profilePage}
+                                addPostCallback={addPostCallback}
+                            />
+                        )}
                     />
                     <Route
                         path="/dialogs"
