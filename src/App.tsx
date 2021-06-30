@@ -8,11 +8,12 @@ import Dialogs from './components/Dialogs';
 import News from './components/News';
 import Music from './components/Music';
 import Settings from './components/Settings';
-import { RooTStateType } from './redux/state';
+import { RooTStateType, updateNewPostText } from './redux/state';
 
 interface IAppProps {
     state: RooTStateType;
-    addPostCallback: (postMessage: string) => void;
+    addPostCallback: () => void;
+    updateNewPostText: (value: string) => void;
 }
 
 const App: FC<IAppProps> = ({ state, addPostCallback }) => {
@@ -28,6 +29,7 @@ const App: FC<IAppProps> = ({ state, addPostCallback }) => {
                             <Profile
                                 profilePage={state.profilePage}
                                 addPostCallback={addPostCallback}
+                                updateNewPostText={updateNewPostText}
                             />
                         )}
                     />

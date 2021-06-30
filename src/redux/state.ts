@@ -19,6 +19,7 @@ export type MessagesDataType = {
 
 export type ProfilePageType = {
     postItemData: PostItemType[];
+    newPostText: string;
 };
 
 export type DialogsPageType = {
@@ -37,6 +38,7 @@ let state: RooTStateType = {
             { id: v1(), message: 'Hallo Welt', likesCount: 1 },
             { id: v1(), message: 'Hallo Welt', likesCount: 10 },
         ],
+        newPostText: '',
     },
     dialogsPage: {
         messagesData: [
@@ -52,9 +54,15 @@ let state: RooTStateType = {
     },
 };
 
-export let addPostCallback = (postMessage: string) => {
-    let newPost = { id: v1(), message: postMessage, likesCount: 1 };
+export let addPostCallback = () => {
+    let newPost = { id: v1(), message: state.profilePage.newPostText, likesCount: 1 };
     state.profilePage.postItemData.push(newPost);
+    updateNewPostText('');
+    rerenderEntireTree(state);
+};
+
+export let updateNewPostText = (newPostText: string) => {
+    state.profilePage.newPostText = newPostText;
     rerenderEntireTree(state);
 };
 

@@ -1,4 +1,4 @@
-import React, { createRef, FC } from 'react';
+import React, { ChangeEvent, createRef, FC } from 'react';
 
 import PostItem from './PostItem';
 import { PostItemType } from '../../redux/state';
@@ -7,17 +7,25 @@ import styles from './style.module.scss';
 
 interface IPostsProps {
     postItemData: PostItemType[];
-    addPostCallback: (postMessage: string) => void;
+    addPostCallback: () => void;
+    newPostText: string;
+    updateNewPostText: (value: string) => void;
 }
 
-const Posts: FC<IPostsProps> = ({ postItemData, addPostCallback }) => {
+const Posts: FC<IPostsProps> = ({
+    postItemData,
+    addPostCallback,
+    newPostText,
+    updateNewPostText,
+}) => {
     let newPostElement = createRef<HTMLTextAreaElement>();
 
     const addPost = () => {
-        if (newPostElement.current) {
-            addPostCallback(newPostElement.current.value);
-            newPostElement.current.value = '';
-        }
+        newPostElement.current && addPostCallback();
+    };
+
+    const onChangeHandler = () => {
+        newPostElement.current && updateNewPostText(newPostElement.current.value);
     };
 
     return (
@@ -27,6 +35,8 @@ const Posts: FC<IPostsProps> = ({ postItemData, addPostCallback }) => {
                     className={styles['posts__textarea']}
                     ref={newPostElement}
                     placeholder="Enter your message"
+                    onChange={onChangeHandler}
+                    value={newPostText}
                 />
                 <button className={styles['posts__btn']} onClick={addPost}>
                     POST
