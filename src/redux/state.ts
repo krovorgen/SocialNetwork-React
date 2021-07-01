@@ -31,49 +31,59 @@ export type RooTStateType = {
     dialogsPage: DialogsPageType;
 };
 
-let state: RooTStateType = {
-    profilePage: {
-        postItemData: [
-            { id: v1(), message: 'Hallo Welt', likesCount: 1 },
-            { id: v1(), message: 'Hallo Welt', likesCount: 10 },
-        ],
-        newPostText: '',
+type StoreType = {
+    _state: RooTStateType;
+    _callSubscriber: () => void;
+    addPostCallback: () => void;
+    updateNewPostText: (newPostText: string) => void;
+    subscribe: (observer: () => void) => void;
+    getState: () => RooTStateType;
+};
+
+let store: StoreType = {
+    _state: {
+        profilePage: {
+            postItemData: [
+                { id: v1(), message: 'Hallo Welt', likesCount: 1 },
+                { id: v1(), message: 'Hallo Welt', likesCount: 10 },
+            ],
+            newPostText: '',
+        },
+        dialogsPage: {
+            messagesData: [
+                { id: v1(), message: 'Hallo Welt' },
+                { id: v1(), message: 'Hallo Welt' },
+                { id: v1(), message: 'Hallo Welt' },
+            ],
+            dialogsData: [
+                { id: v1(), name: 'Roma' },
+                { id: v1(), name: 'Maxime' },
+                { id: v1(), name: 'Anya' },
+            ],
+        },
     },
-    dialogsPage: {
-        messagesData: [
-            { id: v1(), message: 'Hallo Welt' },
-            { id: v1(), message: 'Hallo Welt' },
-            { id: v1(), message: 'Hallo Welt' },
-        ],
-        dialogsData: [
-            { id: v1(), name: 'Roma' },
-            { id: v1(), name: 'Maxime' },
-            { id: v1(), name: 'Anya' },
-        ],
+    getState() {
+        return this._state;
+    },
+    _callSubscriber() {
+        console.log('Main render');
+    },
+    addPostCallback() {
+        let newPost = { id: v1(), message: this._state.profilePage.newPostText, likesCount: 1 };
+        this._state.profilePage.postItemData.push(newPost);
+        this.updateNewPostText('');
+        this._callSubscriber();
+    },
+    updateNewPostText(newPostText: string) {
+        this._state.profilePage.newPostText = newPostText;
+        this._callSubscriber();
+    },
+    subscribe(observer: () => void) {
+        this._callSubscriber = observer;
     },
 };
 
-let rerenderEntireTree = () => {
-    console.log('1');
-};
+// // @ts-ignore
+// window.state = state;
 
-export const addPostCallback = () => {
-    let newPost = { id: v1(), message: state.profilePage.newPostText, likesCount: 1 };
-    state.profilePage.postItemData.push(newPost);
-    updateNewPostText('');
-    rerenderEntireTree();
-};
-
-export const updateNewPostText = (newPostText: string) => {
-    state.profilePage.newPostText = newPostText;
-    rerenderEntireTree();
-};
-
-export const subscribe = (observer: () => void) => {
-    rerenderEntireTree = observer;
-};
-
-// @ts-ignore
-window.state = state;
-
-export default state;
+export default store;

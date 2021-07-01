@@ -8,7 +8,7 @@ import Dialogs from './components/Dialogs';
 import News from './components/News';
 import Music from './components/Music';
 import Settings from './components/Settings';
-import { RooTStateType, updateNewPostText } from './redux/state';
+import { RooTStateType } from './redux/state';
 
 interface IAppProps {
     state: RooTStateType;
@@ -16,7 +16,7 @@ interface IAppProps {
     updateNewPostText: (value: string) => void;
 }
 
-const App: FC<IAppProps> = ({ state, addPostCallback }) => {
+const App: FC<IAppProps> = ({ state, addPostCallback, updateNewPostText }) => {
     return (
         <div className="container">
             <Header />
