@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 
 import Posts from '../Posts';
 import ProfileInfo from './ProfileInfo';
-import { ProfilePageType, updateNewPostText } from '../../redux/state';
+import { ProfilePageType } from '../../redux/state';
 
 import styles from './style.module.scss';
 

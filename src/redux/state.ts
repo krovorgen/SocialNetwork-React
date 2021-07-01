@@ -1,5 +1,4 @@
 import { v1 } from 'uuid';
-import { observe } from 'web-vitals/dist/modules/lib/observe';
 
 export type PostItemType = {
     id: string;
@@ -54,7 +53,7 @@ let state: RooTStateType = {
     },
 };
 
-let rerenderEntireTree = (state: RooTStateType) => {
+let rerenderEntireTree = () => {
     console.log('1');
 };
 
@@ -62,15 +61,15 @@ export const addPostCallback = () => {
     let newPost = { id: v1(), message: state.profilePage.newPostText, likesCount: 1 };
     state.profilePage.postItemData.push(newPost);
     updateNewPostText('');
-    rerenderEntireTree(state);
+    rerenderEntireTree();
 };
 
 export const updateNewPostText = (newPostText: string) => {
     state.profilePage.newPostText = newPostText;
-    rerenderEntireTree(state);
+    rerenderEntireTree();
 };
 
-export const subscribe = (observer: (state: RooTStateType) => void) => {
+export const subscribe = (observer: () => void) => {
     rerenderEntireTree = observer;
 };
 

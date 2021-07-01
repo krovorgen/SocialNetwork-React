@@ -1,4 +1,4 @@
-import state, { addPostCallback, RooTStateType, subscribe, updateNewPostText } from './redux/state';
+import state, { addPostCallback, subscribe, updateNewPostText } from './redux/state';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
@@ -7,7 +7,7 @@ import App from './App';
 
 import './scss/index.scss';
 
-let rerenderEntireTree = (state: RooTStateType) => {
+let rerenderEntireTree = () => {
     ReactDOM.render(
         <BrowserRouter>
             <App
@@ -20,6 +20,6 @@ let rerenderEntireTree = (state: RooTStateType) => {
     );
 };
 
-rerenderEntireTree(state);
+rerenderEntireTree();
 
 subscribe(rerenderEntireTree);

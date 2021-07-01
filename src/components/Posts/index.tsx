@@ -1,4 +1,4 @@
-import React, { ChangeEvent, createRef, FC } from 'react';
+import React, { createRef, FC } from 'react';
 
 import PostItem from './PostItem';
 import { PostItemType } from '../../redux/state';
