@@ -74,11 +74,11 @@ let store: StoreType = {
         this.updateNewPostText('');
         this._callSubscriber();
     },
-    updateNewPostText(newPostText: string) {
+    updateNewPostText(newPostText) {
         this._state.profilePage.newPostText = newPostText;
         this._callSubscriber();
     },
-    subscribe(observer: () => void) {
+    subscribe(observer) {
         this._callSubscriber = observer;
     },
 };
