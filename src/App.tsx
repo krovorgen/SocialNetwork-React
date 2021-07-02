@@ -8,15 +8,14 @@ import Dialogs from './components/Dialogs';
 import News from './components/News';
 import Music from './components/Music';
 import Settings from './components/Settings';
-import { RooTStateType } from './redux/state';
+import { ActionTypes, RooTStateType } from './redux/state';
 
 interface IAppProps {
     state: RooTStateType;
-    addPostCallback: () => void;
-    updateNewPostText: (value: string) => void;
+    dispatch: (action: ActionTypes) => void;
 }
 
-const App: FC<IAppProps> = ({ state, addPostCallback, updateNewPostText }) => {
+const App: FC<IAppProps> = ({ state, dispatch }) => {
     return (
         <div className="container">
             <Header />
@@ -26,11 +25,7 @@ const App: FC<IAppProps> = ({ state, addPostCallback, updateNewPostText }) => {
                     <Route
                         path="/profile"
                         render={() => (
-                            <Profile
-                                profilePage={state.profilePage}
-                                addPostCallback={addPostCallback}
-                                updateNewPostText={updateNewPostText}
-                            />
+                            <Profile profilePage={state.profilePage} dispatch={dispatch} />
                         )}
                     />
                     <Route

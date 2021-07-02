@@ -31,6 +31,17 @@ export type RooTStateType = {
     dialogsPage: DialogsPageType;
 };
 
+type AddPostActionType = {
+    type: 'ADD-POST';
+};
+
+type UpdateNewPostText = {
+    type: 'UPDATE-NEW-POST_TEXT';
+    newPostText: string;
+};
+
+export type ActionTypes = AddPostActionType | UpdateNewPostText;
+
 type StoreType = {
     _state: RooTStateType;
     _callSubscriber: () => void;
@@ -38,6 +49,7 @@ type StoreType = {
     updateNewPostText: (newPostText: string) => void;
     subscribe: (observer: () => void) => void;
     getState: () => RooTStateType;
+    dispatch: (action: ActionTypes) => void;
 };
 
 let store: StoreType = {
@@ -62,12 +74,17 @@ let store: StoreType = {
             ],
         },
     },
-    getState() {
-        return this._state;
-    },
     _callSubscriber() {
         console.log('Main render');
     },
+
+    getState() {
+        return this._state;
+    },
+    subscribe(observer) {
+        this._callSubscriber = observer;
+    },
+
     addPostCallback() {
         let newPost = { id: v1(), message: this._state.profilePage.newPostText, likesCount: 1 };
         this._state.profilePage.postItemData.push(newPost);
@@ -78,8 +95,23 @@ let store: StoreType = {
         this._state.profilePage.newPostText = newPostText;
         this._callSubscriber();
     },
-    subscribe(observer) {
-        this._callSubscriber = observer;
+    dispatch(action) {
+        switch (action.type) {
+            case 'ADD-POST':
+                let newPost = {
+                    id: v1(),
+                    message: this._state.profilePage.newPostText,
+                    likesCount: 1,
+                };
+                this._state.profilePage.postItemData.push(newPost);
+                this.updateNewPostText('');
+                this._callSubscriber();
+                break;
+            case 'UPDATE-NEW-POST_TEXT':
+                this._state.profilePage.newPostText = action.newPostText;
+                this._callSubscriber();
+                break;
+        }
     },
 };
 

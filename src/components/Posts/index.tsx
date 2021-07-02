@@ -1,31 +1,25 @@
 import React, { createRef, FC } from 'react';
 
 import PostItem from './PostItem';
-import { PostItemType } from '../../redux/state';
+import { ActionTypes, PostItemType } from '../../redux/state';
 
 import styles from './style.module.scss';
 
 interface IPostsProps {
     postItemData: PostItemType[];
-    addPostCallback: () => void;
     newPostText: string;
-    updateNewPostText: (value: string) => void;
+    dispatch: (action: ActionTypes) => void;
 }
 
-const Posts: FC<IPostsProps> = ({
-    postItemData,
-    addPostCallback,
-    newPostText,
-    updateNewPostText,
-}) => {
+const Posts: FC<IPostsProps> = ({ postItemData, newPostText, dispatch }) => {
     let newPostElement = createRef<HTMLTextAreaElement>();
 
     const addPost = () => {
-        newPostElement.current && addPostCallback();
+        newPostElement.current && dispatch({ type: 'ADD-POST' });
     };
-
     const onChangeHandler = () => {
-        newPostElement.current && updateNewPostText(newPostElement.current.value);
+        newPostElement.current &&
+            dispatch({ type: 'UPDATE-NEW-POST_TEXT', newPostText: newPostElement.current.value });
     };
 
     return (
