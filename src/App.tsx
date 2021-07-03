@@ -1,7 +1,6 @@
 import React, { FC } from 'react';
 import { Route } from 'react-router-dom';
 
-import { ActionTypes, RooTStateType } from './redux/state';
 import Header from './components/Header';
 import NavBar from './components/NavBar';
 import Profile from './components/Profile';
@@ -10,6 +9,7 @@ import News from './components/News';
 import Music from './components/Music';
 import Settings from './components/Settings';
 import TestPage from './components/TestPage';
+import { ActionTypes, RooTStateType } from './redux/state.type';
 
 interface IAppProps {
     state: RooTStateType;
@@ -31,7 +31,9 @@ const App: FC<IAppProps> = ({ state, dispatch }) => {
                     />
                     <Route
                         path="/dialogs"
-                        render={() => <Dialogs dialogsPage={state.dialogsPage} />}
+                        render={() => (
+                            <Dialogs dialogsPage={state.dialogsPage} dispatch={dispatch} />
+                        )}
                     />
                     <Route path="/news" render={() => <News />} />
                     <Route path="/music" render={() => <Music />} />

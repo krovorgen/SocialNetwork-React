@@ -1,102 +1,41 @@
 import { v1 } from 'uuid';
+import {
+    AddMessageActionType,
+    AddPostActionType,
+    StoreType,
+    UpdateNewMessageTextActionType,
+    UpdateNewPostTextActionType,
+} from './state.type';
 
-const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
-const ADD_POST = 'ADD-POST';
-
-export type PostItemType = {
-    id: string;
-    message: string;
-    likesCount: number;
-};
-
-export type DialogsDataType = {
-    id: string;
-    name: string;
-};
-
-export type MessagesDataType = {
-    id: string;
-    message: string;
-};
-
-export type ProfilePageType = {
-    postItemData: PostItemType[];
-    newPostText: string;
-};
-
-export type DialogsPageType = {
-    messagesData: MessagesDataType[];
-    dialogsData: DialogsDataType[];
-};
-
-export type RooTStateType = {
-    profilePage: ProfilePageType;
-    dialogsPage: DialogsPageType;
-};
-
-export type AddPostActionType = {
-    type: typeof ADD_POST;
-};
-
-export type UpdateNewPostText = {
-    type: typeof UPDATE_NEW_POST_TEXT;
-    newPostText: string;
-};
-
-export type ActionTypes = AddPostActionType | UpdateNewPostText;
-
-type StoreType = {
-    _state: RooTStateType;
-    _callSubscriber: () => void;
-    addPostCallback: () => void;
-    updateNewPostText: (newPostText: string) => void;
-    subscribe: (observer: () => void) => void;
-    getState: () => RooTStateType;
-    dispatch: (action: ActionTypes) => void;
-};
+export const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
+export const ADD_POST = 'ADD-POST';
+export const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE-NEW-MESSAGE-TEXT';
+export const ADD_MESSAGE = 'ADD-MESSAGE';
 
 let store: StoreType = {
     _state: {
         profilePage: {
-            postItemData: [
-                { id: v1(), message: 'Hallo Welt', likesCount: 1 },
-                { id: v1(), message: 'Hallo Welt', likesCount: 10 },
-            ],
+            postItemData: [],
             newPostText: '',
         },
         dialogsPage: {
-            messagesData: [
-                { id: v1(), message: 'Hallo Welt' },
-                { id: v1(), message: 'Hallo Welt' },
-                { id: v1(), message: 'Hallo Welt' },
-            ],
+            messagesData: [],
             dialogsData: [
                 { id: v1(), name: 'Roma' },
                 { id: v1(), name: 'Maxime' },
                 { id: v1(), name: 'Anya' },
             ],
+            newMessageText: '',
         },
     },
     _callSubscriber() {
         console.log('Main render');
     },
-
     getState() {
         return this._state;
     },
     subscribe(observer) {
         this._callSubscriber = observer;
-    },
-
-    addPostCallback() {
-        let newPost = { id: v1(), message: this._state.profilePage.newPostText, likesCount: 1 };
-        this._state.profilePage.postItemData.push(newPost);
-        this.updateNewPostText('');
-        this._callSubscriber();
-    },
-    updateNewPostText(newPostText) {
-        this._state.profilePage.newPostText = newPostText;
-        this._callSubscriber();
     },
     dispatch(action) {
         switch (action.type) {
@@ -107,11 +46,24 @@ let store: StoreType = {
                     likesCount: 1,
                 };
                 this._state.profilePage.postItemData.push(newPost);
-                this.updateNewPostText('');
+                this._state.profilePage.newPostText = '';
                 this._callSubscriber();
                 break;
             case UPDATE_NEW_POST_TEXT:
                 this._state.profilePage.newPostText = action.newPostText;
+                this._callSubscriber();
+                break;
+            case ADD_MESSAGE:
+                let newMessage = {
+                    id: v1(),
+                    message: this._state.dialogsPage.newMessageText,
+                };
+                this._state.dialogsPage.messagesData.push(newMessage);
+                this._state.dialogsPage.newMessageText = '';
+                this._callSubscriber();
+                break;
+            case UPDATE_NEW_MESSAGE_TEXT:
+                this._state.dialogsPage.newMessageText = action.newMessageText;
                 this._callSubscriber();
                 break;
         }
@@ -120,9 +72,16 @@ let store: StoreType = {
 
 export const addPostAC = (): AddPostActionType => ({ type: ADD_POST });
 
-export const updateNewPostTextAC = (newPostText: string): UpdateNewPostText => ({
+export const updateNewPostTextAC = (newPostText: string): UpdateNewPostTextActionType => ({
     type: UPDATE_NEW_POST_TEXT,
     newPostText: newPostText,
+});
+
+export const addMessageAC = (): AddMessageActionType => ({ type: ADD_MESSAGE });
+
+export const updateNewMessageTextAC = (newMessageText: string): UpdateNewMessageTextActionType => ({
+    type: UPDATE_NEW_MESSAGE_TEXT,
+    newMessageText: newMessageText,
 });
 
 // // @ts-ignore

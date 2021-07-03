@@ -1,7 +1,8 @@
-import React, { createRef, FC } from 'react';
+import React, { ChangeEvent, FC } from 'react';
 
 import PostItem from './PostItem';
-import { ActionTypes, addPostAC, PostItemType, updateNewPostTextAC } from '../../redux/state';
+import { addPostAC, updateNewPostTextAC } from '../../redux/state';
+import { ActionTypes, PostItemType } from '../../redux/state.type';
 
 import styles from './style.module.scss';
 
@@ -12,26 +13,21 @@ interface IPostsProps {
 }
 
 const Posts: FC<IPostsProps> = ({ postItemData, newPostText, dispatch }) => {
-    let newPostElement = createRef<HTMLTextAreaElement>();
-
-    const addPost = () => {
-        newPostElement.current && dispatch(addPostAC());
-    };
-    const onChangeHandler = () => {
-        newPostElement.current && dispatch(updateNewPostTextAC(newPostElement.current.value));
+    const addPost = () => dispatch(addPostAC());
+    const onChangeTextarea = (e: ChangeEvent<HTMLTextAreaElement>) => {
+        dispatch(updateNewPostTextAC(e.currentTarget.value));
     };
 
     return (
         <div className={styles['posts']}>
             <div className={styles['posts__form']}>
                 <textarea
-                    className={styles['posts__textarea']}
-                    ref={newPostElement}
+                    className={'form-textarea'}
                     placeholder="Enter your message"
-                    onChange={onChangeHandler}
+                    onChange={onChangeTextarea}
                     value={newPostText}
                 />
-                <button className={styles['posts__btn']} onClick={addPost}>
+                <button className={'form-btn'} onClick={addPost} type={'button'}>
                     POST
                 </button>
             </div>
