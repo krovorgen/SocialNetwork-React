@@ -1,5 +1,8 @@
 import { v1 } from 'uuid';
 
+const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
+const ADD_POST = 'ADD-POST';
+
 export type PostItemType = {
     id: string;
     message: string;
@@ -31,12 +34,12 @@ export type RooTStateType = {
     dialogsPage: DialogsPageType;
 };
 
-type AddPostActionType = {
-    type: 'ADD-POST';
+export type AddPostActionType = {
+    type: typeof ADD_POST;
 };
 
-type UpdateNewPostText = {
-    type: 'UPDATE-NEW-POST_TEXT';
+export type UpdateNewPostText = {
+    type: typeof UPDATE_NEW_POST_TEXT;
     newPostText: string;
 };
 
@@ -97,7 +100,7 @@ let store: StoreType = {
     },
     dispatch(action) {
         switch (action.type) {
-            case 'ADD-POST':
+            case ADD_POST:
                 let newPost = {
                     id: v1(),
                     message: this._state.profilePage.newPostText,
@@ -107,13 +110,20 @@ let store: StoreType = {
                 this.updateNewPostText('');
                 this._callSubscriber();
                 break;
-            case 'UPDATE-NEW-POST_TEXT':
+            case UPDATE_NEW_POST_TEXT:
                 this._state.profilePage.newPostText = action.newPostText;
                 this._callSubscriber();
                 break;
         }
     },
 };
+
+export const addPostAC = (): AddPostActionType => ({ type: ADD_POST });
+
+export const updateNewPostTextAC = (newPostText: string): UpdateNewPostText => ({
+    type: UPDATE_NEW_POST_TEXT,
+    newPostText: newPostText,
+});
 
 // // @ts-ignore
 // window.state = state;

@@ -1,7 +1,7 @@
 import React, { createRef, FC } from 'react';
 
 import PostItem from './PostItem';
-import { ActionTypes, PostItemType } from '../../redux/state';
+import { ActionTypes, addPostAC, PostItemType, updateNewPostTextAC } from '../../redux/state';
 
 import styles from './style.module.scss';
 
@@ -15,11 +15,10 @@ const Posts: FC<IPostsProps> = ({ postItemData, newPostText, dispatch }) => {
     let newPostElement = createRef<HTMLTextAreaElement>();
 
     const addPost = () => {
-        newPostElement.current && dispatch({ type: 'ADD-POST' });
+        newPostElement.current && dispatch(addPostAC());
     };
     const onChangeHandler = () => {
-        newPostElement.current &&
-            dispatch({ type: 'UPDATE-NEW-POST_TEXT', newPostText: newPostElement.current.value });
+        newPostElement.current && dispatch(updateNewPostTextAC(newPostElement.current.value));
     };
 
     return (
