@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "/SocialNetwork-React/static/css/main.5a0ff3de.chunk.css",
+    "main.js": "/SocialNetwork-React/static/js/main.314ff1ab.chunk.js",
+    "main.js.map": "/SocialNetwork-React/static/js/main.314ff1ab.chunk.js.map",
+    "runtime-main.js": "/SocialNetwork-React/static/js/runtime-main.02af445f.js",
+    "runtime-main.js.map": "/SocialNetwork-React/static/js/runtime-main.02af445f.js.map",
+    "static/js/2.1d6602db.chunk.js": "/SocialNetwork-React/static/js/2.1d6602db.chunk.js",
+    "static/js/2.1d6602db.chunk.js.map": "/SocialNetwork-React/static/js/2.1d6602db.chunk.js.map",
+    "index.html": "/SocialNetwork-React/index.html",
+    "static/css/main.5a0ff3de.chunk.css.map": "/SocialNetwork-React/static/css/main.5a0ff3de.chunk.css.map",
+    "static/js/2.1d6602db.chunk.js.LICENSE.txt": "/SocialNetwork-React/static/js/2.1d6602db.chunk.js.LICENSE.txt",
+    "static/media/style.module.scss": "/SocialNetwork-React/static/media/settings.94c07779.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.02af445f.js",
+    "static/js/2.1d6602db.chunk.js",
+    "static/css/main.5a0ff3de.chunk.css",
+    "static/js/main.314ff1ab.chunk.js"
+  ]
+}
