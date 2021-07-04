@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 
 import Posts from '../Posts';
 import ProfileInfo from './ProfileInfo';
-import { ActionTypes, ProfilePageType } from '../../redux/state.type';
+import { ActionTypes, ProfilePageType } from '../../redux/store.type';
 
 import styles from './style.module.scss';
 

@@ -1,4 +1,5 @@
-import { ADD_MESSAGE, ADD_POST, UPDATE_NEW_MESSAGE_TEXT, UPDATE_NEW_POST_TEXT } from './state';
+import { ADD_POST, UPDATE_NEW_POST_TEXT } from './profile-reducer';
+import { ADD_MESSAGE, UPDATE_NEW_MESSAGE_TEXT } from './dialogs-reducer';
 
 export type PostItemType = {
     id: string;

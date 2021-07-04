@@ -1,10 +1,10 @@
 import React, { ChangeEvent, FC } from 'react';
 
 import PostItem from './PostItem';
-import { addPostAC, updateNewPostTextAC } from '../../redux/state';
-import { ActionTypes, PostItemType } from '../../redux/state.type';
+import { ActionTypes, PostItemType } from '../../redux/store.type';
 
 import styles from './style.module.scss';
+import { addPostAC, updateNewPostTextAC } from '../../redux/profile-reducer';
 
 interface IPostsProps {
     postItemData: PostItemType[];

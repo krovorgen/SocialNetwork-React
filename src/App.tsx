@@ -9,7 +9,7 @@ import News from './components/News';
 import Music from './components/Music';
 import Settings from './components/Settings';
 import TestPage from './components/TestPage';
-import { ActionTypes, RooTStateType } from './redux/state.type';
+import { ActionTypes, RooTStateType } from './redux/store.type';
 
 interface IAppProps {
     state: RooTStateType;
