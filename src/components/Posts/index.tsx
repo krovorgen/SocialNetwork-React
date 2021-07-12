@@ -25,16 +25,17 @@ const Posts: FC<IPostsProps & ProfileStateType> = ({
       </button>
     </div>
     <ul className={styles['posts__items']}>
-      {postItemData.map((item) => {
-        return (
-          <PostItem
-            key={item.id}
-            id={item.id}
-            message={item.message}
-            likesCount={item.likesCount}
-          />
-        );
-      })}
+      {postItemData &&
+        postItemData.map((item) => {
+          return (
+            <PostItem
+              key={item.id}
+              id={item.id}
+              message={item.message}
+              likesCount={item.likesCount}
+            />
+          );
+        })}
     </ul>
   </div>
 );

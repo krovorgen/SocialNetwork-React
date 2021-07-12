@@ -12,8 +12,12 @@ import {
   TestPage,
 } from './components';
 import { IAppProps } from './types';
+import { useSelector } from 'react-redux';
+import { RooTStateType } from './redux/store.type';
 
-const App: FC<IAppProps> = ({ state, dispatch }) => {
+const App: FC<IAppProps> = ({ dispatch }) => {
+  const state = useSelector((state: RooTStateType) => state);
+
   return (
     <div className="container">
       <Header />

@@ -4,18 +4,32 @@
     display: flex;
 
     &__items {
+        margin-right: 20px;
         width: 20%;
     }
 
+    &__item {
+    }
+
     &__link {
-        transition: color 0.5s;
+        display: inline-block;
+        padding: 8px;
+        width: 100%;
+        border: 2px solid rgba(#fff, 0.4);
+        text-align: center;
+        background-color: rgba(#fff, 0.1);
+        transition: color 0.5s, border-color 0.5s, background-color 0.5s;
 
         &:hover {
+            border-color: rgba(#fff, 0.9);
             color: $accent;
+            background-color: rgba(#fff, 0.2);
         }
 
         &--active {
+            border-color: rgba(#fff, 0.9);
             color: $accent;
+            background-color: rgba(#fff, 0.2);
         }
     }
 }
