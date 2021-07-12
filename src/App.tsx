@@ -1,7 +1,6 @@
 import React, { FC } from 'react';
 import { Route } from 'react-router-dom';
 
-import { ActionTypes, RootStateType } from './redux/store.type';
 import {
   DialogsContainer,
   Header,
@@ -12,11 +11,7 @@ import {
   Settings,
   TestPage,
 } from './components';
-
-interface IAppProps {
-  state: RootStateType;
-  dispatch: (action: ActionTypes) => void;
-}
+import { IAppProps } from './types';
 
 const App: FC<IAppProps> = ({ state, dispatch }) => {
   return (
