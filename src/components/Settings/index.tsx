@@ -1,9 +1,5 @@
-import React from 'react';
+import React, { FC } from 'react';
 
-// import styles from './style.module.scss';
-
-const Settings = () => {
-    return <>Settings</>;
-};
+const Settings: FC = () => <>Settings</>;
 
 export default Settings;

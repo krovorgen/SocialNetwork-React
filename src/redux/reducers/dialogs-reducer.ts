@@ -5,7 +5,7 @@ import { DialogsStateType } from './types';
 
 const initialState: DialogsStateType = {
     messagesData: [],
-    dialogsData: [],
+    dialogsData: [{ id: v1(), name: 'TEST USER' }],
     newMessageText: '',
 };
 

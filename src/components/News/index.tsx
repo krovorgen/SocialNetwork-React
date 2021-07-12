@@ -1,9 +1,5 @@
-import React from 'react';
+import React, { FC } from 'react';
 
-// import styles from './style.module.scss';
-
-const News = () => {
-    return <>News</>;
-};
+const News: FC = () => <>News</>;
 
 export default News;

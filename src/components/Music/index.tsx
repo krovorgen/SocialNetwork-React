@@ -1,9 +1,5 @@
-import React from 'react';
+import React, { FC } from 'react';
 
-// import styles from './style.module.scss';
-
-const Music = () => {
-    return <>Music</>;
-};
+const Music: FC = () => <>Music</>;
 
 export default Music;
