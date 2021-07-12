@@ -12,37 +12,33 @@ import TestPage from './components/TestPage';
 import { ActionTypes, RootStateType } from './redux/store.type';
 
 interface IAppProps {
-    state: RootStateType;
-    dispatch: (action: ActionTypes) => void;
+  state: RootStateType;
+  dispatch: (action: ActionTypes) => void;
 }
 
 const App: FC<IAppProps> = ({ state, dispatch }) => {
-    return (
-        <div className="container">
-            <Header />
-            <main className="main">
-                <NavBar />
-                <div className="content">
-                    <Route
-                        path="/profile"
-                        render={() => (
-                            <Profile profilePage={state.profilePage} dispatch={dispatch} />
-                        )}
-                    />
-                    <Route
-                        path="/dialogs"
-                        render={() => (
-                            <Dialogs dialogsPage={state.dialogsPage} dispatch={dispatch} />
-                        )}
-                    />
-                    <Route path="/news" render={() => <News />} />
-                    <Route path="/music" render={() => <Music />} />
-                    <Route path="/settings" render={() => <Settings />} />
-                    <Route path="/admin" render={() => <TestPage />} />
-                </div>
-            </main>
+  return (
+    <div className="container">
+      <Header />
+      <main className="main">
+        <NavBar />
+        <div className="content">
+          <Route
+            path="/profile"
+            render={() => <Profile profilePage={state.profilePage} dispatch={dispatch} />}
+          />
+          <Route
+            path="/dialogs"
+            render={() => <Dialogs dialogsPage={state.dialogsPage} dispatch={dispatch} />}
+          />
+          <Route path="/news" render={() => <News />} />
+          <Route path="/music" render={() => <Music />} />
+          <Route path="/settings" render={() => <Settings />} />
+          <Route path="/admin" render={() => <TestPage />} />
         </div>
-    );
+      </main>
+    </div>
+  );
 };
 
 export default App;
