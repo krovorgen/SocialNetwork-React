@@ -1,15 +1,17 @@
 import React, { FC } from 'react';
 import { Route } from 'react-router-dom';
 
-import Header from './components/Header';
-import NavBar from './components/NavBar';
-import Profile from './components/Profile';
-import Dialogs from './components/Dialogs';
-import News from './components/News';
-import Music from './components/Music';
-import Settings from './components/Settings';
-import TestPage from './components/TestPage';
 import { ActionTypes, RootStateType } from './redux/store.type';
+import {
+  DialogsContainer,
+  Header,
+  Music,
+  NavBar,
+  News,
+  Profile,
+  Settings,
+  TestPage,
+} from './components';
 
 interface IAppProps {
   state: RootStateType;
@@ -29,7 +31,7 @@ const App: FC<IAppProps> = ({ state, dispatch }) => {
           />
           <Route
             path="/dialogs"
-            render={() => <Dialogs dialogsPage={state.dialogsPage} dispatch={dispatch} />}
+            render={() => <DialogsContainer dialogsPage={state.dialogsPage} dispatch={dispatch} />}
           />
           <Route path="/news" render={() => <News />} />
           <Route path="/music" render={() => <Music />} />
