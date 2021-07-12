@@ -2,12 +2,13 @@ import React, { FC } from 'react';
 
 import Posts from '../Posts';
 import ProfileInfo from './ProfileInfo';
-import { ActionTypes, ProfilePageType } from '../../redux/store.type';
+import { ActionTypes } from '../../redux/store.type';
 
 import styles from './style.module.scss';
+import { ProfileStateType } from '../../redux/reducers/types';
 
 interface IProfileProps {
-    profilePage: ProfilePageType;
+    profilePage: ProfileStateType;
     dispatch: (action: ActionTypes) => void;
 }
 

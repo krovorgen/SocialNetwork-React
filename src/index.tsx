@@ -6,16 +6,18 @@ import App from './App';
 import store from './redux/store';
 
 import './scss/index.scss';
+import { RootStateType } from './redux/store.type';
 
-let rerenderEntireTree = () => {
+let rerenderEntireTree = (state: RootStateType) => {
     ReactDOM.render(
         <BrowserRouter>
-            <App state={store.getState()} dispatch={store.dispatch.bind(store)} />
+            <App state={state} dispatch={store.dispatch.bind(store)} />
         </BrowserRouter>,
         document.getElementById('root')
     );
 };
+rerenderEntireTree(store.getState());
 
-rerenderEntireTree();
-
-store.subscribe(rerenderEntireTree);
+store.subscribe(() => {
+    rerenderEntireTree(store.getState());
+});

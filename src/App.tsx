@@ -9,10 +9,10 @@ import News from './components/News';
 import Music from './components/Music';
 import Settings from './components/Settings';
 import TestPage from './components/TestPage';
-import { ActionTypes, RooTStateType } from './redux/store.type';
+import { ActionTypes, RootStateType } from './redux/store.type';
 
 interface IAppProps {
-    state: RooTStateType;
+    state: RootStateType;
     dispatch: (action: ActionTypes) => void;
 }
 

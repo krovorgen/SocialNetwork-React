@@ -2,13 +2,14 @@ import React, { ChangeEvent, FC } from 'react';
 
 import DialogItem from './DialogItem';
 import MessageItem from './MessageItem';
-import { ActionTypes, DialogsPageType } from '../../redux/store.type';
+import { ActionTypes } from '../../redux/store.type';
 
 import styles from './style.module.scss';
-import { addMessageAC, updateNewMessageTextAC } from '../../redux/dialogs-reducer';
+import { addMessageAC, updateNewMessageTextAC } from '../../redux/actions/dialogs-action';
+import { DialogsStateType } from '../../redux/reducers/types';
 
 interface IDialogsProps {
-    dialogsPage: DialogsPageType;
+    dialogsPage: DialogsStateType;
     dispatch: (action: ActionTypes) => void;
 }
 
