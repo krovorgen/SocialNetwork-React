@@ -1,18 +1,9 @@
-import { v1 } from 'uuid';
 import { UsersStateType } from './types';
 import { UsersActionType } from '../actions/types/users.type';
 import { FOLLOW, SET_USERS, UNFOLLOW } from '../constants';
 
 const initialState: UsersStateType = {
-  users: [
-    {
-      id: v1(),
-      followed: true,
-      fullName: 'Maksim Biarozka',
-      status: "I'm ADMIN",
-      location: { city: 'Minsk', country: 'Belarus' },
-    },
-  ],
+  users: [],
 };
 
 const usersReducer = (state = initialState, action: UsersActionType) => {

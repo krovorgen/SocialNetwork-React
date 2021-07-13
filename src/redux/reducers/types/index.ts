@@ -17,6 +17,7 @@ export type UsersDataType = {
   fullName: string;
   status: string;
   location: { city: string; country: string };
+  avatar: string;
 };
 export type ProfileStateType = {
   postItemData: PostItemType[];
