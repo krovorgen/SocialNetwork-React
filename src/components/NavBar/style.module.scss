@@ -1,63 +1,63 @@
-@import "./src/scss/vars";
+@import './src/scss/vars';
 
 .menu {
-    margin-top: -15px;
-    margin-right: 20px;
-    width: 100%;
-    max-width: 180px;
-    text-align: center;
+  margin-top: -15px;
+  margin-right: 20px;
+  width: 100%;
+  max-width: 180px;
+  text-align: center;
 
-    &__list {
-        position: fixed;
+  &__list {
+    position: fixed;
+  }
+
+  &__item {
+  }
+
+  &__link {
+    position: relative;
+    display: inline-block;
+    padding: 15px 0 15px 35px;
+    font-size: 18px;
+    transition: color 0.5s;
+
+    &::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 13px;
+      width: 25px;
+      height: 25px;
+      background-size: cover;
+      background-repeat: no-repeat;
     }
 
-    &__item {
+    &:hover {
+      color: $accent;
     }
 
-    &__link {
-        position: relative;
-        display: inline-block;
-        padding: 15px 0 15px 35px;
-        font-size: 18px;
-        transition: color 0.5s;
-
-        &::before {
-            content: "";
-            position: absolute;
-            left: 0;
-            top: 13px;
-            width: 25px;
-            height: 25px;
-            background-size: cover;
-            background-repeat: no-repeat;
-        }
-
-        &:hover {
-            color: $accent;
-        }
-
-        &--active {
-            color: $accent;
-        }
-
-        &--profile::before {
-            background-image: url("../../images/profile.png");
-        }
-
-        &--messages::before {
-            background-image: url("../../images/messages.png");
-        }
-
-        &--news::before {
-            background-image: url("../../images/news.png");
-        }
-
-        &--music::before {
-            background-image: url("../../images/music.png");
-        }
-
-        &--settings::before {
-            background-image: url("../../images/settings.png");
-        }
+    &--active {
+      color: $accent;
     }
+
+    &--profile::before {
+      background-image: url('../../images/profile.png');
+    }
+
+    &--messages::before {
+      background-image: url('../../images/messages.png');
+    }
+
+    &--news::before {
+      background-image: url('../../images/news.png');
+    }
+
+    &--music::before {
+      background-image: url('../../images/music.png');
+    }
+
+    &--settings::before {
+      background-image: url('../../images/settings.png');
+    }
+  }
 }
