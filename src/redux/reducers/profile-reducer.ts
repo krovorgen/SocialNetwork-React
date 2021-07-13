@@ -1,14 +1,14 @@
 import { v1 } from 'uuid';
-import { ActionTypes } from '../store.type';
 import { ADD_POST, UPDATE_NEW_POST_TEXT } from '../constants';
 import { ProfileStateType } from './types';
+import { ProfileActionType } from '../actions/types/profile.type';
 
 const initialState: ProfileStateType = {
   postItemData: [],
   newPostText: '',
 };
 
-const profileReducer = (state = initialState, action: ActionTypes): ProfileStateType => {
+const profileReducer = (state = initialState, action: ProfileActionType): ProfileStateType => {
   switch (action.type) {
     case ADD_POST:
       let newPost = {

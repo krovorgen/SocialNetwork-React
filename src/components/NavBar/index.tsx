@@ -12,7 +12,7 @@ const menuNavigationMockData: MenuNavigationMockDataType[] = [
   { id: v1(), iconClass: 'news', url: '/news', textLink: 'News' },
   { id: v1(), iconClass: 'music', url: '/music', textLink: 'Music' },
   { id: v1(), iconClass: 'settings', url: '/settings', textLink: 'Settings' },
-  { id: v1(), iconClass: 'settings', url: '/admin', textLink: 'Admin' },
+  { id: v1(), iconClass: 'settings', url: '/', textLink: 'Users' },
 ];
 
 const NavBar: FC = () => (
@@ -24,6 +24,7 @@ const NavBar: FC = () => (
             <NavLink
               className={`${styles['menu__link']} ${styles[`menu__link--${item.iconClass}`]}`}
               activeClassName={styles['menu__link--active']}
+              exact
               to={`${item.url}`}
             >
               {item.textLink}

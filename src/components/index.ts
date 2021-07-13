@@ -4,5 +4,6 @@ export { default as News } from './News';
 export { default as Profile } from './Profile';
 export { default as Music } from './Music';
 export { default as Settings } from './Settings';
-export { default as TestPage } from './TestPage';
+export { default as Users } from './Users';
 export { default as DialogsContainer } from './Dialogs/DialogsContainer';
+export { default as UsersContainer } from './Users/UsersContainer';

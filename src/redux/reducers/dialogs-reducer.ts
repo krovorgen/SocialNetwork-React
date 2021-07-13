@@ -1,7 +1,7 @@
 import { v1 } from 'uuid';
-import { ActionTypes } from '../store.type';
 import { ADD_MESSAGE, UPDATE_NEW_MESSAGE_TEXT } from '../constants';
 import { DialogsStateType } from './types';
+import { DialogsActionType } from '../actions/types/dialogs.type';
 
 const initialState: DialogsStateType = {
   messagesData: [],
@@ -13,7 +13,7 @@ const initialState: DialogsStateType = {
   newMessageText: '',
 };
 
-const dialogsReducer = (state = initialState, action: ActionTypes): DialogsStateType => {
+const dialogsReducer = (state = initialState, action: DialogsActionType): DialogsStateType => {
   switch (action.type) {
     case ADD_MESSAGE:
       let newMessage = {
