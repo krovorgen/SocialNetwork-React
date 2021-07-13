@@ -6,14 +6,10 @@ import { IProfileProps } from './types';
 
 import styles from './style.module.scss';
 
-const Profile: FC<IProfileProps> = ({ profilePage, dispatch }) => (
+const Profile: FC<IProfileProps> = () => (
   <div className={styles['profile']}>
     <ProfileInfo />
-    <PostsContainer
-      postItemData={profilePage.postItemData}
-      newPostText={profilePage.newPostText}
-      dispatch={dispatch}
-    />
+    <PostsContainer />
   </div>
 );
 

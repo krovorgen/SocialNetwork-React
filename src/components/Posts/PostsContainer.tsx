@@ -1,29 +1,27 @@
-import React, { ChangeEvent, FC } from 'react';
+import { ChangeEvent } from 'react';
 
 import { addPostAC, updateNewPostTextAC } from '../../redux/actions/profile-action';
-import { IPostsContainerProps } from './types';
-import { ProfileStateType } from '../../redux/reducers/types';
 import Posts from './index';
+import { connect } from 'react-redux';
+import { RootStateType } from '../../redux/store.type';
+import { ProfileActionType } from '../../redux/actions/types/profile.type';
 
-const PostsContainer: FC<IPostsContainerProps & ProfileStateType> = ({
-  postItemData,
-  newPostText,
-  dispatch,
-}) => {
-  const addPost = () => dispatch(addPostAC());
-
-  const onChangeTextarea = (e: ChangeEvent<HTMLTextAreaElement>) => {
-    dispatch(updateNewPostTextAC(e.currentTarget.value));
+const mapStateToProps = (state: RootStateType) => {
+  return {
+    postItemData: state.profilePage.postItemData,
+    newPostText: state.profilePage.newPostText,
   };
-
-  return (
-    <Posts
-      onChangeTextarea={onChangeTextarea}
-      postItemData={postItemData}
-      addPost={addPost}
-      newPostText={newPostText}
-    />
-  );
 };
 
-export default PostsContainer;
+const mapDispatchToProps = (dispatch: (arg0: ProfileActionType) => void) => {
+  return {
+    addPost: () => dispatch(addPostAC()),
+    onChangeTextarea: (e: ChangeEvent<HTMLTextAreaElement>) => {
+      dispatch(updateNewPostTextAC(e.currentTarget.value));
+    },
+  };
+};
+
+const SuperPostsContainer = connect(mapStateToProps, mapDispatchToProps)(Posts);
+
+export default SuperPostsContainer;

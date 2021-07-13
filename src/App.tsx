@@ -12,26 +12,16 @@ import {
   TestPage,
 } from './components';
 import { IAppProps } from './types';
-import { useSelector } from 'react-redux';
-import { RooTStateType } from './redux/store.type';
 
-const App: FC<IAppProps> = ({ dispatch }) => {
-  const state = useSelector((state: RooTStateType) => state);
-
+const App: FC<IAppProps> = () => {
   return (
     <div className="container">
       <Header />
       <main className="main">
         <NavBar />
         <div className="content">
-          <Route
-            path="/profile"
-            render={() => <Profile profilePage={state.profilePage} dispatch={dispatch} />}
-          />
-          <Route
-            path="/dialogs"
-            render={() => <DialogsContainer dialogsPage={state.dialogsPage} dispatch={dispatch} />}
-          />
+          <Route path="/profile" render={() => <Profile />} />
+          <Route path="/dialogs" render={() => <DialogsContainer />} />
           <Route path="/news" render={() => <News />} />
           <Route path="/music" render={() => <Music />} />
           <Route path="/settings" render={() => <Settings />} />

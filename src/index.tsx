@@ -12,7 +12,7 @@ let rerenderEntireTree = () => {
   ReactDOM.render(
     <BrowserRouter>
       <Provider store={store}>
-        <App dispatch={store.dispatch} />
+        <App />
       </Provider>
     </BrowserRouter>,
     document.getElementById('root')

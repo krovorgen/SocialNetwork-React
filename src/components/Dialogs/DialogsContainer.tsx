@@ -1,25 +1,28 @@
-import React, { ChangeEvent, FC } from 'react';
+import { ChangeEvent } from 'react';
 
 import { addMessageAC, updateNewMessageTextAC } from '../../redux/actions/dialogs-action';
-import { IDialogsContainerProps } from './types';
 import Dialogs from './index';
+import { connect } from 'react-redux';
+import { RootStateType } from '../../redux/store.type';
+import { DialogsActionType } from '../../redux/actions/types/dialogs.type';
 
-const DialogsContainer: FC<IDialogsContainerProps> = ({ dialogsPage, dispatch }) => {
-  const addMessage = () => {
-    dispatch(addMessageAC());
+let mapStateToProps = (state: RootStateType) => {
+  return {
+    dialogsPage: state.dialogsPage,
   };
-
-  const onChangeTextarea = (e: ChangeEvent<HTMLTextAreaElement>) => {
-    dispatch(updateNewMessageTextAC(e.currentTarget.value));
-  };
-
-  return (
-    <Dialogs
-      dialogsPage={dialogsPage}
-      addMessage={addMessage}
-      onChangeTextarea={onChangeTextarea}
-    />
-  );
 };
+
+let mapDispatchToProps = (dispatch: (arg0: DialogsActionType) => void) => {
+  return {
+    addMessage: () => {
+      dispatch(addMessageAC());
+    },
+    onChangeTextarea: (e: ChangeEvent<HTMLTextAreaElement>) => {
+      dispatch(updateNewMessageTextAC(e.currentTarget.value));
+    },
+  };
+};
+
+const DialogsContainer = connect(mapStateToProps, mapDispatchToProps)(Dialogs);
 
 export default DialogsContainer;
