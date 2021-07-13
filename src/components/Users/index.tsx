@@ -2,6 +2,7 @@ import React, { FC } from 'react';
 import { v1 } from 'uuid';
 
 import { IUsersProps } from './types';
+import { Button } from '../index';
 
 import styles from './style.module.scss';
 
@@ -42,9 +43,13 @@ const Users: FC<IUsersProps> = ({ users, onFollowUser, onUnfollowUser, setUsers 
                 alt=""
               />
               {user.followed ? (
-                <button onClick={() => onUnfollowUser(user.id)}>Unfollow</button>
+                <Button onClick={() => onUnfollowUser(user.id)} size={'full'}>
+                  Unfollow
+                </Button>
               ) : (
-                <button onClick={() => onFollowUser(user.id)}>Follow</button>
+                <Button onClick={() => onFollowUser(user.id)} size={'full'}>
+                  Follow
+                </Button>
               )}
             </div>
             <div className={styles['user__info']}>

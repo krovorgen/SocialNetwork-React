@@ -1,8 +1,8 @@
 import React, { FC } from 'react';
 
-import PostItem from './PostItem';
 import { IPostsProps } from './types';
 import { ProfileStateType } from '../../redux/reducers/types';
+import { Button, PostItem } from '../index';
 
 import styles from './style.module.scss';
 
@@ -20,9 +20,7 @@ const Posts: FC<IPostsProps & ProfileStateType> = ({
         onChange={onChangeTextarea}
         value={newPostText}
       />
-      <button className={'form-btn'} onClick={addPost} type={'button'}>
-        POST
-      </button>
+      <Button onClick={addPost}>POST</Button>
     </div>
     <ul className={styles['posts__items']}>
       {postItemData &&

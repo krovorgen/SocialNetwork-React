@@ -1,8 +1,7 @@
 import React, { FC } from 'react';
 
-import PostsContainer from '../Posts/PostsContainer';
-import ProfileInfo from './ProfileInfo';
 import { IProfileProps } from './types';
+import { PostsContainer, ProfileInfo } from '../index';
 
 import styles from './style.module.scss';
 

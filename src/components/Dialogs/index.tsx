@@ -1,7 +1,6 @@
 import React, { FC } from 'react';
 
-import DialogItem from './DialogItem';
-import MessageItem from './MessageItem';
+import { Button, DialogItem, MessageItem } from '../index';
 import { IDialogsProps } from './types';
 
 import styles from './style.module.scss';
@@ -25,9 +24,7 @@ const Dialogs: FC<IDialogsProps> = ({ dialogsPage, addMessage, onChangeTextarea 
         placeholder="Enter your message"
         value={dialogsPage.newMessageText}
       />
-      <button className={'form-btn'} onClick={addMessage} type={'button'}>
-        Send
-      </button>
+      <Button onClick={addMessage}>Send</Button>
     </ul>
   </div>
 );

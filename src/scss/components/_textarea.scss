@@ -11,17 +11,3 @@
     background-color: rgba($white, 0.1);
     resize: none;
 }
-
-.form-btn {
-    padding: 10px;
-    border: 2px solid $accent;
-    border-radius: 10px;
-    color: $accent;
-    background-color: rgba($white, 0.1);
-    transition: color 0.5s, background-color 0.5s;
-
-    &:hover {
-        color: $white;
-        background-color: $accent;
-    }
-}

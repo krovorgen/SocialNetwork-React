@@ -1,10 +1,10 @@
 import { ChangeEvent } from 'react';
 
 import { addPostAC, updateNewPostTextAC } from '../../redux/actions/profile-action';
-import Posts from './index';
 import { connect } from 'react-redux';
 import { RootStateType } from '../../redux/store.type';
 import { ProfileActionType } from '../../redux/actions/types/profile.type';
+import { Posts } from '../index';
 
 const mapStateToProps = (state: RootStateType) => {
   return {
