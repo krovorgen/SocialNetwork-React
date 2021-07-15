@@ -14,10 +14,9 @@ export type MessagesDataType = {
 export type UsersDataType = {
   id: string;
   followed: boolean;
-  fullName: string;
+  name: string;
   status: string;
-  location: { city: string; country: string };
-  avatar: string;
+  photos: { small: string; large: string };
 };
 export type ProfileStateType = {
   postItemData: PostItemType[];
