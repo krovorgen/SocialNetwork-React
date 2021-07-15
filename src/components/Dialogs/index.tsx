@@ -1,11 +1,11 @@
 import React, { FC } from 'react';
 
 import { Button, DialogItem, MessageItem } from '../index';
-import { IDialogsProps } from './types';
+import { DialogsPropsType } from './types';
 
 import styles from './style.module.scss';
 
-const Dialogs: FC<IDialogsProps> = ({ dialogsPage, addMessage, onChangeTextarea }) => (
+const Dialogs: FC<DialogsPropsType> = ({ dialogsPage, addMessage, onChangeTextarea }) => (
   <div className={styles['dialogs']}>
     <ul className={styles['dialogs__items']}>
       {dialogsPage.dialogsData &&

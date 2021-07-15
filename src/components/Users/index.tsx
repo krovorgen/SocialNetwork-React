@@ -1,13 +1,13 @@
 import React, { FC } from 'react';
 import axios from 'axios';
 
-import { IUsersProps } from './types';
+import { UsersPropsType } from './types';
 import { Button } from '../index';
 import silhouette from '../../images/siluet.svg';
 
 import styles from './style.module.scss';
 
-const Users: FC<IUsersProps> = ({ users, onFollowUser, onUnfollowUser, setUsers }) => {
+const Users: FC<UsersPropsType> = ({ users, onFollowUser, onUnfollowUser, setUsers }) => {
   let getUsers = () => {
     users.length === 0 &&
       axios
@@ -20,6 +20,7 @@ const Users: FC<IUsersProps> = ({ users, onFollowUser, onUnfollowUser, setUsers 
           setUsers(data.items);
         });
   };
+
   return (
     <>
       <Button onClick={getUsers}>Get Users</Button>

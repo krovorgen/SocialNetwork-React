@@ -1,13 +1,11 @@
-import { ActionTypes } from '../../../redux/store.type';
 import { ChangeEvent } from 'react';
+import { ProfileStateType } from '../../../redux/reducers/types';
 
-export interface IPostsProps {
+export type MapStatePropsType = ProfileStateType;
+
+export type MapDispatchPropsType = {
   addPost: () => void;
   onChangeTextarea: (e: ChangeEvent<HTMLTextAreaElement>) => void;
-}
+};
 
-export interface IPostsContainerProps {
-  dispatch: (action: ActionTypes) => void;
-}
-
-export interface IPostItemProps {}
+export type PostsPropsType = MapStatePropsType & MapDispatchPropsType;

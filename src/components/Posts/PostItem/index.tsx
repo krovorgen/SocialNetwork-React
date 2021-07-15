@@ -3,9 +3,8 @@ import React, { FC } from 'react';
 import { PostItemType } from '../../../redux/reducers/types';
 
 import styles from '../style.module.scss';
-import { IPostItemProps } from '../types';
 
-const PostItem: FC<IPostItemProps & PostItemType> = ({ message, likesCount, id }) => (
+const PostItem: FC<PostItemType> = ({ message, likesCount, id }) => (
   <li className={styles['posts__item']}>
     <img
       className={styles['posts__avatar']}

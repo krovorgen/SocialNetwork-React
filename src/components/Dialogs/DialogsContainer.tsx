@@ -5,14 +5,15 @@ import Dialogs from './index';
 import { connect } from 'react-redux';
 import { RootStateType } from '../../redux/store.type';
 import { DialogsActionType } from '../../redux/actions/types/dialogs.type';
+import { MapDispatchPropsType, MapStatePropsType } from './types';
 
-let mapStateToProps = (state: RootStateType) => {
+let mapStateToProps = (state: RootStateType): MapStatePropsType => {
   return {
     dialogsPage: state.dialogsPage,
   };
 };
 
-let mapDispatchToProps = (dispatch: (arg0: DialogsActionType) => void) => {
+let mapDispatchToProps = (dispatch: (arg0: DialogsActionType) => void): MapDispatchPropsType => {
   return {
     addMessage: () => {
       dispatch(addMessageAC());

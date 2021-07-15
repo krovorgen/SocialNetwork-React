@@ -1,17 +1,11 @@
 import React, { FC } from 'react';
 
-import { IPostsProps } from './types';
-import { ProfileStateType } from '../../redux/reducers/types';
+import { PostsPropsType } from './types';
 import { Button, PostItem } from '../index';
 
 import styles from './style.module.scss';
 
-const Posts: FC<IPostsProps & ProfileStateType> = ({
-  postItemData,
-  newPostText,
-  onChangeTextarea,
-  addPost,
-}) => (
+const Posts: FC<PostsPropsType> = ({ postItemData, newPostText, onChangeTextarea, addPost }) => (
   <div className={styles['posts']}>
     <div className={styles['posts__form']}>
       <textarea
