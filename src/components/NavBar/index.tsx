@@ -12,7 +12,7 @@ const menuNavigationMockData: MenuNavigationMockDataType[] = [
   { id: v1(), iconClass: 'news', url: '/news', textLink: 'News' },
   { id: v1(), iconClass: 'music', url: '/music', textLink: 'Music' },
   { id: v1(), iconClass: 'settings', url: '/settings', textLink: 'Settings' },
-  { id: v1(), iconClass: 'settings', url: '/', textLink: 'Users' },
+  { id: v1(), iconClass: 'settings', url: '/users', textLink: 'Users' },
 ];
 
 const NavBar: FC = () => (

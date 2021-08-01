@@ -1,9 +1,12 @@
 import { UsersStateType } from './types';
 import { UsersActionType } from '../actions/types/users.type';
-import { FOLLOW, SET_USERS, UNFOLLOW } from '../constants';
+import { FOLLOW, SET_CURRENT_PAGE, SET_TOTAL_USER_COUNT, SET_USERS, UNFOLLOW } from '../constants';
 
 const initialState: UsersStateType = {
   users: [],
+  pageSize: 30,
+  totalUsersCount: 0,
+  currentPage: 1,
 };
 
 const usersReducer = (state = initialState, action: UsersActionType) => {
@@ -25,7 +28,17 @@ const usersReducer = (state = initialState, action: UsersActionType) => {
     case SET_USERS:
       return {
         ...state,
-        users: [...state.users, ...action.payload],
+        users: [...action.payload],
+      };
+    case SET_CURRENT_PAGE:
+      return {
+        ...state,
+        currentPage: action.payload,
+      };
+    case SET_TOTAL_USER_COUNT:
+      return {
+        ...state,
+        totalUsersCount: action.payload,
       };
     default:
       return state;

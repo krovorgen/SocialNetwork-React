@@ -25,7 +25,7 @@ const App: FC<IAppProps> = () => {
           <Route path="/news" render={() => <News />} />
           <Route path="/music" render={() => <Music />} />
           <Route path="/settings" render={() => <Settings />} />
-          <Route path="/" exact render={() => <UsersContainer />} />
+          <Route path="/users" exact render={() => <UsersContainer />} />
         </div>
       </main>
     </div>

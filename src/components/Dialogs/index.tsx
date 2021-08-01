@@ -9,15 +9,15 @@ const Dialogs: FC<DialogsPropsType> = ({ dialogsPage, addMessage, onChangeTextar
   <div className={styles['dialogs']}>
     <ul className={styles['dialogs__items']}>
       {dialogsPage.dialogsData &&
-        dialogsPage.dialogsData.map((item) => (
-          <DialogItem key={item.id} name={item.name} id={item.id} />
-        ))}
+      dialogsPage.dialogsData.map((item) => (
+        <DialogItem key={item.id} name={item.name} id={item.id} />
+      ))}
     </ul>
     <ul className={styles['messages']}>
       {dialogsPage.messagesData &&
-        dialogsPage.messagesData.map((item) => (
-          <MessageItem key={item.id} id={item.id} message={item.message} />
-        ))}
+      dialogsPage.messagesData.map((item) => (
+        <MessageItem key={item.id} id={item.id} message={item.message} />
+      ))}
       <textarea
         className={'form-textarea'}
         onChange={onChangeTextarea}

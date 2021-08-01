@@ -5,3 +5,5 @@ export const ADD_POST = 'ADD-POST';
 export const FOLLOW = 'FOLLOW';
 export const UNFOLLOW = 'UNFOLLOW';
 export const SET_USERS = 'SET_USERS';
+export const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE';
+export const SET_TOTAL_USER_COUNT = 'SET_TOTAL_USER_COUNT';

@@ -1,8 +1,10 @@
 .user {
-    display: flex;
+    &__item {
+        display: flex;
 
-    &:not(:last-child) {
-        margin-bottom: 20px;
+        &:not(:last-child) {
+            margin-bottom: 20px;
+        }
     }
 
     &__avatar {
@@ -13,4 +15,9 @@
     &__ava {
         object-fit: cover;
     }
+}
+
+.user-navigation {
+    display: flex;
+    flex-wrap: wrap;
 }

@@ -17,4 +17,20 @@
         color: $white;
         background-color: $accent;
     }
+
+    &--active {
+        color: $white;
+        background-color: $accent;
+
+        &:hover {
+            color: $accent;
+            background-color: rgba($white, 0.1);
+        }
+    }
+
+    &--navigation {
+        padding: 0 3px;
+        height: 30px;
+        min-width: 30px;
+    }
 }

@@ -5,9 +5,11 @@ import { IButtonProps } from './types';
 
 import styles from './style.module.scss';
 
-const Button: FC<IButtonProps> = ({ addClass, children, size, onClick }) => {
+const Button: FC<IButtonProps> = ({ addClass, active, type, children, size, onClick }) => {
   const appearancesList = {
     [styles['button__100']]: size === 'full',
+    [styles['button--active']]: active,
+    [styles['button--navigation']]: type === 'navigation',
   };
   return (
     <button

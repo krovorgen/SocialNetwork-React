@@ -29,4 +29,7 @@ export type DialogsStateType = {
 };
 export type UsersStateType = {
   users: UsersDataType[];
+  pageSize: number;
+  totalUsersCount: number;
+  currentPage: number;
 };

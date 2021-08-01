@@ -1,4 +1,10 @@
-import { FOLLOW, SET_USERS, UNFOLLOW } from '../../constants';
+import {
+  FOLLOW,
+  SET_CURRENT_PAGE,
+  SET_TOTAL_USER_COUNT,
+  SET_USERS,
+  UNFOLLOW,
+} from '../../constants';
 import { UsersDataType } from '../../reducers/types';
 
 export type FollowActionType = {
@@ -16,4 +22,19 @@ export type SetUsersActionType = {
   payload: UsersDataType[];
 };
 
-export type UsersActionType = FollowActionType | UnfollowActionType | SetUsersActionType;
+export type SetCurrentPageActionType = {
+  type: typeof SET_CURRENT_PAGE;
+  payload: number;
+};
+
+export type SetTotalUsersCountActionType = {
+  type: typeof SET_TOTAL_USER_COUNT;
+  payload: number;
+};
+
+export type UsersActionType =
+  | FollowActionType
+  | UnfollowActionType
+  | SetUsersActionType
+  | SetCurrentPageActionType
+  | SetTotalUsersCountActionType;
