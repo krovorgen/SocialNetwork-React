@@ -47,15 +47,21 @@ class UsersAPI extends React.Component<UsersAPIPropsType> {
 
   render() {
     return (
-      <Users
-        totalUsersCount={this.props.totalUsersCount}
-        pageSize={this.props.pageSize}
-        currentPage={this.props.currentPage}
-        users={this.props.users}
-        onUnfollowUser={this.props.onUnfollowUser}
-        onFollowUser={this.props.onFollowUser}
-        onPageChanged={this.onPageChanged}
-      />
+      <>
+        {this.props.isLoading ? (
+          <img style={{ margin: '0 auto' }} src={'./images/loader.svg'} alt={'loader'} />
+        ) : (
+          <Users
+            totalUsersCount={this.props.totalUsersCount}
+            pageSize={this.props.pageSize}
+            currentPage={this.props.currentPage}
+            users={this.props.users}
+            onUnfollowUser={this.props.onUnfollowUser}
+            onFollowUser={this.props.onFollowUser}
+            onPageChanged={this.onPageChanged}
+          />
+        )}
+      </>
     );
   }
 }
@@ -66,6 +72,7 @@ const mapStateToProps = (state: RootStateType): MapStatePropsType => {
     pageSize: state.usersPage.pageSize,
     totalUsersCount: state.usersPage.totalUsersCount,
     currentPage: state.usersPage.currentPage,
+    isLoading: state.usersPage.isLoading,
   };
 };
 

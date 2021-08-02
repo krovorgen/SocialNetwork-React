@@ -4,9 +4,10 @@ import { FOLLOW, SET_CURRENT_PAGE, SET_TOTAL_USER_COUNT, SET_USERS, UNFOLLOW } f
 
 const initialState: UsersStateType = {
   users: [],
-  pageSize: 30,
+  pageSize: 100,
   totalUsersCount: 0,
   currentPage: 1,
+  isLoading: true,
 };
 
 const usersReducer = (state = initialState, action: UsersActionType) => {

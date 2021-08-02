@@ -32,4 +32,5 @@ export type UsersStateType = {
   pageSize: number;
   totalUsersCount: number;
   currentPage: number;
+  isLoading: boolean;
 };
