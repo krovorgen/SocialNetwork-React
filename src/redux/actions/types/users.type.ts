@@ -3,6 +3,7 @@ import {
   SET_CURRENT_PAGE,
   SET_TOTAL_USER_COUNT,
   SET_USERS,
+  TOGGLE_LOADING_STATUS,
   UNFOLLOW,
 } from '../../constants';
 import { UsersDataType } from '../../reducers/types';
@@ -32,9 +33,15 @@ export type SetTotalUsersCountActionType = {
   payload: number;
 };
 
+export type ToggleStatusLoadingActionType = {
+  type: typeof TOGGLE_LOADING_STATUS;
+  payload: boolean;
+};
+
 export type UsersActionType =
   | FollowActionType
   | UnfollowActionType
   | SetUsersActionType
   | SetCurrentPageActionType
-  | SetTotalUsersCountActionType;
+  | SetTotalUsersCountActionType
+  | ToggleStatusLoadingActionType;

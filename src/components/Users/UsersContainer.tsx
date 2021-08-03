@@ -1,19 +1,21 @@
+import React from 'react';
+import axios from 'axios';
 import { connect } from 'react-redux';
 
 import { RootStateType } from '../../redux/store.type';
 import { UsersActionType } from '../../redux/actions/types/users.type';
 import {
-  followAC,
-  setCurrentPageAC,
-  setTotalUsersCountAC,
-  setUsersAC,
-  unfollowAC,
+  onFollowUser,
+  setCurrentPage,
+  setTotalUsersCount,
+  setUsers,
+  toggleStatusLoading,
+  onUnfollowUser,
 } from '../../redux/actions/users-action';
 import { UsersDataType } from '../../redux/reducers/types';
 import { MapDispatchPropsType, MapStatePropsType, UsersAPIPropsType } from './types';
-import React from 'react';
-import axios from 'axios';
 import Users from './index';
+import Preloader from '../Preloader';
 
 class UsersAPI extends React.Component<UsersAPIPropsType> {
   componentDidMount() {
@@ -26,12 +28,13 @@ class UsersAPI extends React.Component<UsersAPIPropsType> {
       })
       .then(({ data }) => {
         this.props.setUsers(data.items);
-        console.log(data.totalCount);
         this.props.setTotalUsersCount(data.totalCount);
+        this.props.toggleStatusLoading(false);
       });
   }
 
   onPageChanged = (pageNumber: number) => {
+    this.props.toggleStatusLoading(true);
     this.props.setCurrentPage(pageNumber);
     axios
       .get('https://social-network.samuraijs.com/api/1.0/users/', {
@@ -42,6 +45,7 @@ class UsersAPI extends React.Component<UsersAPIPropsType> {
       })
       .then(({ data }) => {
         this.props.setUsers(data.items);
+        this.props.toggleStatusLoading(false);
       });
   };
 
@@ -49,7 +53,7 @@ class UsersAPI extends React.Component<UsersAPIPropsType> {
     return (
       <>
         {this.props.isLoading ? (
-          <img style={{ margin: '0 auto' }} src={'./images/loader.svg'} alt={'loader'} />
+          <Preloader />
         ) : (
           <Users
             totalUsersCount={this.props.totalUsersCount}
@@ -76,26 +80,34 @@ const mapStateToProps = (state: RootStateType): MapStatePropsType => {
   };
 };
 
-const mapDispatchToProps = (dispatch: (action: UsersActionType) => void): MapDispatchPropsType => {
-  return {
-    onFollowUser: (id: string) => {
-      dispatch(followAC(id));
-    },
-    onUnfollowUser: (id: string) => {
-      dispatch(unfollowAC(id));
-    },
-    setUsers: (users: UsersDataType[]) => {
-      dispatch(setUsersAC(users));
-    },
-    setCurrentPage: (currentPage: number) => {
-      dispatch(setCurrentPageAC(currentPage));
-    },
-    setTotalUsersCount: (value: number) => {
-      dispatch(setTotalUsersCountAC(value));
-    },
-  };
-};
+const mapDispatchToProps = (dispatch: (action: UsersActionType) => void): MapDispatchPropsType => ({
+  onFollowUser: (id: string) => {
+    dispatch(onFollowUser(id));
+  },
+  onUnfollowUser: (id: string) => {
+    dispatch(onUnfollowUser(id));
+  },
+  setUsers: (users: UsersDataType[]) => {
+    dispatch(setUsers(users));
+  },
+  setCurrentPage: (currentPage: number) => {
+    dispatch(setCurrentPage(currentPage));
+  },
+  setTotalUsersCount: (value: number) => {
+    dispatch(setTotalUsersCount(value));
+  },
+  toggleStatusLoading: (status: boolean) => {
+    dispatch(toggleStatusLoading(status));
+  },
+});
 
-const UsersContainer = connect(mapStateToProps, mapDispatchToProps)(UsersAPI);
+const UsersContainer = connect(mapStateToProps, {
+  onFollowUser,
+  onUnfollowUser,
+  setUsers,
+  setCurrentPage,
+  setTotalUsersCount,
+  toggleStatusLoading,
+})(UsersAPI);
 
 export default UsersContainer;

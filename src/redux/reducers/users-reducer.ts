@@ -1,6 +1,13 @@
 import { UsersStateType } from './types';
 import { UsersActionType } from '../actions/types/users.type';
-import { FOLLOW, SET_CURRENT_PAGE, SET_TOTAL_USER_COUNT, SET_USERS, UNFOLLOW } from '../constants';
+import {
+  FOLLOW,
+  SET_CURRENT_PAGE,
+  SET_TOTAL_USER_COUNT,
+  SET_USERS,
+  TOGGLE_LOADING_STATUS,
+  UNFOLLOW,
+} from '../constants';
 
 const initialState: UsersStateType = {
   users: [],
@@ -40,6 +47,11 @@ const usersReducer = (state = initialState, action: UsersActionType) => {
       return {
         ...state,
         totalUsersCount: action.payload,
+      };
+    case TOGGLE_LOADING_STATUS:
+      return {
+        ...state,
+        isLoading: action.payload,
       };
     default:
       return state;

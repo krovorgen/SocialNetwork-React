@@ -10,6 +10,7 @@ export type MapDispatchPropsType = {
   setUsers: (users: UsersDataType[]) => void;
   setCurrentPage: (currentPage: number) => void;
   setTotalUsersCount: (value: number) => void;
+  toggleStatusLoading: (status: boolean) => void;
 };
 
 export interface IUsersProps {
