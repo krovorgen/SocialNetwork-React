@@ -3,17 +3,15 @@ import axios from 'axios';
 import { connect } from 'react-redux';
 
 import { RootStateType } from '../../redux/store.type';
-import { UsersActionType } from '../../redux/actions/types/users.type';
 import {
   onFollowUser,
+  onUnfollowUser,
   setCurrentPage,
   setTotalUsersCount,
   setUsers,
   toggleStatusLoading,
-  onUnfollowUser,
 } from '../../redux/actions/users-action';
-import { UsersDataType } from '../../redux/reducers/types';
-import { MapDispatchPropsType, MapStatePropsType, UsersAPIPropsType } from './types';
+import { MapStatePropsType, UsersAPIPropsType } from './types';
 import Users from './index';
 import Preloader from '../Preloader';
 
@@ -79,27 +77,6 @@ const mapStateToProps = (state: RootStateType): MapStatePropsType => {
     isLoading: state.usersPage.isLoading,
   };
 };
-
-const mapDispatchToProps = (dispatch: (action: UsersActionType) => void): MapDispatchPropsType => ({
-  onFollowUser: (id: string) => {
-    dispatch(onFollowUser(id));
-  },
-  onUnfollowUser: (id: string) => {
-    dispatch(onUnfollowUser(id));
-  },
-  setUsers: (users: UsersDataType[]) => {
-    dispatch(setUsers(users));
-  },
-  setCurrentPage: (currentPage: number) => {
-    dispatch(setCurrentPage(currentPage));
-  },
-  setTotalUsersCount: (value: number) => {
-    dispatch(setTotalUsersCount(value));
-  },
-  toggleStatusLoading: (status: boolean) => {
-    dispatch(toggleStatusLoading(status));
-  },
-});
 
 const UsersContainer = connect(mapStateToProps, {
   onFollowUser,

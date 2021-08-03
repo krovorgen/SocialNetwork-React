@@ -3,6 +3,7 @@ import styles from './style.module.scss';
 import { Button } from '../index';
 import silhouette from '../../images/siluet.svg';
 import { IUsersProps } from './types';
+import { NavLink } from 'react-router-dom';
 
 const Users: FC<IUsersProps> = ({
   totalUsersCount,
@@ -39,13 +40,15 @@ const Users: FC<IUsersProps> = ({
           return (
             <li key={id} className={styles['user__item']}>
               <div className={styles['user__avatar']}>
-                <img
-                  className={styles['user__ava']}
-                  width={150}
-                  height={150}
-                  src={user.photos.small || silhouette}
-                  alt=""
-                />
+                <NavLink to={`/profile/${user.id}`}>
+                  <img
+                    className={styles['user__ava']}
+                    width={150}
+                    height={150}
+                    src={user.photos.small || silhouette}
+                    alt=""
+                  />
+                </NavLink>
                 {user.followed ? (
                   <Button onClick={() => onUnfollowUser(user.id)} size={'full'}>
                     Unfollow
