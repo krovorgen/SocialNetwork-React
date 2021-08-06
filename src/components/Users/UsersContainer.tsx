@@ -53,30 +53,20 @@ class UsersAPI extends React.Component<UsersAPIPropsType> {
         {this.props.isLoading ? (
           <Preloader />
         ) : (
-          <Users
-            totalUsersCount={this.props.totalUsersCount}
-            pageSize={this.props.pageSize}
-            currentPage={this.props.currentPage}
-            users={this.props.users}
-            onUnfollowUser={this.props.onUnfollowUser}
-            onFollowUser={this.props.onFollowUser}
-            onPageChanged={this.onPageChanged}
-          />
+          <Users {...this.props} onPageChanged={this.onPageChanged} />
         )}
       </>
     );
   }
 }
 
-const mapStateToProps = (state: RootStateType): MapStatePropsType => {
-  return {
-    users: state.usersPage.users,
-    pageSize: state.usersPage.pageSize,
-    totalUsersCount: state.usersPage.totalUsersCount,
-    currentPage: state.usersPage.currentPage,
-    isLoading: state.usersPage.isLoading,
-  };
-};
+const mapStateToProps = (state: RootStateType): MapStatePropsType => ({
+  users: state.usersPage.users,
+  pageSize: state.usersPage.pageSize,
+  totalUsersCount: state.usersPage.totalUsersCount,
+  currentPage: state.usersPage.currentPage,
+  isLoading: state.usersPage.isLoading,
+});
 
 const UsersContainer = connect(mapStateToProps, {
   onFollowUser,

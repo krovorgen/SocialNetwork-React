@@ -7,11 +7,11 @@ import {
   Music,
   NavBar,
   News,
-  Profile,
   Settings,
   UsersContainer,
 } from './components';
 import { IAppProps } from './types';
+import ProfileContainer from './components/Profile/ProfileContainer';
 
 const App: FC<IAppProps> = () => {
   return (
@@ -20,7 +20,7 @@ const App: FC<IAppProps> = () => {
       <main className="main">
         <NavBar />
         <div className="content">
-          <Route path="/profile" render={() => <Profile />} />
+          <Route path="/profile" render={() => <ProfileContainer />} />
           <Route path="/dialogs" render={() => <DialogsContainer />} />
           <Route path="/news" render={() => <News />} />
           <Route path="/music" render={() => <Music />} />
