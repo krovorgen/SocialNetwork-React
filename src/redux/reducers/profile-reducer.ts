@@ -1,11 +1,12 @@
 import { v1 } from 'uuid';
-import { ADD_POST, UPDATE_NEW_POST_TEXT } from '../constants';
+import { ADD_POST, SET_USER_PROFILE, UPDATE_NEW_POST_TEXT } from '../constants';
 import { ProfileStateType } from './types';
 import { ProfileActionType } from '../actions/types/profile.type';
 
 const initialState: ProfileStateType = {
   postItemData: [],
   newPostText: '',
+  profile: null,
 };
 
 const profileReducer = (state = initialState, action: ProfileActionType): ProfileStateType => {
@@ -25,6 +26,11 @@ const profileReducer = (state = initialState, action: ProfileActionType): Profil
       return {
         ...state,
         newPostText: action.payload,
+      };
+    case SET_USER_PROFILE:
+      return {
+        ...state,
+        profile: action.payload,
       };
     default:
       return state;

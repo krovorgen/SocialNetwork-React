@@ -1,50 +1,50 @@
 @import "./src/scss/vars";
 
 body {
-    position: relative;
-    min-height: 100vh;
-    font-family: "Ubuntu", sans-serif;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 1.2;
-    color: $text;
+  position: relative;
+  min-height: 100vh;
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.2;
+  color: $text;
 
-    &::before {
-        content: "";
-        position: fixed;
-        left: 0;
-        right: 0;
-        top: 0;
-        bottom: 0;
-        z-index: -2;
-        background-image: url("https://i.gifer.com/2A5.gif");
-        background-size: cover;
-        background-repeat: no-repeat;
-    }
+  &::before {
+    content: "";
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: -2;
+    background-image: url("https://i.gifer.com/2A5.gif");
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
 
-    &::after {
-        content: "";
-        position: fixed;
-        left: 0;
-        right: 0;
-        top: 0;
-        bottom: 0;
-        z-index: -1;
-        background-color: rgba(0, 0, 0, 0.8);
-    }
+  &::after {
+    content: "";
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: -1;
+    background-color: rgba(0, 0, 0, 0.8);
+  }
 }
 
 .container {
-    margin: 0 auto;
-    padding: 0 15px;
-    min-width: 320px;
-    max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+  min-width: 320px;
+  max-width: 1200px;
 }
 
 .main {
-    display: flex;
+  display: flex;
 }
 
 .content {
-    width: 100%;
+  width: 100%;
 }

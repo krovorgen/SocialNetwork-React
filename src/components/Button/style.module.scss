@@ -1,36 +1,36 @@
 @import "./src/scss/vars";
 
 .button {
-    padding: 10px;
-    border: 2px solid $accent;
-    border-radius: 10px;
-    color: $accent;
-    background-color: rgba($white, 0.1);
-    transition: color 0.5s, background-color 0.5s;
-    cursor: pointer;
+  padding: 10px;
+  border: 2px solid $accent;
+  border-radius: 10px;
+  color: $accent;
+  background-color: rgba($white, 0.1);
+  transition: color 0.5s, background-color 0.5s;
+  cursor: pointer;
 
-    &__100 {
-        width: 100%;
-    }
+  &__100 {
+    width: 100%;
+  }
+
+  &:hover {
+    color: $white;
+    background-color: $accent;
+  }
+
+  &--active {
+    color: $white;
+    background-color: $accent;
 
     &:hover {
-        color: $white;
-        background-color: $accent;
+      color: $accent;
+      background-color: rgba($white, 0.1);
     }
+  }
 
-    &--active {
-        color: $white;
-        background-color: $accent;
-
-        &:hover {
-            color: $accent;
-            background-color: rgba($white, 0.1);
-        }
-    }
-
-    &--navigation {
-        padding: 0 3px;
-        height: 30px;
-        min-width: 30px;
-    }
+  &--navigation {
+    padding: 0 3px;
+    height: 30px;
+    min-width: 30px;
+  }
 }

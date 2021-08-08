@@ -1,13 +1,13 @@
 import React, { FC } from 'react';
 
-import { IProfileProps } from './types';
 import { PostsContainer, ProfileInfo } from '../index';
+import { IProfileProps } from './types';
 
 import styles from './style.module.scss';
 
-const Profile: FC<IProfileProps> = () => (
+const Profile: FC<IProfileProps> = ({ profile }) => (
   <div className={styles['profile']}>
-    <ProfileInfo />
+    <ProfileInfo profile={profile} />
     <PostsContainer />
   </div>
 );

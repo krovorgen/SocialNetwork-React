@@ -13,7 +13,7 @@ import {
 } from '../../redux/actions/users-action';
 import { MapStatePropsType, UsersAPIPropsType } from './types';
 import Users from './index';
-import Preloader from '../Preloader';
+import { Preloader } from '../index';
 
 class UsersAPI extends React.Component<UsersAPIPropsType> {
   componentDidMount() {

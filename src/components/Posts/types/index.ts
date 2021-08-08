@@ -1,7 +1,7 @@
 import { ChangeEvent } from 'react';
-import { ProfileStateType } from '../../../redux/reducers/types';
+import { PostItemType, ProfileStateType } from '../../../redux/reducers/types';
 
-export type MapStatePropsType = ProfileStateType;
+export type MapStatePropsType = { postItemData: PostItemType[]; newPostText: string };
 
 export type MapDispatchPropsType = {
   addPost: () => void;

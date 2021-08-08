@@ -8,6 +8,7 @@ export { default as Settings } from './Settings';
 export { default as Users } from './Users';
 export { default as Button } from './Button';
 export { default as Posts } from './Posts';
+export { default as Preloader } from './Preloader';
 export { default as DialogsContainer } from './Dialogs/DialogsContainer';
 export { default as DialogItem } from './Dialogs/DialogItem';
 export { default as MessageItem } from './Dialogs/MessageItem';
