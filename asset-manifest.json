@@ -1,23 +1,23 @@
 {
   "files": {
-    "main.css": "/SocialNetwork-React/static/css/main.b77790bb.chunk.css",
-    "main.js": "/SocialNetwork-React/static/js/main.7f3bbe47.chunk.js",
-    "main.js.map": "/SocialNetwork-React/static/js/main.7f3bbe47.chunk.js.map",
-    "runtime-main.js": "/SocialNetwork-React/static/js/runtime-main.02af445f.js",
-    "runtime-main.js.map": "/SocialNetwork-React/static/js/runtime-main.02af445f.js.map",
-    "static/js/2.5a61a4b6.chunk.js": "/SocialNetwork-React/static/js/2.5a61a4b6.chunk.js",
-    "static/js/2.5a61a4b6.chunk.js.map": "/SocialNetwork-React/static/js/2.5a61a4b6.chunk.js.map",
-    "index.html": "/SocialNetwork-React/index.html",
-    "static/css/main.b77790bb.chunk.css.map": "/SocialNetwork-React/static/css/main.b77790bb.chunk.css.map",
-    "static/js/2.5a61a4b6.chunk.js.LICENSE.txt": "/SocialNetwork-React/static/js/2.5a61a4b6.chunk.js.LICENSE.txt",
-    "static/media/style.module.scss": "/SocialNetwork-React/static/media/settings.94c07779.png",
-    "static/media/rocket.ba44f326.png": "/SocialNetwork-React/static/media/rocket.ba44f326.png",
-    "static/media/siluet.74c7c662.svg": "/SocialNetwork-React/static/media/siluet.74c7c662.svg"
+    "main.css": "/static/css/main.b3c4b539.chunk.css",
+    "main.js": "/static/js/main.1073dfb5.chunk.js",
+    "main.js.map": "/static/js/main.1073dfb5.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.4ac874f9.js",
+    "runtime-main.js.map": "/static/js/runtime-main.4ac874f9.js.map",
+    "static/js/2.b3cff354.chunk.js": "/static/js/2.b3cff354.chunk.js",
+    "static/js/2.b3cff354.chunk.js.map": "/static/js/2.b3cff354.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/main.b3c4b539.chunk.css.map": "/static/css/main.b3c4b539.chunk.css.map",
+    "static/js/2.b3cff354.chunk.js.LICENSE.txt": "/static/js/2.b3cff354.chunk.js.LICENSE.txt",
+    "static/media/style.module.scss": "/static/media/settings.94c07779.png",
+    "static/media/rocket.ba44f326.png": "/static/media/rocket.ba44f326.png",
+    "static/media/siluet.74c7c662.svg": "/static/media/siluet.74c7c662.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.02af445f.js",
-    "static/js/2.5a61a4b6.chunk.js",
-    "static/css/main.b77790bb.chunk.css",
-    "static/js/main.7f3bbe47.chunk.js"
+    "static/js/runtime-main.4ac874f9.js",
+    "static/js/2.b3cff354.chunk.js",
+    "static/css/main.b3c4b539.chunk.css",
+    "static/js/main.1073dfb5.chunk.js"
   ]
 }
