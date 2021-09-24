@@ -3,7 +3,7 @@ import { Route } from 'react-router-dom';
 
 import {
   DialogsContainer,
-  Header,
+  HeaderContainer,
   Music,
   NavBar,
   News,
@@ -16,7 +16,7 @@ import ProfileContainer from './components/Profile/ProfileContainer';
 const App: FC<IAppProps> = () => {
   return (
     <div className="container">
-      <Header />
+      <HeaderContainer />
       <main className="main">
         <NavBar />
         <div className="content">

@@ -14,11 +14,12 @@ import {
 import { MapStatePropsType, UsersAPIPropsType } from './types';
 import Users from './index';
 import { Preloader } from '../index';
+import { API_URL } from '../../constants';
 
 class UsersAPI extends React.Component<UsersAPIPropsType> {
   componentDidMount() {
     axios
-      .get('https://social-network.samuraijs.com/api/1.0/users/', {
+      .get(`${API_URL}users/`, {
         params: {
           page: this.props.currentPage,
           count: this.props.pageSize,
@@ -35,7 +36,7 @@ class UsersAPI extends React.Component<UsersAPIPropsType> {
     this.props.toggleStatusLoading(true);
     this.props.setCurrentPage(pageNumber);
     axios
-      .get('https://social-network.samuraijs.com/api/1.0/users/', {
+      .get(`${API_URL}users/`, {
         params: {
           page: pageNumber,
           count: this.props.pageSize,

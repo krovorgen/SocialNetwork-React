@@ -16,3 +16,4 @@ export { default as ProfileInfo } from './Profile/ProfileInfo';
 export { default as PostItem } from './Posts/PostItem';
 export { default as PostsContainer } from './Posts/PostsContainer';
 export { default as UsersContainer } from './Users/UsersContainer';
+export { default as HeaderContainer } from './Header/HeaderContainer';

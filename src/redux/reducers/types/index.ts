@@ -67,3 +67,14 @@ export type UsersStateType = {
   currentPage: number;
   isLoading: boolean;
 };
+
+export type AuthDataType = {
+  id: number | null;
+  email: string | null;
+  login: string | null;
+};
+
+export interface AuthStateType extends AuthDataType {
+  isLoading: boolean;
+  isAuth: boolean;
+}
