@@ -23,7 +23,7 @@ const Users: FC<IUsersProps> = ({
   for (let i = 1; i <= pagesCount; i++) {
     pages.push(i);
   }
-
+  console.log(disableButton);
   return (
     <>
       <ul className={styles['user-navigation']}>
@@ -46,8 +46,8 @@ const Users: FC<IUsersProps> = ({
             api.subscribeUser(user.id).then(({ data }) => {
               if (data.resultCode === 0) {
                 onFollowUser(user.id);
-                setDisableButton(false);
               }
+              setDisableButton(false);
             });
           };
           const unfollowHandler = () => {
@@ -55,8 +55,8 @@ const Users: FC<IUsersProps> = ({
             api.unsubscribeUser(user.id).then(({ data }) => {
               if (data.resultCode === 0) {
                 onUnfollowUser(user.id);
-                setDisableButton(false);
               }
+              setDisableButton(false);
             });
           };
           return (

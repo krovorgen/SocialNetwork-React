@@ -18,6 +18,14 @@
     background-color: $accent;
   }
 
+  &[disabled] {
+    background-color: rgba(#ccc, 0.4);
+
+    &:hover {
+      background-color: rgba(#ccc, 0.4);
+    }
+  }
+
   &--active {
     color: $white;
     background-color: $accent;
