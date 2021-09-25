@@ -1,5 +1,4 @@
 import React from 'react';
-import axios from 'axios';
 import { connect } from 'react-redux';
 
 import { RootStateType } from '../../redux/store.type';
@@ -14,40 +13,24 @@ import {
 import { MapStatePropsType, UsersAPIPropsType } from './types';
 import Users from './index';
 import { Preloader } from '../index';
-import { API_URL } from '../../constants';
+import { api } from '../../api';
 
 class UsersAPI extends React.Component<UsersAPIPropsType> {
   componentDidMount() {
-    axios
-      .get(`${API_URL}users/`, {
-        withCredentials: true,
-        params: {
-          page: this.props.currentPage,
-          count: this.props.pageSize,
-        },
-      })
-      .then(({ data }) => {
-        this.props.setUsers(data.items);
-        this.props.setTotalUsersCount(data.totalCount);
-        this.props.toggleStatusLoading(false);
-      });
+    api.getUsers(this.props.currentPage, this.props.pageSize).then(({ data }) => {
+      this.props.setUsers(data.items);
+      this.props.setTotalUsersCount(data.totalCount);
+      this.props.toggleStatusLoading(false);
+    });
   }
 
   onPageChanged = (pageNumber: number) => {
     this.props.toggleStatusLoading(true);
     this.props.setCurrentPage(pageNumber);
-    axios
-      .get(`${API_URL}users/`, {
-        withCredentials: true,
-        params: {
-          page: pageNumber,
-          count: this.props.pageSize,
-        },
-      })
-      .then(({ data }) => {
-        this.props.setUsers(data.items);
-        this.props.toggleStatusLoading(false);
-      });
+    api.getUsers(pageNumber, this.props.pageSize).then(({ data }) => {
+      this.props.setUsers(data.items);
+      this.props.toggleStatusLoading(false);
+    });
   };
 
   render() {

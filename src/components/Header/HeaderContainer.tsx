@@ -1,11 +1,11 @@
 import React from 'react';
-import { AuthDataType } from '../../redux/reducers/types';
-import Header from './index';
 import { connect } from 'react-redux';
+
+import { AuthDataType } from '../../redux/reducers/types';
 import { RootStateType } from '../../redux/store.type';
-import axios from 'axios';
-import { API_URL } from '../../constants';
 import { setUserData } from '../../redux/actions/auth-action';
+import Header from './index';
+import { api } from '../../api';
 
 export type HeaderContainerType = MapStatePropsType & MapDispatchPropsType;
 
@@ -20,13 +20,9 @@ export type MapDispatchPropsType = {
 
 class HeaderContainer extends React.Component<HeaderContainerType> {
   componentDidMount() {
-    axios
-      .get(`${API_URL}auth/me/`, {
-        withCredentials: true,
-      })
-      .then(({ data }) => {
-        data.resultCode === 0 && this.props.setUserData(data.data);
-      });
+    api.authUser().then(({ data }) => {
+      data.resultCode === 0 && this.props.setUserData(data.data);
+    });
   }
 
   render() {

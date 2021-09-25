@@ -1,11 +1,10 @@
 import React, { FC } from 'react';
-import axios from 'axios';
 import { NavLink } from 'react-router-dom';
 
 import { Button } from '../index';
 import silhouette from '../../images/siluet.svg';
 import { IUsersProps } from './types';
-import { API_KEY, API_URL } from '../../constants';
+import { api } from '../../api';
 
 import styles from './style.module.scss';
 
@@ -42,27 +41,13 @@ const Users: FC<IUsersProps> = ({
       <ul className={styles['user']}>
         {users.map((user, id) => {
           const followHandler = () => {
-            axios
-              .post(
-                `${API_URL}follow/${user.id}`,
-                {},
-                {
-                  withCredentials: true,
-                  headers: {
-                    'API-KEY': API_KEY,
-                  },
-                }
-              )
+            api
+              .subscribeUser(user.id)
               .then(({ data }) => data.resultCode === 0 && onFollowUser(user.id));
           };
           const unfollowHandler = () => {
-            axios
-              .delete(`${API_URL}follow/${user.id}`, {
-                withCredentials: true,
-                headers: {
-                  'API-KEY': API_KEY,
-                },
-              })
+            api
+              .unsubscribeUser(user.id)
               .then(({ data }) => data.resultCode === 0 && onUnfollowUser(user.id));
           };
           return (
