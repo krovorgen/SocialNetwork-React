@@ -20,6 +20,7 @@ class UsersAPI extends React.Component<UsersAPIPropsType> {
   componentDidMount() {
     axios
       .get(`${API_URL}users/`, {
+        withCredentials: true,
         params: {
           page: this.props.currentPage,
           count: this.props.pageSize,
@@ -37,6 +38,7 @@ class UsersAPI extends React.Component<UsersAPIPropsType> {
     this.props.setCurrentPage(pageNumber);
     axios
       .get(`${API_URL}users/`, {
+        withCredentials: true,
         params: {
           page: pageNumber,
           count: this.props.pageSize,

@@ -1,9 +1,13 @@
 import React, { FC } from 'react';
-import styles from './style.module.scss';
+import axios from 'axios';
+import { NavLink } from 'react-router-dom';
+
 import { Button } from '../index';
 import silhouette from '../../images/siluet.svg';
 import { IUsersProps } from './types';
-import { NavLink } from 'react-router-dom';
+import { API_KEY, API_URL } from '../../constants';
+
+import styles from './style.module.scss';
 
 const Users: FC<IUsersProps> = ({
   totalUsersCount,
@@ -37,6 +41,30 @@ const Users: FC<IUsersProps> = ({
       </ul>
       <ul className={styles['user']}>
         {users.map((user, id) => {
+          const followHandler = () => {
+            axios
+              .post(
+                `${API_URL}follow/${user.id}`,
+                {},
+                {
+                  withCredentials: true,
+                  headers: {
+                    'API-KEY': API_KEY,
+                  },
+                }
+              )
+              .then(({ data }) => data.resultCode === 0 && onFollowUser(user.id));
+          };
+          const unfollowHandler = () => {
+            axios
+              .delete(`${API_URL}follow/${user.id}`, {
+                withCredentials: true,
+                headers: {
+                  'API-KEY': API_KEY,
+                },
+              })
+              .then(({ data }) => data.resultCode === 0 && onUnfollowUser(user.id));
+          };
           return (
             <li key={id} className={styles['user__item']}>
               <div className={styles['user__avatar']}>
@@ -50,11 +78,11 @@ const Users: FC<IUsersProps> = ({
                   />
                 </NavLink>
                 {user.followed ? (
-                  <Button onClick={() => onUnfollowUser(user.id)} size={'full'}>
+                  <Button onClick={unfollowHandler} size={'full'}>
                     Unfollow
                   </Button>
                 ) : (
-                  <Button onClick={() => onFollowUser(user.id)} size={'full'}>
+                  <Button onClick={followHandler} size={'full'}>
                     Follow
                   </Button>
                 )}
