@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 
 import { Button } from '../index';
@@ -17,6 +17,7 @@ const Users: FC<IUsersProps> = ({
   onFollowUser,
   onPageChanged,
 }) => {
+  const [disableButton, setDisableButton] = useState<boolean>(false);
   let pagesCount: number = Math.ceil(totalUsersCount / pageSize);
   let pages = [];
   for (let i = 1; i <= pagesCount; i++) {
@@ -29,7 +30,7 @@ const Users: FC<IUsersProps> = ({
         {pages.map((item, index) => (
           <li key={index} className={styles['user-navigation__item']}>
             <Button
-              type={'navigation'}
+              variant={'navigation'}
               onClick={() => onPageChanged(item)}
               active={currentPage === item}
             >
@@ -41,14 +42,22 @@ const Users: FC<IUsersProps> = ({
       <ul className={styles['user']}>
         {users.map((user, id) => {
           const followHandler = () => {
-            api
-              .subscribeUser(user.id)
-              .then(({ data }) => data.resultCode === 0 && onFollowUser(user.id));
+            setDisableButton(true);
+            api.subscribeUser(user.id).then(({ data }) => {
+              if (data.resultCode === 0) {
+                onFollowUser(user.id);
+                setDisableButton(false);
+              }
+            });
           };
           const unfollowHandler = () => {
-            api
-              .unsubscribeUser(user.id)
-              .then(({ data }) => data.resultCode === 0 && onUnfollowUser(user.id));
+            setDisableButton(true);
+            api.unsubscribeUser(user.id).then(({ data }) => {
+              if (data.resultCode === 0) {
+                onUnfollowUser(user.id);
+                setDisableButton(false);
+              }
+            });
           };
           return (
             <li key={id} className={styles['user__item']}>
@@ -63,11 +72,11 @@ const Users: FC<IUsersProps> = ({
                   />
                 </NavLink>
                 {user.followed ? (
-                  <Button onClick={unfollowHandler} size={'full'}>
+                  <Button onClick={unfollowHandler} size={'full'} disabled={disableButton}>
                     Unfollow
                   </Button>
                 ) : (
-                  <Button onClick={followHandler} size={'full'}>
+                  <Button onClick={followHandler} size={'full'} disabled={disableButton}>
                     Follow
                   </Button>
                 )}
