@@ -8,6 +8,7 @@ import {
   setCurrentPage,
   setTotalUsersCount,
   setUsers,
+  toggleFollowingStatus,
   toggleStatusLoading,
 } from '../../redux/actions/users-action';
 import { MapStatePropsType, UsersAPIPropsType } from './types';
@@ -52,6 +53,7 @@ const mapStateToProps = (state: RootStateType): MapStatePropsType => ({
   totalUsersCount: state.usersPage.totalUsersCount,
   currentPage: state.usersPage.currentPage,
   isLoading: state.usersPage.isLoading,
+  followingStatus: state.usersPage.followingStatus,
 });
 
 const UsersContainer = connect(mapStateToProps, {
@@ -61,6 +63,7 @@ const UsersContainer = connect(mapStateToProps, {
   setCurrentPage,
   setTotalUsersCount,
   toggleStatusLoading,
+  toggleFollowingStatus,
 })(UsersAPI);
 
 export default UsersContainer;

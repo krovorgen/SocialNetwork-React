@@ -11,6 +11,7 @@ export type MapDispatchPropsType = {
   setCurrentPage: (currentPage: number) => void;
   setTotalUsersCount: (value: number) => void;
   toggleStatusLoading: (status: boolean) => void;
+  toggleFollowingStatus: (isLoading: boolean, userID: string) => void;
 };
 
 export interface IUsersProps {
@@ -21,4 +22,6 @@ export interface IUsersProps {
   onFollowUser: (id: string) => void;
   onUnfollowUser: (id: string) => void;
   onPageChanged: (pageNumber: number) => void;
+  toggleFollowingStatus: (isLoading: boolean, userID: string) => void;
+  followingStatus: string[];
 }

@@ -66,6 +66,7 @@ export type UsersStateType = {
   totalUsersCount: number;
   currentPage: number;
   isLoading: boolean;
+  followingStatus: string[];
 };
 
 export type AuthDataType = {

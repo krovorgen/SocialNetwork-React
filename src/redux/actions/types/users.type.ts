@@ -3,6 +3,7 @@ import {
   SET_CURRENT_PAGE,
   SET_TOTAL_USER_COUNT,
   SET_USERS,
+  TOGGLE_FOLLOWING_STATUS,
   TOGGLE_LOADING_STATUS,
   UNFOLLOW,
 } from '../../constants';
@@ -38,10 +39,16 @@ export type ToggleStatusLoadingActionType = {
   payload: boolean;
 };
 
+export type ToggleFollowingStatusActionType = {
+  type: typeof TOGGLE_FOLLOWING_STATUS;
+  payload: { isLoading: boolean; userID: string };
+};
+
 export type UsersActionType =
   | FollowActionType
   | UnfollowActionType
   | SetUsersActionType
   | SetCurrentPageActionType
   | SetTotalUsersCountActionType
-  | ToggleStatusLoadingActionType;
+  | ToggleStatusLoadingActionType
+  | ToggleFollowingStatusActionType;

@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react';
+import React, { FC } from 'react';
 import { NavLink } from 'react-router-dom';
 
 import { Button } from '../index';
@@ -16,14 +16,14 @@ const Users: FC<IUsersProps> = ({
   onUnfollowUser,
   onFollowUser,
   onPageChanged,
+  toggleFollowingStatus,
+  followingStatus,
 }) => {
-  const [disableButton, setDisableButton] = useState<boolean>(false);
   let pagesCount: number = Math.ceil(totalUsersCount / pageSize);
   let pages = [];
   for (let i = 1; i <= pagesCount; i++) {
     pages.push(i);
   }
-  console.log(disableButton);
   return (
     <>
       <ul className={styles['user-navigation']}>
@@ -42,21 +42,21 @@ const Users: FC<IUsersProps> = ({
       <ul className={styles['user']}>
         {users.map((user, id) => {
           const followHandler = () => {
-            setDisableButton(true);
+            toggleFollowingStatus(true, user.id);
             api.subscribeUser(user.id).then(({ data }) => {
               if (data.resultCode === 0) {
                 onFollowUser(user.id);
               }
-              setDisableButton(false);
+              toggleFollowingStatus(false, user.id);
             });
           };
           const unfollowHandler = () => {
-            setDisableButton(true);
+            toggleFollowingStatus(true, user.id);
             api.unsubscribeUser(user.id).then(({ data }) => {
               if (data.resultCode === 0) {
                 onUnfollowUser(user.id);
               }
-              setDisableButton(false);
+              toggleFollowingStatus(false, user.id);
             });
           };
           return (
@@ -72,11 +72,19 @@ const Users: FC<IUsersProps> = ({
                   />
                 </NavLink>
                 {user.followed ? (
-                  <Button onClick={unfollowHandler} size={'full'} disabled={disableButton}>
+                  <Button
+                    onClick={unfollowHandler}
+                    size={'full'}
+                    disabled={followingStatus.some((id) => id === user.id)}
+                  >
                     Unfollow
                   </Button>
                 ) : (
-                  <Button onClick={followHandler} size={'full'} disabled={disableButton}>
+                  <Button
+                    onClick={followHandler}
+                    size={'full'}
+                    disabled={followingStatus.some((id) => id === user.id)}
+                  >
                     Follow
                   </Button>
                 )}

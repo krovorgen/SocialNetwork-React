@@ -3,6 +3,7 @@ import {
   SET_CURRENT_PAGE,
   SET_TOTAL_USER_COUNT,
   SET_USERS,
+  TOGGLE_FOLLOWING_STATUS,
   TOGGLE_LOADING_STATUS,
   UNFOLLOW,
 } from '../constants';
@@ -11,6 +12,7 @@ import {
   SetCurrentPageActionType,
   SetTotalUsersCountActionType,
   SetUsersActionType,
+  ToggleFollowingStatusActionType,
   ToggleStatusLoadingActionType,
   UnfollowActionType,
 } from './types/users.type';
@@ -44,4 +46,12 @@ export const setTotalUsersCount = (value: number): SetTotalUsersCountActionType 
 export const toggleStatusLoading = (status: boolean): ToggleStatusLoadingActionType => ({
   type: TOGGLE_LOADING_STATUS,
   payload: status,
+});
+
+export const toggleFollowingStatus = (
+  status: boolean,
+  userID: string
+): ToggleFollowingStatusActionType => ({
+  type: TOGGLE_FOLLOWING_STATUS,
+  payload: { isLoading: status, userID: userID },
 });

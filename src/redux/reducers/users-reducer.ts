@@ -5,6 +5,7 @@ import {
   SET_CURRENT_PAGE,
   SET_TOTAL_USER_COUNT,
   SET_USERS,
+  TOGGLE_FOLLOWING_STATUS,
   TOGGLE_LOADING_STATUS,
   UNFOLLOW,
 } from '../constants';
@@ -15,6 +16,7 @@ const initialState: UsersStateType = {
   totalUsersCount: 0,
   currentPage: 1,
   isLoading: true,
+  followingStatus: [],
 };
 
 const usersReducer = (state = initialState, action: UsersActionType) => {
@@ -52,6 +54,13 @@ const usersReducer = (state = initialState, action: UsersActionType) => {
       return {
         ...state,
         isLoading: action.payload,
+      };
+    case TOGGLE_FOLLOWING_STATUS:
+      return {
+        ...state,
+        followingStatus: action.payload.isLoading
+          ? [...state.followingStatus, action.payload.userID]
+          : state.followingStatus.filter((id) => id !== action.payload.userID),
       };
     default:
       return state;
