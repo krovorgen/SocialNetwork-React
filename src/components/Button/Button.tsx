@@ -5,7 +5,7 @@ import { DefaultButtonPropsType, IButtonProps } from './types';
 
 import styles from './style.module.scss';
 
-const Button: FC<IButtonProps & DefaultButtonPropsType> = ({
+export const Button: FC<IButtonProps & DefaultButtonPropsType> = ({
   addClass,
   active,
   variant,
@@ -30,5 +30,3 @@ const Button: FC<IButtonProps & DefaultButtonPropsType> = ({
     </button>
   );
 };
-
-export default Button;

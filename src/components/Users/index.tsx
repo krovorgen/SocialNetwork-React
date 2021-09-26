@@ -1,10 +1,10 @@
 import React, { FC } from 'react';
 import { NavLink } from 'react-router-dom';
 
-import { Button } from '../index';
 import silhouette from '../../images/siluet.svg';
 import { IUsersProps } from './types';
 import { api } from '../../api';
+import { Button } from '../Button';
 
 import styles from './style.module.scss';
 

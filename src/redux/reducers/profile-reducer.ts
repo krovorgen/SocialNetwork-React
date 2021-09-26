@@ -9,7 +9,10 @@ const initialState: ProfileStateType = {
   profile: null,
 };
 
-const profileReducer = (state = initialState, action: ProfileActionType): ProfileStateType => {
+export const profileReducer = (
+  state = initialState,
+  action: ProfileActionType
+): ProfileStateType => {
   switch (action.type) {
     case ADD_POST:
       let newPost = {
@@ -36,5 +39,3 @@ const profileReducer = (state = initialState, action: ProfileActionType): Profil
       return state;
   }
 };
-
-export default profileReducer;

@@ -19,7 +19,7 @@ const initialState: UsersStateType = {
   followingStatus: [],
 };
 
-const usersReducer = (state = initialState, action: UsersActionType) => {
+export const usersReducer = (state = initialState, action: UsersActionType) => {
   switch (action.type) {
     case FOLLOW:
       return {
@@ -66,5 +66,3 @@ const usersReducer = (state = initialState, action: UsersActionType) => {
       return state;
   }
 };
-
-export default usersReducer;
