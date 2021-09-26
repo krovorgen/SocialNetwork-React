@@ -6,7 +6,6 @@ export { default as ProfileContainer } from './Profile';
 export { default as Music } from './Music';
 export { default as Settings } from './Settings';
 export { default as Users } from './Users';
-export { default as Button } from './Button';
 export { default as Posts } from './Posts';
 export { default as Preloader } from './Preloader';
 export { default as DialogsContainer } from './Dialogs/DialogsContainer';
