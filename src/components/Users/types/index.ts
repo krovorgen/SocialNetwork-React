@@ -5,13 +5,10 @@ export type UsersAPIPropsType = MapStatePropsType & MapDispatchPropsType;
 export type MapStatePropsType = UsersStateType;
 
 export type MapDispatchPropsType = {
-  onFollowUser: (id: string) => void;
-  onUnfollowUser: (id: string) => void;
-  setUsers: (users: UsersDataType[]) => void;
+  followProgress: (userID: string) => void;
+  unfollowProgress: (userID: string) => void;
+  getUsers: (currentPage: number, pageSize: number) => void;
   setCurrentPage: (currentPage: number) => void;
-  setTotalUsersCount: (value: number) => void;
-  toggleStatusLoading: (status: boolean) => void;
-  toggleFollowingStatus: (isLoading: boolean, userID: string) => void;
 };
 
 export interface IUsersProps {
@@ -19,9 +16,8 @@ export interface IUsersProps {
   totalUsersCount: number;
   currentPage: number;
   users: UsersDataType[];
-  onFollowUser: (id: string) => void;
-  onUnfollowUser: (id: string) => void;
   onPageChanged: (pageNumber: number) => void;
-  toggleFollowingStatus: (isLoading: boolean, userID: string) => void;
   followingStatus: string[];
+  followProgress: (userID: string) => void;
+  unfollowProgress: (userID: string) => void;
 }

@@ -2,36 +2,20 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import { RootStateType } from '../../redux/store.type';
-import {
-  onFollowUser,
-  onUnfollowUser,
-  setCurrentPage,
-  setTotalUsersCount,
-  setUsers,
-  toggleFollowingStatus,
-  toggleStatusLoading,
-} from '../../redux/actions/users-action';
+import { setCurrentPage } from '../../redux/actions/users-action';
 import { MapStatePropsType, UsersAPIPropsType } from './types';
 import Users from './index';
 import { Preloader } from '../index';
-import { api } from '../../api';
+import { followProgress, getUsers, unfollowProgress } from '../../redux/thunk/users-thunk';
 
 class UsersAPI extends React.Component<UsersAPIPropsType> {
   componentDidMount() {
-    api.getUsers(this.props.currentPage, this.props.pageSize).then(({ data }) => {
-      this.props.setUsers(data.items);
-      this.props.setTotalUsersCount(data.totalCount);
-      this.props.toggleStatusLoading(false);
-    });
+    this.props.getUsers(this.props.currentPage, this.props.pageSize);
   }
 
   onPageChanged = (pageNumber: number) => {
-    this.props.toggleStatusLoading(true);
     this.props.setCurrentPage(pageNumber);
-    api.getUsers(pageNumber, this.props.pageSize).then(({ data }) => {
-      this.props.setUsers(data.items);
-      this.props.toggleStatusLoading(false);
-    });
+    this.props.getUsers(pageNumber, this.props.pageSize);
   };
 
   render() {
@@ -57,13 +41,10 @@ const mapStateToProps = (state: RootStateType): MapStatePropsType => ({
 });
 
 const UsersContainer = connect(mapStateToProps, {
-  onFollowUser,
-  onUnfollowUser,
-  setUsers,
   setCurrentPage,
-  setTotalUsersCount,
-  toggleStatusLoading,
-  toggleFollowingStatus,
+  getUsers,
+  followProgress,
+  unfollowProgress,
 })(UsersAPI);
 
 export default UsersContainer;

@@ -43,7 +43,7 @@ export const setTotalUsersCount = (value: number): SetTotalUsersCountActionType 
   payload: value,
 });
 
-export const toggleStatusLoading = (status: boolean): ToggleStatusLoadingActionType => ({
+export const toggleLoadingStatus = (status: boolean): ToggleStatusLoadingActionType => ({
   type: TOGGLE_LOADING_STATUS,
   payload: status,
 });

@@ -3,7 +3,6 @@ import { NavLink } from 'react-router-dom';
 
 import silhouette from '../../images/siluet.svg';
 import { IUsersProps } from './types';
-import { api } from '../../api';
 import { Button } from '../Button';
 
 import styles from './style.module.scss';
@@ -13,11 +12,10 @@ const Users: FC<IUsersProps> = ({
   pageSize,
   currentPage,
   users,
-  onUnfollowUser,
-  onFollowUser,
   onPageChanged,
-  toggleFollowingStatus,
   followingStatus,
+  followProgress,
+  unfollowProgress,
 }) => {
   let pagesCount: number = Math.ceil(totalUsersCount / pageSize);
   let pages = [];
@@ -42,22 +40,10 @@ const Users: FC<IUsersProps> = ({
       <ul className={styles['user']}>
         {users.map((user, id) => {
           const followHandler = () => {
-            toggleFollowingStatus(true, user.id);
-            api.subscribeUser(user.id).then(({ data }) => {
-              if (data.resultCode === 0) {
-                onFollowUser(user.id);
-              }
-              toggleFollowingStatus(false, user.id);
-            });
+            followProgress(user.id);
           };
           const unfollowHandler = () => {
-            toggleFollowingStatus(true, user.id);
-            api.unsubscribeUser(user.id).then(({ data }) => {
-              if (data.resultCode === 0) {
-                onUnfollowUser(user.id);
-              }
-              toggleFollowingStatus(false, user.id);
-            });
+            unfollowProgress(user.id);
           };
           return (
             <li key={id} className={styles['user__item']}>
