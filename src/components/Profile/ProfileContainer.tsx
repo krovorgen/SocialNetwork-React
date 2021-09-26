@@ -3,17 +3,14 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
 import Profile from './index';
-import { setUserProfile } from '../../redux/actions/profile-action';
 import { RootStateType } from '../../redux/store.type';
 import { IProfileContainerPropsType } from './types';
-import { api } from '../../api';
+import { currentProfileWatching } from '../../redux/thunk/profile-thunk';
 
 class ProfileContainer extends React.Component<IProfileContainerPropsType> {
   componentDidMount() {
     let userID: string = this.props.match.params.userID;
-    api.currentUserProfile(userID).then(({ data }) => {
-      this.props.setUserProfile(data);
-    });
+    this.props.currentProfileWatching(userID);
   }
 
   render() {
@@ -27,4 +24,4 @@ let mapStateToProps = (state: RootStateType) => ({
 
 let WithUrlDataContainerComponent = withRouter(ProfileContainer);
 
-export default connect(mapStateToProps, { setUserProfile })(WithUrlDataContainerComponent);
+export default connect(mapStateToProps, { currentProfileWatching })(WithUrlDataContainerComponent);
