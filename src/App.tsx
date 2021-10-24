@@ -7,11 +7,11 @@ import {
   Music,
   NavBar,
   News,
-  Settings,
   UsersContainer,
 } from './components';
 import { IAppProps } from './types';
 import ProfileContainer from './components/Profile/ProfileContainer';
+import { Settings } from './components/Settings';
 
 const App: FC<IAppProps> = () => {
   return (

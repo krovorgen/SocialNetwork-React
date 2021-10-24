@@ -5,7 +5,7 @@ import { DialogsDataType } from '../../../redux/reducers/types';
 
 import styles from '../style.module.scss';
 
-const DialogItem: FC<DialogsDataType> = ({ id, name }) => (
+export const DialogItem: FC<DialogsDataType> = ({ id, name }) => (
   <li className={styles['dialogs__item']}>
     <NavLink
       className={styles['dialogs__link']}
@@ -16,5 +16,3 @@ const DialogItem: FC<DialogsDataType> = ({ id, name }) => (
     </NavLink>
   </li>
 );
-
-export default DialogItem;

@@ -1,8 +1,9 @@
 import React, { FC } from 'react';
 
-import { DialogItem, MessageItem } from '../index';
+import { MessageItem } from '../index';
 import { DialogsPropsType } from './types';
 import { Button } from '../Button';
+import { DialogItem } from './DialogItem';
 
 import styles from './style.module.scss';
 
