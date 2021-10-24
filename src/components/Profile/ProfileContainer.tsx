@@ -2,10 +2,10 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
-import Profile from './index';
 import { RootStateType } from '../../redux/store.type';
 import { IProfileContainerPropsType } from './types';
 import { currentProfileWatching } from '../../redux/thunk/profile-thunk';
+import { Profile } from './Profile';
 
 class ProfileContainer extends React.Component<IProfileContainerPropsType> {
   componentDidMount() {

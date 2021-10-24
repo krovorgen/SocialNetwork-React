@@ -1,6 +1,3 @@
-export { default as News } from './News';
-export { default as Profile } from './Profile';
-export { default as ProfileContainer } from './Profile';
 export { default as Music } from './Music';
 export { default as Users } from './Users';
 export { default as Posts } from './Posts';
