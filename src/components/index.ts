@@ -1,10 +1,6 @@
-export { default as Music } from './Music';
-export { default as Users } from './Users';
-export { default as Posts } from './Posts';
 export { default as DialogsContainer } from './Dialogs/DialogsContainer';
 export { default as MessageItem } from './Dialogs/MessageItem';
 export { default as ProfileInfo } from './Profile/ProfileInfo';
 export { default as PostItem } from './Posts/PostItem';
-export { default as PostsContainer } from './Posts/PostsContainer';
 export { default as UsersContainer } from './Users/UsersContainer';
 export { default as HeaderContainer } from './Header/HeaderContainer';

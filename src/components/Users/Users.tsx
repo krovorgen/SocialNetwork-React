@@ -7,7 +7,7 @@ import { Button } from '../Button';
 
 import styles from './style.module.scss';
 
-const Users: FC<IUsersProps> = ({
+export const Users: FC<IUsersProps> = ({
   totalUsersCount,
   pageSize,
   currentPage,
@@ -86,5 +86,3 @@ const Users: FC<IUsersProps> = ({
     </>
   );
 };
-
-export default Users;

@@ -1,12 +1,13 @@
 import React, { FC } from 'react';
 import { Route } from 'react-router-dom';
 
-import { DialogsContainer, HeaderContainer, Music, UsersContainer } from './components';
+import { DialogsContainer, HeaderContainer, UsersContainer } from './components';
 import { IAppProps } from './types';
 import { Settings } from './components/Settings';
 import { NavBar } from './components/NavBar';
 import { News } from './components/News';
 import ProfileContainer from './components/Profile/ProfileContainer';
+import { Music } from './components/Music';
 
 const App: FC<IAppProps> = () => {
   return (

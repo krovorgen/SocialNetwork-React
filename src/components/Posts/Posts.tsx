@@ -6,7 +6,12 @@ import { Button } from '../Button';
 
 import styles from './style.module.scss';
 
-const Posts: FC<PostsPropsType> = ({ postItemData, newPostText, onChangeTextarea, addPost }) => (
+export const Posts: FC<PostsPropsType> = ({
+  postItemData,
+  newPostText,
+  onChangeTextarea,
+  addPost,
+}) => (
   <div className={styles['posts']}>
     <div className={styles['posts__form']}>
       <textarea
@@ -32,5 +37,3 @@ const Posts: FC<PostsPropsType> = ({ postItemData, newPostText, onChangeTextarea
     </ul>
   </div>
 );
-
-export default Posts;

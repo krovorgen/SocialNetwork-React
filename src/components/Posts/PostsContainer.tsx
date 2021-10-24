@@ -4,8 +4,8 @@ import { addPostAC, updateNewPostTextAC } from '../../redux/actions/profile-acti
 import { connect } from 'react-redux';
 import { RootStateType } from '../../redux/store.type';
 import { ProfileActionType } from '../../redux/actions/types/profile.type';
-import { Posts } from '../index';
 import { MapDispatchPropsType, MapStatePropsType } from './types';
+import { Posts } from './Posts';
 
 const mapStateToProps = (state: RootStateType): MapStatePropsType => ({
   postItemData: state.profilePage.postItemData,
@@ -21,6 +21,4 @@ const mapDispatchToProps = (dispatch: (arg0: ProfileActionType) => void): MapDis
   };
 };
 
-const SuperPostsContainer = connect(mapStateToProps, mapDispatchToProps)(Posts);
-
-export default SuperPostsContainer;
+export const PostsContainer = connect(mapStateToProps, mapDispatchToProps)(Posts);
