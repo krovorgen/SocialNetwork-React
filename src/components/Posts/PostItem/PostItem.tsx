@@ -4,7 +4,7 @@ import { PostItemType } from '../../../redux/reducers/types';
 
 import styles from '../style.module.scss';
 
-const PostItem: FC<PostItemType> = ({ message, likesCount, id }) => (
+export const PostItem: FC<PostItemType> = ({ message, likesCount, id }) => (
   <li className={styles['posts__item']}>
     <img
       className={styles['posts__avatar']}
@@ -17,5 +17,3 @@ const PostItem: FC<PostItemType> = ({ message, likesCount, id }) => (
     <span className={styles['posts__likes']}>Likes: {likesCount}</span>
   </li>
 );
-
-export default PostItem;

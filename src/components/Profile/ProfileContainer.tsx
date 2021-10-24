@@ -7,7 +7,7 @@ import { IProfileContainerPropsType } from './types';
 import { currentProfileWatching } from '../../redux/thunk/profile-thunk';
 import { Profile } from './Profile';
 
-class ProfileContainer extends React.Component<IProfileContainerPropsType> {
+class ProfileAPI extends React.Component<IProfileContainerPropsType> {
   componentDidMount() {
     let userID: string = this.props.match.params.userID;
     this.props.currentProfileWatching(userID);
@@ -22,6 +22,8 @@ let mapStateToProps = (state: RootStateType) => ({
   profile: state.profilePage.profile,
 });
 
-let WithUrlDataContainerComponent = withRouter(ProfileContainer);
+let WithUrlDataContainerComponent = withRouter(ProfileAPI);
 
-export default connect(mapStateToProps, { currentProfileWatching })(WithUrlDataContainerComponent);
+export const ProfileContainer = connect(mapStateToProps, { currentProfileWatching })(
+  WithUrlDataContainerComponent
+);

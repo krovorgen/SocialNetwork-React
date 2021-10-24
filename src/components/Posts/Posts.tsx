@@ -1,8 +1,8 @@
 import React, { FC } from 'react';
 
 import { PostsPropsType } from './types';
-import { PostItem } from '../index';
 import { Button } from '../Button';
+import { PostItem } from './PostItem';
 
 import styles from './style.module.scss';
 

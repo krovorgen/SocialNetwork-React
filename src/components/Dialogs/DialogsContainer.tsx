@@ -1,11 +1,11 @@
 import { ChangeEvent } from 'react';
 
 import { addMessageAC, updateNewMessageTextAC } from '../../redux/actions/dialogs-action';
-import Dialogs from './index';
 import { connect } from 'react-redux';
 import { RootStateType } from '../../redux/store.type';
 import { DialogsActionType } from '../../redux/actions/types/dialogs.type';
 import { MapDispatchPropsType, MapStatePropsType } from './types';
+import { Dialogs } from './Dialogs';
 
 let mapStateToProps = (state: RootStateType): MapStatePropsType => ({
   dialogsPage: state.dialogsPage,
@@ -20,6 +20,4 @@ let mapDispatchToProps = (dispatch: (arg0: DialogsActionType) => void): MapDispa
   },
 });
 
-const DialogsContainer = connect(mapStateToProps, mapDispatchToProps)(Dialogs);
-
-export default DialogsContainer;
+export const DialogsContainer = connect(mapStateToProps, mapDispatchToProps)(Dialogs);

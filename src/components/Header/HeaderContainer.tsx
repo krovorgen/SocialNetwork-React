@@ -16,7 +16,7 @@ export type MapDispatchPropsType = {
   userAuthorization: () => void;
 };
 
-class HeaderContainer extends React.Component<HeaderContainerType> {
+class HeaderAPI extends React.Component<HeaderContainerType> {
   componentDidMount() {
     this.props.userAuthorization();
   }
@@ -31,4 +31,4 @@ const mapStateToProps = (state: RootStateType): MapStatePropsType => ({
   login: state.auth.login,
 });
 
-export default connect(mapStateToProps, { userAuthorization })(HeaderContainer);
+export const HeaderContainer = connect(mapStateToProps, { userAuthorization })(HeaderAPI);

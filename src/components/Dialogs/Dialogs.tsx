@@ -1,13 +1,13 @@
 import React, { FC } from 'react';
 
-import { MessageItem } from '../index';
 import { DialogsPropsType } from './types';
 import { Button } from '../Button';
 import { DialogItem } from './DialogItem';
+import { MessageItem } from './MessageItem';
 
 import styles from './style.module.scss';
 
-const Dialogs: FC<DialogsPropsType> = ({ dialogsPage, addMessage, onChangeTextarea }) => (
+export const Dialogs: FC<DialogsPropsType> = ({ dialogsPage, addMessage, onChangeTextarea }) => (
   <div className={styles['dialogs']}>
     <ul className={styles['dialogs__items']}>
       {dialogsPage.dialogsData &&
@@ -30,5 +30,3 @@ const Dialogs: FC<DialogsPropsType> = ({ dialogsPage, addMessage, onChangeTextar
     </ul>
   </div>
 );
-
-export default Dialogs;

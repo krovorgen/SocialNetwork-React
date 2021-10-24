@@ -40,11 +40,9 @@ const mapStateToProps = (state: RootStateType): MapStatePropsType => ({
   followingStatus: state.usersPage.followingStatus,
 });
 
-const UsersContainer = connect(mapStateToProps, {
+export const UsersContainer = connect(mapStateToProps, {
   setCurrentPage,
   getUsers,
   followProgress,
   unfollowProgress,
 })(UsersAPI);
-
-export default UsersContainer;

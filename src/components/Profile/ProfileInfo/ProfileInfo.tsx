@@ -5,7 +5,7 @@ import { Preloader } from '../../Preloader';
 
 import styles from '../style.module.scss';
 
-const ProfileInfo: FC<IProfileInfoProps> = ({ profile }) => {
+export const ProfileInfo: FC<IProfileInfoProps> = ({ profile }) => {
   return (
     <>
       {!profile ? (
@@ -77,5 +77,3 @@ const ProfileInfo: FC<IProfileInfoProps> = ({ profile }) => {
     </>
   );
 };
-
-export default ProfileInfo;
