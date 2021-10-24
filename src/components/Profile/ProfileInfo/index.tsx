@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 
 import { IProfileInfoProps } from '../types';
-import { Preloader } from '../../index';
+import { Preloader } from '../../Preloader';
 
 import styles from '../style.module.scss';
 

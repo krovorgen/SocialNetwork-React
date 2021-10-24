@@ -5,8 +5,8 @@ import { RootStateType } from '../../redux/store.type';
 import { setCurrentPage } from '../../redux/actions/users-action';
 import { MapStatePropsType, UsersAPIPropsType } from './types';
 import Users from './index';
-import { Preloader } from '../index';
 import { followProgress, getUsers, unfollowProgress } from '../../redux/thunk/users-thunk';
+import { Preloader } from '../Preloader';
 
 class UsersAPI extends React.Component<UsersAPIPropsType> {
   componentDidMount() {
