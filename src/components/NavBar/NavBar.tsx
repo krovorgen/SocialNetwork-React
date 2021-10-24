@@ -15,7 +15,7 @@ const menuNavigationMockData: MenuNavigationMockDataType[] = [
   { id: v1(), iconClass: 'settings', url: '/users', textLink: 'Users' },
 ];
 
-const NavBar: FC = () => (
+export const NavBar: FC = () => (
   <nav className={`${styles['menu']}`}>
     <ul className="menu__list">
       {menuNavigationMockData.map((item) => {
@@ -35,5 +35,3 @@ const NavBar: FC = () => (
     </ul>
   </nav>
 );
-
-export default NavBar;
