@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ComponentType } from 'react';
 import { connect } from 'react-redux';
 
 import { RootStateType } from '../../redux/store.type';
@@ -7,6 +7,8 @@ import { MapStatePropsType, UsersAPIPropsType } from './types';
 import { followProgress, getUsers, unfollowProgress } from '../../redux/thunk/users-thunk';
 import { Preloader } from '../Preloader';
 import { Users } from './Users';
+import { compose } from 'redux';
+import { WithAuthRedirect } from '../WithAuthRedirect';
 
 class UsersAPI extends React.Component<UsersAPIPropsType> {
   componentDidMount() {
@@ -40,9 +42,12 @@ const mapStateToProps = (state: RootStateType): MapStatePropsType => ({
   followingStatus: state.usersPage.followingStatus,
 });
 
-export const UsersContainer = connect(mapStateToProps, {
-  setCurrentPage,
-  getUsers,
-  followProgress,
-  unfollowProgress,
-})(UsersAPI);
+export const UsersContainer = compose<ComponentType>(
+  WithAuthRedirect,
+  connect(mapStateToProps, {
+    setCurrentPage,
+    getUsers,
+    followProgress,
+    unfollowProgress,
+  })
+)(UsersAPI);

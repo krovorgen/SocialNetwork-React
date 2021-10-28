@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ComponentType } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
@@ -7,6 +7,7 @@ import { IProfileContainerPropsType } from './types';
 import { currentProfileWatching } from '../../redux/thunk/profile-thunk';
 import { Profile } from './Profile';
 import { WithAuthRedirect } from '../WithAuthRedirect';
+import { compose } from 'redux';
 
 class ProfileAPI extends React.Component<IProfileContainerPropsType> {
   componentDidMount() {
@@ -23,6 +24,8 @@ let mapStateToProps = (state: RootStateType) => ({
   profile: state.profilePage.profile,
 });
 
-export const ProfileContainer = WithAuthRedirect(
-  connect(mapStateToProps, { currentProfileWatching })(withRouter(ProfileAPI))
-);
+export const ProfileContainer = compose<ComponentType>(
+  WithAuthRedirect,
+  connect(mapStateToProps, { currentProfileWatching }),
+  withRouter
+)(ProfileAPI);
