@@ -2,6 +2,7 @@ import React, { FC } from 'react';
 
 import { IProfileInfoProps } from '../types';
 import { Preloader } from '../../Preloader';
+import silhouette from '../../../images/siluet.svg';
 
 import styles from '../style.module.scss';
 
@@ -12,12 +13,12 @@ export const ProfileInfo: FC<IProfileInfoProps> = ({ profile }) => {
         <Preloader />
       ) : (
         <div className={styles['profile__inner']}>
-          <div className={styles['profile__background']}>
-            <img src="./images/user-bg.jpg" alt="background" />
-          </div>
           <div className={styles['profile__wrap']}>
             <div className={styles['profile__avatar']}>
-              <img src={profile?.photos.small} alt={profile?.fullName} />
+              <img
+                src={profile?.photos.small ? profile?.photos.small : silhouette}
+                alt={profile?.fullName}
+              />
             </div>
             <div className={styles['profile__info']}>
               <p className={styles['profile__name']}>{profile.fullName}</p>
