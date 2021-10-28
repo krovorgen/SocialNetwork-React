@@ -6,16 +6,8 @@ import { DialogItem } from './DialogItem';
 import { MessageItem } from './MessageItem';
 
 import styles from './style.module.scss';
-import { Redirect } from 'react-router-dom';
 
-export const Dialogs: FC<DialogsPropsType> = ({
-  dialogsPage,
-  addMessage,
-  onChangeTextarea,
-  isAuth,
-}) => {
-  if (!isAuth) return <Redirect to={'/login'} />;
-
+export const Dialogs: FC<DialogsPropsType> = ({ dialogsPage, addMessage, onChangeTextarea }) => {
   return (
     <div className={styles['dialogs']}>
       <ul className={styles['dialogs__items']}>
