@@ -3,6 +3,7 @@ import { ChangeEvent } from 'react';
 
 export type MapStatePropsType = {
   dialogsPage: DialogsStateType;
+  isAuth: boolean;
 };
 
 export type MapDispatchPropsType = {

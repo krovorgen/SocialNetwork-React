@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
+import { Redirect, withRouter } from 'react-router-dom';
 
 import { RootStateType } from '../../redux/store.type';
 import { IProfileContainerPropsType } from './types';
@@ -14,12 +14,14 @@ class ProfileAPI extends React.Component<IProfileContainerPropsType> {
   }
 
   render() {
+    if (!this.props.isAuth) return <Redirect to={'/login'} />;
     return <Profile profile={this.props.profile} />;
   }
 }
 
 let mapStateToProps = (state: RootStateType) => ({
   profile: state.profilePage.profile,
+  isAuth: state.auth.isAuth,
 });
 
 let WithUrlDataContainerComponent = withRouter(ProfileAPI);

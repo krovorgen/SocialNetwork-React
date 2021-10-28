@@ -4,6 +4,7 @@ import { RouteComponentProps } from 'react-router-dom';
 export interface IProfileContainerConnectType {
   currentProfileWatching: (userID: string) => void;
   profile: UserProfileType | null;
+  isAuth: boolean;
 }
 
 export interface IWithRouterProfileContainerProps {
