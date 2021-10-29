@@ -1,3 +1,5 @@
+import { AuthDataType } from '../../../api/types';
+
 export type PostItemType = {
   id: string;
   message: string;
@@ -67,12 +69,6 @@ export type UsersStateType = {
   currentPage: number;
   isLoading: boolean;
   followingStatus: string[];
-};
-
-export type AuthDataType = {
-  id: number | null;
-  email: string | null;
-  login: string | null;
 };
 
 export interface AuthStateType extends AuthDataType {
