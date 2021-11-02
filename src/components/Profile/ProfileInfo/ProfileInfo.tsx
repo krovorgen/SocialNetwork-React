@@ -7,7 +7,7 @@ import silhouette from '../../../images/siluet.svg';
 import styles from '../style.module.scss';
 import { ProfileStatus } from '../ProfileStatus';
 
-export const ProfileInfo: FC<IProfileInfoProps> = ({ profile }) => {
+export const ProfileInfo: FC<IProfileInfoProps> = ({ profile, updateUserStatus }) => {
   return (
     <>
       {!profile ? (
@@ -23,7 +23,7 @@ export const ProfileInfo: FC<IProfileInfoProps> = ({ profile }) => {
             </div>
             <div className={styles['profile__info']}>
               <p className={styles['profile__name']}>{profile.fullName}</p>
-              <ProfileStatus status={profile.aboutMe} />
+              <ProfileStatus updateUserStatus={updateUserStatus} />
               <div className={styles['profile__job']}>
                 Job:
                 <p>{profile.lookingForAJob ? 'В поисках работы' : 'Не ищу работу'}</p>

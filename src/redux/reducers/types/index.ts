@@ -54,6 +54,7 @@ export type ProfileStateType = {
   postItemData: PostItemType[];
   newPostText: string;
   profile: UserProfileType | null;
+  status: string;
 };
 
 export type DialogsStateType = {

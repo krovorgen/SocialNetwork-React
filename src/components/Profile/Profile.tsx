@@ -6,9 +6,9 @@ import { ProfileInfo } from './ProfileInfo';
 
 import styles from './style.module.scss';
 
-export const Profile: FC<IProfileProps> = ({ profile }) => (
+export const Profile: FC<IProfileProps> = ({ profile, updateUserStatus }) => (
   <div className={styles['profile']}>
-    <ProfileInfo profile={profile} />
+    <ProfileInfo profile={profile} updateUserStatus={updateUserStatus} />
     <PostsContainer />
   </div>
 );

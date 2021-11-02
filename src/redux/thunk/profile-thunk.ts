@@ -1,6 +1,6 @@
 import { Dispatch } from 'redux';
 import { api } from '../../api';
-import { setUserProfile } from '../actions/profile-action';
+import { setUserProfile, setUserStatus } from '../actions/profile-action';
 import { ProfileActionType } from '../actions/types/profile.type';
 
 export const currentProfileWatching =
@@ -9,3 +9,17 @@ export const currentProfileWatching =
       dispatch(setUserProfile(data));
     });
   };
+
+export const getUserStatus = (userID: string) => (dispatch: Dispatch<ProfileActionType>) => {
+  api.getStatus(userID).then(({ data }) => {
+    dispatch(setUserStatus(data));
+  });
+};
+
+export const updateUserStatus = (status: string) => (dispatch: Dispatch<ProfileActionType>) => {
+  api.updateStatus(status).then(({ data }) => {
+    if (data.resultCode === 0) {
+      dispatch(setUserStatus(status));
+    }
+  });
+};

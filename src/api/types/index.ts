@@ -1,4 +1,4 @@
-export type AuthUserAPIType = {
+export type ResponseType = {
   data: AuthDataType;
   messages: string[];
   fieldsErrors: string[];
