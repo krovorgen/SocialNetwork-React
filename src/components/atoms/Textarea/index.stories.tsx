@@ -10,6 +10,4 @@ export default {
 const Template: ComponentStory<typeof Textarea> = (args) => <Textarea {...args} />;
 
 export const Default = Template.bind({});
-Default.args = {
-  children: 'Click me!',
-};
+Default.args = {};

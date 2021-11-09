@@ -14,6 +14,11 @@
     width: 100%;
   }
 
+  &:active,
+  &:focus {
+    border-color: #c04009;
+  }
+
   &:hover {
     color: $white;
     background-color: $accent;
