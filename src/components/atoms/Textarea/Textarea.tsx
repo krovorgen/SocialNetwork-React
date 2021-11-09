@@ -9,6 +9,6 @@ interface ITextAreaProps {
   addClass?: string;
 }
 
-export const Textarea: FC<ITextAreaProps & DefaultTextAreaProps> = ({ addClass }) => {
-  return <textarea className={cn(styles['textarea'], addClass)} />;
+export const Textarea: FC<ITextAreaProps & DefaultTextAreaProps> = ({ addClass, ...props }) => {
+  return <textarea className={cn(styles['textarea'], addClass)} {...props} />;
 };

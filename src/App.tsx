@@ -2,15 +2,15 @@ import React, { FC } from 'react';
 import { Route } from 'react-router-dom';
 
 import { IAppProps } from './types';
-import { Settings } from './components/Settings';
-import { NavBar } from './components/NavBar';
-import { News } from './components/News';
-import { Music } from './components/Music';
-import { DialogsContainer } from './components/Dialogs/DialogsContainer';
-import { UsersContainer } from './components/Users/UsersContainer';
-import { ProfileContainer } from './components/Profile/ProfileContainer';
-import { HeaderContainer } from './components/Header/HeaderContainer';
-import { Login } from './components/Login';
+import { Settings } from './components/organisms/Settings';
+import { NavBar } from './components/organisms/NavBar';
+import { News } from './components/organisms/News';
+import { Music } from './components/organisms/Music';
+import { DialogsContainer } from './components/organisms/Dialogs/DialogsContainer';
+import { UsersContainer } from './components/organisms/Users/UsersContainer';
+import { ProfileContainer } from './components/organisms/Profile/ProfileContainer';
+import { HeaderContainer } from './components/organisms/Header/HeaderContainer';
+import { Login } from './components/organisms/Login';
 
 const App: FC<IAppProps> = () => {
   return (
