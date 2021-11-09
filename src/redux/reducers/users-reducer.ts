@@ -24,16 +24,12 @@ export const usersReducer = (state = initialState, action: UsersActionType) => {
     case FOLLOW:
       return {
         ...state,
-        users: state.users.map((item) =>
-          item.id === action.payload ? { ...item, followed: true } : item
-        ),
+        users: state.users.map((item) => (item.id === action.payload ? { ...item, followed: true } : item)),
       };
     case UNFOLLOW:
       return {
         ...state,
-        users: state.users.map((item) =>
-          item.id === action.payload ? { ...item, followed: false } : item
-        ),
+        users: state.users.map((item) => (item.id === action.payload ? { ...item, followed: false } : item)),
       };
     case SET_USERS:
       return {

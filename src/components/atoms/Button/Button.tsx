@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import classNames from 'classnames';
+import cn from 'classnames';
 
 import { DefaultButtonPropsType, IButtonProps } from './types';
 
@@ -11,7 +11,6 @@ export const Button: FC<IButtonProps & DefaultButtonPropsType> = ({
   variant,
   children,
   size,
-  onClick,
   ...props
 }) => {
   const appearancesList = {
@@ -20,12 +19,7 @@ export const Button: FC<IButtonProps & DefaultButtonPropsType> = ({
     [styles['button--navigation']]: variant === 'navigation',
   };
   return (
-    <button
-      className={classNames(styles['button'], addClass, appearancesList)}
-      onClick={onClick}
-      type={'button'}
-      {...props}
-    >
+    <button className={cn(styles['button'], addClass, appearancesList)} type={'button'} {...props}>
       {children}
     </button>
   );

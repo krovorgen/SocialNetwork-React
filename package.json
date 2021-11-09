@@ -75,7 +75,7 @@
     "gh-pages": "^3.2.3",
     "node-sass": "^6.0.1",
     "prettier": "2.4.1",
-    "stylelint": "^14.0.1",
+    "stylelint": "^13.13.1",
     "stylelint-declaration-block-no-ignored-properties": "^2.4.0",
     "stylelint-order": "^5.0.0",
     "stylelint-scss": "^4.0.0"

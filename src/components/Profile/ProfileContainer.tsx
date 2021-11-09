@@ -4,11 +4,7 @@ import { withRouter } from 'react-router-dom';
 
 import { RootStateType } from '../../redux/store.type';
 import { IProfileContainerPropsType } from './types';
-import {
-  currentProfileWatching,
-  getUserStatus,
-  updateUserStatus,
-} from '../../redux/thunk/profile-thunk';
+import { currentProfileWatching, getUserStatus, updateUserStatus } from '../../redux/thunk/profile-thunk';
 import { Profile } from './Profile';
 import { WithAuthRedirect } from '../WithAuthRedirect';
 import { compose } from 'redux';

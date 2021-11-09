@@ -16,10 +16,7 @@ export const ProfileInfo: FC<IProfileInfoProps> = ({ profile, updateUserStatus }
         <div className={styles['profile__inner']}>
           <div className={styles['profile__wrap']}>
             <div className={styles['profile__avatar']}>
-              <img
-                src={profile?.photos.small ? profile?.photos.small : silhouette}
-                alt={profile?.fullName}
-              />
+              <img src={profile?.photos.small ? profile?.photos.small : silhouette} alt={profile?.fullName} />
             </div>
             <div className={styles['profile__info']}>
               <p className={styles['profile__name']}>{profile.fullName}</p>

@@ -10,10 +10,7 @@ const initialState: ProfileStateType = {
   status: '',
 };
 
-export const profileReducer = (
-  state = initialState,
-  action: ProfileActionType
-): ProfileStateType => {
+export const profileReducer = (state = initialState, action: ProfileActionType): ProfileStateType => {
   switch (action.type) {
     case ADD_POST:
       let newPost = {

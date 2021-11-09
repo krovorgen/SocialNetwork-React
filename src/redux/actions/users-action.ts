@@ -48,10 +48,7 @@ export const toggleLoadingStatus = (status: boolean): ToggleStatusLoadingActionT
   payload: status,
 });
 
-export const toggleFollowingStatus = (
-  status: boolean,
-  userID: string
-): ToggleFollowingStatusActionType => ({
+export const toggleFollowingStatus = (status: boolean, userID: string): ToggleFollowingStatusActionType => ({
   type: TOGGLE_FOLLOWING_STATUS,
   payload: { isLoading: status, userID: userID },
 });

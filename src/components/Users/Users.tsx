@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 
 import silhouette from '../../images/siluet.svg';
 import { IUsersProps } from './types';
-import { Button } from '../Button';
+import { Button } from '../atoms/Button';
 
 import styles from './style.module.scss';
 
@@ -27,11 +27,7 @@ export const Users: FC<IUsersProps> = ({
       <ul className={styles['user-navigation']}>
         {pages.map((item, index) => (
           <li key={index} className={styles['user-navigation__item']}>
-            <Button
-              variant={'navigation'}
-              onClick={() => onPageChanged(item)}
-              active={currentPage === item}
-            >
+            <Button variant={'navigation'} onClick={() => onPageChanged(item)} active={currentPage === item}>
               {item}
             </Button>
           </li>
@@ -66,11 +62,7 @@ export const Users: FC<IUsersProps> = ({
                     Unfollow
                   </Button>
                 ) : (
-                  <Button
-                    onClick={followHandler}
-                    size={'full'}
-                    disabled={followingStatus.some((id) => id === user.id)}
-                  >
+                  <Button onClick={followHandler} size={'full'} disabled={followingStatus.some((id) => id === user.id)}>
                     Follow
                   </Button>
                 )}

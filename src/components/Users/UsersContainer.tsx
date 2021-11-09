@@ -21,15 +21,7 @@ class UsersAPI extends React.Component<UsersAPIPropsType> {
   };
 
   render() {
-    return (
-      <>
-        {this.props.isLoading ? (
-          <Preloader />
-        ) : (
-          <Users {...this.props} onPageChanged={this.onPageChanged} />
-        )}
-      </>
-    );
+    return <>{this.props.isLoading ? <Preloader /> : <Users {...this.props} onPageChanged={this.onPageChanged} />}</>;
   }
 }
 

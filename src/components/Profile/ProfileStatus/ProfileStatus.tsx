@@ -31,13 +31,7 @@ export const ProfileStatus = ({ updateUserStatus }: Props) => {
   return (
     <div className={styles['status']}>
       {editedStatus ? (
-        <input
-          autoFocus
-          type="text"
-          value={value || ''}
-          onChange={changeValueHandler}
-          onBlur={toggleEditedStatus}
-        />
+        <input autoFocus type="text" value={value || ''} onChange={changeValueHandler} onBlur={toggleEditedStatus} />
       ) : (
         <span onDoubleClick={toggleEditedStatus} className={styles['text']}>
           {value ? value : 'Статус не задан'}

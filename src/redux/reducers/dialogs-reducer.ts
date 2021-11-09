@@ -13,10 +13,7 @@ const initialState: DialogsStateType = {
   newMessageText: '',
 };
 
-export const dialogsReducer = (
-  state = initialState,
-  action: DialogsActionType
-): DialogsStateType => {
+export const dialogsReducer = (state = initialState, action: DialogsActionType): DialogsStateType => {
   switch (action.type) {
     case ADD_MESSAGE:
       let newMessage = {
