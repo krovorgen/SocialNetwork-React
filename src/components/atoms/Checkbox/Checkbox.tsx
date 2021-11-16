@@ -1,12 +1,13 @@
 import React, { ChangeEvent, DetailedHTMLProps, InputHTMLAttributes } from 'react';
 
 import styles from './style.module.scss';
+import cn from 'classnames';
 
 type DefaultInputPropsType = DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>;
 
 type SuperCheckboxPropsType = DefaultInputPropsType & {
   onChangeChecked?: (checked: boolean) => void;
-  spanClassName?: string;
+  addClass?: string;
 };
 
 export const Checkbox: React.FC<SuperCheckboxPropsType> = ({
@@ -14,7 +15,7 @@ export const Checkbox: React.FC<SuperCheckboxPropsType> = ({
   onChange,
   onChangeChecked,
   className,
-  spanClassName,
+  addClass,
   children,
   ...restProps
 }) => {
@@ -24,7 +25,7 @@ export const Checkbox: React.FC<SuperCheckboxPropsType> = ({
   };
 
   return (
-    <label className={styles['checkbox']}>
+    <label className={cn(styles['checkbox'], addClass)}>
       <input
         className={`${styles['checkbox__input']} visually-hidden`}
         type={'checkbox'}

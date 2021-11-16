@@ -4,6 +4,10 @@
 .checkbox {
   cursor: pointer;
 
+  > * {
+    box-sizing: border-box;
+  }
+
   &__input {
     @include visually-hidden;
 
@@ -30,7 +34,7 @@
 
     &::before {
       z-index: 1;
-      background-color: #fff;
+      border: 1px solid #d86;
     }
 
     &::after {
@@ -40,7 +44,6 @@
       background-position: center;
       background-size: 12px 9px;
       background-repeat: no-repeat;
-      background-color: #57a216;
     }
   }
 }
