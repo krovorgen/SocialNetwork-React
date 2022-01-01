@@ -30,6 +30,12 @@ export const api = {
   authUser() {
     return instance.get<ResponseType>(`auth/me/`);
   },
+  loginUser(email: string, password: string, rememberMe: boolean) {
+    return instance.post(`auth/login/`, { email, password, rememberMe });
+  },
+  logoutUser() {
+    return instance.delete(`/auth/login`);
+  },
   currentUserProfile(userID: string) {
     return instance.get<UserProfileType>(`profile/${userID ? userID : '16271'}`);
   },

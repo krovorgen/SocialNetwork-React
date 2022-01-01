@@ -1,31 +1,48 @@
 import React, { FC } from 'react';
 import styles from './styles.module.scss';
 import { Button } from '../../atoms/Button';
-import { Field, InjectedFormProps, reduxForm } from 'redux-form';
+import { Field, Form } from 'react-final-form';
+import { api } from '../../../api';
+import { Input } from '../../atoms/Input';
+import { Checkbox } from '../../atoms/Checkbox';
 
 export type SubmitType = {
-  login: string;
+  email: string;
   password: string;
-  rememberStatus: boolean;
+  rememberMe: boolean;
 };
 
-const LoginForm: FC<InjectedFormProps<SubmitType>> = ({ handleSubmit }) => {
+export const LoginForm: FC = () => {
+  const onSubmit = (formData: SubmitType) => {
+    let { email, password, rememberMe } = formData;
+    api.loginUser(email, password, rememberMe).then(({ data }) => data.data.userId && window.location.reload());
+  };
   return (
-    <form className={styles['form']} onSubmit={handleSubmit}>
-      <label className={styles['form__element']}>
-        <Field placeholder="login" component="input" name="login" />
-      </label>
-      <label className={styles['form__element']}>
-        <Field placeholder="password" component="input" name="password" />
-      </label>
-      <label className={styles['form__element']}>
-        <Field placeholder="password" component="input" type="checkbox" name="rememberStatus" /> remember me
-      </label>
-      <Button size="full" type="submit" addClass={styles['form__element']}>
-        LOGIN
-      </Button>
-    </form>
+    <Form onSubmit={onSubmit}>
+      {({ handleSubmit }) => (
+        <form className={styles.form} onSubmit={handleSubmit}>
+          <label className={styles.element}>
+            <Field name="email" render={(props) => <Input placeholder="email" {...props.input} />} />
+          </label>
+          <label className={styles.element}>
+            <Field
+              type="password"
+              name="password"
+              render={(props) => <Input placeholder="password" {...props.input} />}
+            />
+          </label>
+          <label className={styles.element}>
+            <Field
+              type="checkbox"
+              name="rememberMe"
+              render={(props) => <Checkbox {...props.input}>remember me</Checkbox>}
+            />
+          </label>
+          <Button size="full" type="submit" addClass={styles.element}>
+            LOGIN
+          </Button>
+        </form>
+      )}
+    </Form>
   );
 };
-
-export const LoginReduxForm = reduxForm<SubmitType>({ form: 'loginForm' })(LoginForm);
