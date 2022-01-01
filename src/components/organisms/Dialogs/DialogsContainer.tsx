@@ -1,6 +1,6 @@
-import { ChangeEvent, ComponentType } from 'react';
+import { ComponentType } from 'react';
 
-import { addMessageAC, updateNewMessageTextAC } from '../../../redux/actions/dialogs-action';
+import { addMessageAC } from '../../../redux/actions/dialogs-action';
 import { connect } from 'react-redux';
 import { RootStateType } from '../../../redux/store.type';
 import { DialogsActionType } from '../../../redux/actions/types/dialogs.type';
@@ -14,11 +14,8 @@ let mapStateToProps = (state: RootStateType): MapStatePropsType => ({
 });
 
 let mapDispatchToProps = (dispatch: (arg0: DialogsActionType) => void): MapDispatchPropsType => ({
-  addMessage: () => {
-    dispatch(addMessageAC());
-  },
-  onChangeTextarea: (e: ChangeEvent<HTMLTextAreaElement>) => {
-    dispatch(updateNewMessageTextAC(e.currentTarget.value));
+  addMessage: (messageValue: string) => {
+    dispatch(addMessageAC(messageValue));
   },
 });
 

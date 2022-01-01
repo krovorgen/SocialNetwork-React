@@ -6,8 +6,7 @@ export type MapStatePropsType = {
 };
 
 export type MapDispatchPropsType = {
-  addMessage: () => void;
-  onChangeTextarea: (e: ChangeEvent<HTMLTextAreaElement>) => void;
+  addMessage: (messageValue: string) => void;
 };
 
 export type DialogsPropsType = MapStatePropsType & MapDispatchPropsType;

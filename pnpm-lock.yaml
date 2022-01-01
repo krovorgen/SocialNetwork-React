@@ -16,7 +16,6 @@ specifiers:
   '@types/react': ^17.0.33
   '@types/react-dom': ^17.0.10
   '@types/react-router-dom': ^5.3.2
-  '@types/redux-form': ^8.3.3
   '@types/uuid': ^8.3.1
   axios: ^0.24.0
   classnames: ^2.3.1
@@ -31,7 +30,6 @@ specifiers:
   react-router-dom: ^5.3.0
   react-scripts: 4.0.3
   redux: ^4.1.2
-  redux-form: ^8.3.7
   redux-thunk: ^2.4.0
   stylelint: ^13.13.1
   stylelint-declaration-block-no-ignored-properties: ^2.3.0
@@ -50,7 +48,6 @@ dependencies:
   '@types/react': 17.0.38
   '@types/react-dom': 17.0.11
   '@types/react-router-dom': 5.3.2
-  '@types/redux-form': 8.3.3
   '@types/uuid': 8.3.3
   axios: 0.24.0
   final-form: 4.20.6
@@ -61,7 +58,6 @@ dependencies:
   react-router-dom: 5.3.0_react@17.0.2
   react-scripts: 4.0.3_7ab31f2f5b54652336e9cd60188f20ef
   redux: 4.1.2
-  redux-form: 8.3.8_34362ad81a919891909cf289bf01b934
   redux-thunk: 2.4.1_redux@4.1.2
   typescript: 4.5.4
   uuid: 8.3.2
@@ -5134,13 +5130,6 @@ packages:
       '@types/scheduler': 0.16.2
       csstype: 3.0.10
 
-  /@types/redux-form/8.3.3:
-    resolution: {integrity: sha512-RaxUMCXs72H4vSfwU4i/86/RDbQ4p3rK4/4TQvQXHJ49GTyEgdUgWDIaOnKZc84iNwvJTwv+ohDbw/tfXxLg7Q==}
-    dependencies:
-      '@types/react': 17.0.38
-      redux: 4.1.2
-    dev: false
-
   /@types/resolve/0.0.8:
     resolution: {integrity: sha512-auApPaJf3NPfe18hSoJkp8EbZzer2ISk7o8mCC3M9he/a04+gbMF97NkpD2S8riMGvm4BMRI59/SZQSaLTKpsQ==}
     dependencies:
@@ -8199,10 +8188,6 @@ packages:
     engines: {node: '>=0.4.0'}
     dev: true
 
-  /es6-error/4.1.1:
-    resolution: {integrity: sha512-Um/+FxMr9CISWh0bi5Zv0iOD+4cFh5qLeks1qhAopKVAJw3drgKbKySikp7wGhDL0HPeaja0P5ULZrxLkniUVg==}
-    dev: false
-
   /es6-iterator/2.0.3:
     resolution: {integrity: sha1-p96IkUGgWpSwhUQDstCg+/qY87c=}
     dependencies:
@@ -10082,6 +10067,7 @@ packages:
     resolution: {integrity: sha512-phJfQVBuaJM5raOpJjSfkiD6BpbCE4Ns//LaXl6wGYtUBY83nWS6Rf9tXm2e8VaK60JEjYldbPif/A2B1C2gNA==}
     dependencies:
       loose-envify: 1.4.0
+    dev: true
 
   /ip-regex/2.1.0:
     resolution: {integrity: sha1-+ni/XS5pE8kRzp+BnuUUa7bYROk=}
@@ -10391,10 +10377,6 @@ packages:
 
   /is-potential-custom-element-name/1.0.1:
     resolution: {integrity: sha512-bCYeRA2rVibKZd+s2625gGnGF/t7DSqDs4dP7CrLA1m7jKWz6pps0LpYLJN8Q64HtmPKJ1hrN3nzPNKFEKOUiQ==}
-    dev: false
-
-  /is-promise/2.2.2:
-    resolution: {integrity: sha512-+lP4/6lKUBfQjZ2pdxThZvLUAafmZb8OAxFb8XXtiQmS35INgr85hdOGoEs124ez1FCnZJt6jau/T+alh58QFQ==}
     dev: false
 
   /is-regex/1.1.4:
@@ -14283,31 +14265,6 @@ packages:
     dependencies:
       indent-string: 4.0.0
       strip-indent: 3.0.0
-
-  /redux-form/8.3.8_34362ad81a919891909cf289bf01b934:
-    resolution: {integrity: sha512-PzXhA0d+awIc4PkuhbDa6dCEiraMrGMyyDlYEVNX6qEyW/G2SqZXrjav5zrpXb0CCeqQSc9iqwbMtYQXbJbOAQ==}
-    engines: {node: '>=8.10'}
-    peerDependencies:
-      immutable: ^3.8.2 || ^4.0.0
-      react: ^16.4.2 || ^17.0.0
-      react-redux: ^6.0.1 || ^7.0.0
-      redux: ^3.7.2 || ^4.0.0
-    peerDependenciesMeta:
-      immutable:
-        optional: true
-    dependencies:
-      '@babel/runtime': 7.16.7
-      es6-error: 4.1.1
-      hoist-non-react-statics: 3.3.2
-      invariant: 2.2.4
-      is-promise: 2.2.2
-      lodash: 4.17.21
-      prop-types: 15.8.0
-      react: 17.0.2
-      react-is: 16.13.1
-      react-redux: 7.2.6_react-dom@17.0.2+react@17.0.2
-      redux: 4.1.2
-    dev: false
 
   /redux-thunk/2.4.1_redux@4.1.2:
     resolution: {integrity: sha512-OOYGNY5Jy2TWvTL1KgAlVy6dcx3siPJ1wTq741EPyUKfn6W6nChdICjZwCd0p8AZBs5kWpZlbkXW2nE/zjUa+Q==}
