@@ -1,8 +1,9 @@
 import { SET_USER_DATA } from '../../constants';
+import { AuthDataType } from '../../../api/types';
 
 export type SetUserDataActionType = {
   type: typeof SET_USER_DATA;
-  payload: { id: number | null; email: string | null; login: string | null };
+  payload: AuthDataType;
 };
 
 export type AuthActionType = SetUserDataActionType;

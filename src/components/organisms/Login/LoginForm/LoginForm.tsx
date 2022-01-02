@@ -1,11 +1,12 @@
 import React, { FC } from 'react';
 import styles from './styles.module.scss';
-import { Button } from '../../atoms/Button';
+import { Button } from '../../../atoms/Button';
 import { Field, Form } from 'react-final-form';
-import { api } from '../../../api';
-import { Input } from '../../atoms/Input';
-import { Checkbox } from '../../atoms/Checkbox';
-import { composeValidators, required } from '../../../helpers/validators';
+import { Input } from '../../../atoms/Input';
+import { Checkbox } from '../../../atoms/Checkbox';
+import { composeValidators, required } from '../../../../helpers/validators';
+import { useDispatch } from 'react-redux';
+import { userLogin } from '../../../../redux/thunk/auth-thunk';
 
 export type SubmitType = {
   email: string;
@@ -14,9 +15,10 @@ export type SubmitType = {
 };
 
 export const LoginForm: FC = () => {
+  const dispatch = useDispatch();
   const onSubmit = (formData: SubmitType) => {
     let { email, password, rememberMe } = formData;
-    api.loginUser(email, password, rememberMe).then(({ data }) => data.data.userId && window.location.reload());
+    dispatch(userLogin(email, password, rememberMe));
   };
   return (
     <Form onSubmit={onSubmit}>
