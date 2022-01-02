@@ -1,12 +1,13 @@
 import React, { FC } from 'react';
 import { NavLink } from 'react-router-dom';
+import { Field, Form } from 'react-final-form';
 
 import { DialogsPropsType } from './types';
 import { Textarea } from '../../atoms/Textarea';
 import { Button } from '../../atoms/Button';
+import { composeValidators, required } from '../../../helpers/validators';
 
 import styles from './style.module.scss';
-import { Field, Form } from 'react-final-form';
 
 export const Dialogs: FC<DialogsPropsType> = ({ dialogsPage, addMessage }) => {
   return (
@@ -50,10 +51,15 @@ const DialogsForm = ({ addMessage }: { addMessage: (messageValue: string) => voi
     <Form onSubmit={onSubmit}>
       {({ handleSubmit }) => (
         <form onSubmit={handleSubmit}>
-          <Field
-            name="messageValue"
-            render={(props) => <Textarea placeholder="Enter your message" {...props.input} />}
-          />
+          <Field name="messageValue" validate={composeValidators(required)}>
+            {(props) => (
+              <Textarea
+                placeholder="Enter your message"
+                error={props.meta && props.meta.touched && props.meta.error}
+                {...props.input}
+              />
+            )}
+          </Field>
           <Button type="submit">Send</Button>
         </form>
       )}

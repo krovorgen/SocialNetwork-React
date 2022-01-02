@@ -5,6 +5,7 @@ import { Field, Form } from 'react-final-form';
 import { api } from '../../../api';
 import { Input } from '../../atoms/Input';
 import { Checkbox } from '../../atoms/Checkbox';
+import { composeValidators, required } from '../../../helpers/validators';
 
 export type SubmitType = {
   email: string;
@@ -22,21 +23,31 @@ export const LoginForm: FC = () => {
       {({ handleSubmit }) => (
         <form className={styles.form} onSubmit={handleSubmit}>
           <label className={styles.element}>
-            <Field name="email" render={(props) => <Input placeholder="email" {...props.input} />} />
+            <Field name="email" validate={composeValidators(required)}>
+              {(props) => (
+                <Input
+                  placeholder="email"
+                  error={props.meta && props.meta.touched && props.meta.error}
+                  {...props.input}
+                />
+              )}
+            </Field>
           </label>
           <label className={styles.element}>
-            <Field
-              type="password"
-              name="password"
-              render={(props) => <Input placeholder="password" {...props.input} />}
-            />
+            <Field type="password" name="password" validate={composeValidators(required)}>
+              {(props) => (
+                <Input
+                  placeholder="password"
+                  error={props.meta && props.meta.touched && props.meta.error}
+                  {...props.input}
+                />
+              )}
+            </Field>
           </label>
           <label className={styles.element}>
-            <Field
-              type="checkbox"
-              name="rememberMe"
-              render={(props) => <Checkbox {...props.input}>remember me</Checkbox>}
-            />
+            <Field type="checkbox" name="rememberMe">
+              {(props) => <Checkbox {...props.input}>remember me</Checkbox>}
+            </Field>
           </label>
           <Button size="full" type="submit" addClass={styles.element}>
             LOGIN

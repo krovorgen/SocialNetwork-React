@@ -7,6 +7,7 @@ import { Button } from '../../atoms/Button';
 import { Textarea } from '../../atoms/Textarea';
 
 import styles from './style.module.scss';
+import { composeValidators, maxLength, required } from '../../../helpers/validators';
 
 export const Posts: FC<PostsPropsType> = ({ postItemData, addPost }) => {
   return (
@@ -31,10 +32,15 @@ const PostsForm = ({ addPost }: { addPost: (value: string) => void }) => {
       <Form onSubmit={onSubmit}>
         {({ handleSubmit }) => (
           <form onSubmit={handleSubmit}>
-            <Field
-              name="postValue"
-              render={(props) => <Textarea placeholder="Enter your message" {...props.input} />}
-            />
+            <Field name="postValue" validate={composeValidators(required, maxLength(20))}>
+              {(props) => (
+                <Textarea
+                  placeholder="Enter your message"
+                  {...props.input}
+                  error={props.meta && props.meta.touched && props.meta.error}
+                />
+              )}
+            </Field>
             <Button type="submit">POST</Button>
           </form>
         )}
