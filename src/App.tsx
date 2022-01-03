@@ -21,7 +21,7 @@ const App: FC<IAppProps> = () => {
         <main className="main">
           <NavBar />
           <div className="content">
-            <Route path="/profile/:userID?" render={() => <ProfileContainer />} />
+            <Route path="/profile/:userID?" component={ProfileContainer} />
             <Route path="/dialogs" render={() => <DialogsContainer />} />
             <Route path="/news" render={() => <News />} />
             <Route path="/music" render={() => <Music />} />
