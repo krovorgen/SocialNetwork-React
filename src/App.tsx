@@ -24,11 +24,15 @@ const App: FC<IAppProps> = () => {
             <Route path="/profile/:userID?">
               <ProfileContainer />
             </Route>
-            <Route path="/dialogs" render={() => <DialogsContainer />} />
+            <Route path="/dialogs">
+              <DialogsContainer />
+            </Route>
             <Route path="/news" render={() => <News />} />
             <Route path="/music" render={() => <Music />} />
             <Route path="/settings" render={() => <Settings />} />
-            <Route path="/users" exact render={() => <UsersContainer />} />
+            <Route path="/users" exact>
+              <UsersContainer />
+            </Route>
             <Route path="/login" exact render={() => <Login />} />
           </div>
         </main>
