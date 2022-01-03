@@ -21,27 +21,13 @@ const App: FC<IAppProps> = () => {
         <main className="main">
           <NavBar />
           <div className="content">
-            <Route path="/profile/:userID?">
-              <ProfileContainer />
-            </Route>
-            <Route path="/dialogs">
-              <DialogsContainer />
-            </Route>
-            <Route path="/news">
-              <News />
-            </Route>
-            <Route path="/music">
-              <Music />
-            </Route>
-            <Route path="/settings">
-              <Settings />
-            </Route>
-            <Route path="/users" exact>
-              <UsersContainer />
-            </Route>
-            <Route path="/login" exact>
-              <Login />
-            </Route>
+            <Route path="/profile/:userID?" render={() => <ProfileContainer />} />
+            <Route path="/dialogs" render={() => <DialogsContainer />} />
+            <Route path="/news" render={() => <News />} />
+            <Route path="/music" render={() => <Music />} />
+            <Route path="/settings" render={() => <Settings />} />
+            <Route path="/users" exact render={() => <UsersContainer />} />
+            <Route path="/login" exact render={() => <Login />} />
           </div>
         </main>
       </div>
