@@ -1,4 +1,4 @@
-import { UsersDataType } from '../reducers/types';
+import { GetUsersItemRT } from '../../api';
 
 export enum UsersReducerType {
   FOLLOW = 'FOLLOW',
@@ -19,19 +19,19 @@ export type UsersActionType =
   | ReturnType<typeof toggleLoadingStatus>
   | ReturnType<typeof toggleFollowingStatus>;
 
-export const onFollowUser = (id: string) =>
+export const onFollowUser = (id: number) =>
   ({
     type: UsersReducerType.FOLLOW,
     payload: id,
   } as const);
 
-export const onUnfollowUser = (id: string) =>
+export const onUnfollowUser = (id: number) =>
   ({
     type: UsersReducerType.UNFOLLOW,
     payload: id,
   } as const);
 
-export const setUsers = (users: UsersDataType[]) =>
+export const setUsers = (users: GetUsersItemRT[]) =>
   ({
     type: UsersReducerType.SET_USERS,
     payload: users,
@@ -55,8 +55,8 @@ export const toggleLoadingStatus = (status: boolean) =>
     payload: status,
   } as const);
 
-export const toggleFollowingStatus = (status: boolean, userID: string) =>
+export const toggleFollowingStatus = (status: boolean, userID: number) =>
   ({
     type: UsersReducerType.TOGGLE_FOLLOWING_STATUS,
-    payload: { isLoading: status, userID: userID },
+    payload: { isLoading: status, userID },
   } as const);

@@ -20,7 +20,7 @@ export const getUsers = (currentPage: number, pageSize: number) => (dispatch: Di
   });
 };
 
-export const followProgress = (userID: string) => (dispatch: Dispatch<UsersActionType>) => {
+export const followProgress = (userID: number) => (dispatch: Dispatch<UsersActionType>) => {
   dispatch(toggleFollowingStatus(true, userID));
   api.subscribeUser(userID).then(({ data }) => {
     if (data.resultCode === 0) {
@@ -30,7 +30,7 @@ export const followProgress = (userID: string) => (dispatch: Dispatch<UsersActio
   });
 };
 
-export const unfollowProgress = (userID: string) => (dispatch: Dispatch<UsersActionType>) => {
+export const unfollowProgress = (userID: number) => (dispatch: Dispatch<UsersActionType>) => {
   dispatch(toggleFollowingStatus(true, userID));
   api.unsubscribeUser(userID).then(({ data }) => {
     if (data.resultCode === 0) {

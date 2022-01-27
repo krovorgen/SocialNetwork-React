@@ -12,8 +12,8 @@ import { compose } from 'redux';
 class ProfileAPI extends React.Component<IProfileContainerPropsType> {
   componentDidMount() {
     let userID: string = this.props.match.params.userID;
-    this.props.currentProfileWatching(userID);
-    this.props.getUserStatus(userID);
+    this.props.currentProfileWatching(+userID);
+    this.props.getUserStatus(+userID);
   }
 
   render() {

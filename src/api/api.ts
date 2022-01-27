@@ -1,8 +1,6 @@
 import axios from 'axios';
-
 import { API_KEY, API_URL } from '../constants';
 import { UserProfileType } from '../redux/reducers/types';
-import { ResponseType } from './types';
 
 const instance = axios.create({
   withCredentials: true,
@@ -14,35 +12,73 @@ const instance = axios.create({
 
 export const api = {
   getUsers(page: number, count: number) {
-    return instance.get(`users/`, {
+    return instance.get<GetUsersRT>(`users/`, {
       params: {
         page,
         count,
       },
     });
   },
-  subscribeUser(userID: string) {
-    return instance.post(`follow/${userID}`, {}, {});
+  subscribeUser(userID: number) {
+    return instance.post<ResponseType>(`follow/${userID}`, {}, {});
   },
-  unsubscribeUser(userID: string) {
-    return instance.delete(`follow/${userID}`, {});
+  unsubscribeUser(userID: number) {
+    return instance.delete<ResponseType>(`follow/${userID}`, {});
   },
   authUser() {
-    return instance.get<ResponseType>(`auth/me/`);
+    return instance.get<ResponseType<AuthUserRT>>(`auth/me/`);
   },
   loginUser(email: string, password: string, rememberMe: boolean) {
-    return instance.post(`auth/login/`, { email, password, rememberMe });
+    return instance.post<ResponseType<LoginActionUserRT>>(`auth/login/`, { email, password, rememberMe });
   },
   logoutUser() {
-    return instance.delete(`/auth/login`);
+    return instance.delete<ResponseType<LoginActionUserRT>>(`/auth/login`);
   },
-  currentUserProfile(userID: string) {
+  currentUserProfile(userID: number) {
     return instance.get<UserProfileType>(`profile/${userID ? userID : '16271'}`);
   },
-  getStatus(userID: string) {
+  getStatus(userID: number) {
     return instance.get<string>(`profile/status/${userID ? userID : '16271'}`);
   },
   updateStatus(status: string) {
-    return instance.put<ResponseType>(`profile/status/`, { status });
+    return instance.put<any>(`profile/status/`, { status });
   },
+};
+
+enum ResultCode {
+  Success,
+  Error,
+}
+
+export type ResponseType<T = Object> = {
+  resultCode: ResultCode;
+  messages: string[];
+  data: T;
+};
+
+type AuthUserRT = {
+  id: number;
+  email: string;
+  login: string;
+};
+
+export type GetUsersItemRT = {
+  name: string;
+  id: number;
+  photos: {
+    small: null | string;
+    large: null | string;
+  };
+  status: null | string;
+  followed: boolean;
+};
+
+type GetUsersRT = {
+  items: GetUsersItemRT[];
+  totalCount: number;
+  error: null | string;
+};
+
+type LoginActionUserRT = {
+  userId: number;
 };

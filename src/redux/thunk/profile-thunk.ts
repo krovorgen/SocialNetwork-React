@@ -3,13 +3,13 @@ import { api } from '../../api';
 import { ProfileActionType, setUserProfile, setUserStatus } from '../actions/profile-action';
 import { toast } from 'react-toastify';
 
-export const currentProfileWatching = (userID: string) => (dispatch: Dispatch<ProfileActionType>) => {
+export const currentProfileWatching = (userID: number) => (dispatch: Dispatch<ProfileActionType>) => {
   api.currentUserProfile(userID).then(({ data }) => {
     dispatch(setUserProfile(data));
   });
 };
 
-export const getUserStatus = (userID: string) => (dispatch: Dispatch<ProfileActionType>) => {
+export const getUserStatus = (userID: number) => (dispatch: Dispatch<ProfileActionType>) => {
   api.getStatus(userID).then(({ data }) => {
     dispatch(setUserStatus(data));
   });

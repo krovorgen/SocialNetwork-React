@@ -1,4 +1,5 @@
 import { AuthDataType } from '../../../api/types';
+import { GetUsersItemRT } from '../../../api';
 
 export type PostItemType = {
   id: string;
@@ -14,14 +15,6 @@ export type DialogsDataType = {
 export type MessagesDataType = {
   id: string;
   message: string;
-};
-
-export type UsersDataType = {
-  id: string;
-  followed: boolean;
-  name: string;
-  status: string;
-  photos: { small: string; large: string };
 };
 
 export type UserProfilePhotosType = {
@@ -46,7 +39,7 @@ export type UserProfileType = {
   lookingForAJob: string;
   lookingForAJobDescription: string;
   fullName: string;
-  userId: string;
+  userId: number;
   photos: UserProfilePhotosType;
 };
 
@@ -62,12 +55,12 @@ export type DialogsStateType = {
 };
 
 export type UsersStateType = {
-  users: UsersDataType[];
+  users: GetUsersItemRT[];
   pageSize: number;
   totalUsersCount: number;
   currentPage: number;
   isLoading: boolean;
-  followingStatus: string[];
+  followingStatus: number[];
 };
 
 export interface AuthStateType extends AuthDataType {

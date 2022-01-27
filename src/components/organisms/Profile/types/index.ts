@@ -2,8 +2,8 @@ import { UserProfileType } from '../../../../redux/reducers/types';
 import { RouteComponentProps } from 'react-router-dom';
 
 export interface IProfileContainerConnectType {
-  currentProfileWatching: (userID: string) => void;
-  getUserStatus: (userID: string) => void;
+  currentProfileWatching: (userID: number) => void;
+  getUserStatus: (userID: number) => void;
   updateUserStatus: (status: string) => void;
   profile: UserProfileType | null;
 }
