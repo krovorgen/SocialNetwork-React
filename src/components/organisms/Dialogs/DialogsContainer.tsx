@@ -1,9 +1,8 @@
 import { ComponentType } from 'react';
 
-import { addMessageAC } from '../../../redux/actions/dialogs-action';
+import { addMessageAC, DialogsActionType } from '../../../redux/actions/dialogs-action';
 import { connect } from 'react-redux';
 import { RootStateType } from '../../../redux/store.type';
-import { DialogsActionType } from '../../../redux/actions/types/dialogs.type';
 import { MapDispatchPropsType, MapStatePropsType } from './types';
 import { Dialogs } from './Dialogs';
 import { WithAuthRedirect } from '../../HOC/WithAuthRedirect';

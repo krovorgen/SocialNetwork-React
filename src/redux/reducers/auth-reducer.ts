@@ -1,6 +1,5 @@
 import { AuthStateType } from './types';
-import { SET_USER_DATA } from '../constants';
-import { AuthActionType } from '../actions/types/auth.type';
+import { AuthActionType, AuthReducerType } from '../actions/auth-action';
 
 const initialState: AuthStateType = {
   id: null,
@@ -12,7 +11,7 @@ const initialState: AuthStateType = {
 
 export const authReducer = (state = initialState, action: AuthActionType): AuthStateType => {
   switch (action.type) {
-    case SET_USER_DATA:
+    case AuthReducerType.SET_USER_DATA:
       return {
         ...state,
         ...action.payload,

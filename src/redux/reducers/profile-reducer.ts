@@ -1,7 +1,6 @@
 import { v1 } from 'uuid';
-import { ADD_POST, SET_STATUS, SET_USER_PROFILE } from '../constants';
 import { ProfileStateType } from './types';
-import { ProfileActionType } from '../actions/types/profile.type';
+import { ProfileActionType, ProfileReducerType } from '../actions/profile-action';
 
 const initialState: ProfileStateType = {
   postItemData: [],
@@ -11,7 +10,7 @@ const initialState: ProfileStateType = {
 
 export const profileReducer = (state = initialState, action: ProfileActionType): ProfileStateType => {
   switch (action.type) {
-    case ADD_POST:
+    case ProfileReducerType.ADD_POST:
       let newPost = {
         id: v1(),
         message: action.payload,
@@ -21,12 +20,12 @@ export const profileReducer = (state = initialState, action: ProfileActionType):
         ...state,
         postItemData: [...state.postItemData, newPost],
       };
-    case SET_USER_PROFILE:
+    case ProfileReducerType.SET_USER_PROFILE:
       return {
         ...state,
         profile: action.payload,
       };
-    case SET_STATUS:
+    case ProfileReducerType.SET_STATUS:
       return {
         ...state,
         status: action.payload,

@@ -1,8 +1,13 @@
-import { SET_USER_DATA } from '../constants';
-import { SetUserDataActionType } from './types/auth.type';
 import { AuthDataType } from '../../api/types';
 
-export const setUserData = (newAuthData: AuthDataType): SetUserDataActionType => ({
-  type: SET_USER_DATA,
-  payload: newAuthData,
-});
+export type AuthActionType = ReturnType<typeof setUserData>;
+
+export enum AuthReducerType {
+  SET_USER_DATA = 'SET_USER_DATA',
+}
+
+export const setUserData = (newAuthData: AuthDataType) =>
+  ({
+    type: AuthReducerType.SET_USER_DATA,
+    payload: newAuthData,
+  } as const);

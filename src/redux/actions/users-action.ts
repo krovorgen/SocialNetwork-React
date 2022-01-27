@@ -1,54 +1,62 @@
-import {
-  FOLLOW,
-  SET_CURRENT_PAGE,
-  SET_TOTAL_USER_COUNT,
-  SET_USERS,
-  TOGGLE_FOLLOWING_STATUS,
-  TOGGLE_LOADING_STATUS,
-  UNFOLLOW,
-} from '../constants';
-import {
-  FollowActionType,
-  SetCurrentPageActionType,
-  SetTotalUsersCountActionType,
-  SetUsersActionType,
-  ToggleFollowingStatusActionType,
-  ToggleStatusLoadingActionType,
-  UnfollowActionType,
-} from './types/users.type';
 import { UsersDataType } from '../reducers/types';
 
-export const onFollowUser = (id: string): FollowActionType => ({
-  type: FOLLOW,
-  payload: id,
-});
+export enum UsersReducerType {
+  FOLLOW = 'FOLLOW',
+  UNFOLLOW = 'UNFOLLOW',
+  SET_USERS = 'SET_USERS',
+  SET_CURRENT_PAGE = 'SET_CURRENT_PAGE',
+  SET_TOTAL_USER_COUNT = 'SET_TOTAL_USER_COUNT',
+  TOGGLE_LOADING_STATUS = 'TOGGLE_LOADING_STATUS',
+  TOGGLE_FOLLOWING_STATUS = 'TOGGLE_FOLLOWING_STATUS',
+}
 
-export const onUnfollowUser = (id: string): UnfollowActionType => ({
-  type: UNFOLLOW,
-  payload: id,
-});
+export type UsersActionType =
+  | ReturnType<typeof onFollowUser>
+  | ReturnType<typeof onUnfollowUser>
+  | ReturnType<typeof setUsers>
+  | ReturnType<typeof setCurrentPage>
+  | ReturnType<typeof setTotalUsersCount>
+  | ReturnType<typeof toggleLoadingStatus>
+  | ReturnType<typeof toggleFollowingStatus>;
 
-export const setUsers = (users: UsersDataType[]): SetUsersActionType => ({
-  type: SET_USERS,
-  payload: users,
-});
+export const onFollowUser = (id: string) =>
+  ({
+    type: UsersReducerType.FOLLOW,
+    payload: id,
+  } as const);
 
-export const setCurrentPage = (currentPage: number): SetCurrentPageActionType => ({
-  type: SET_CURRENT_PAGE,
-  payload: currentPage,
-});
+export const onUnfollowUser = (id: string) =>
+  ({
+    type: UsersReducerType.UNFOLLOW,
+    payload: id,
+  } as const);
 
-export const setTotalUsersCount = (value: number): SetTotalUsersCountActionType => ({
-  type: SET_TOTAL_USER_COUNT,
-  payload: value,
-});
+export const setUsers = (users: UsersDataType[]) =>
+  ({
+    type: UsersReducerType.SET_USERS,
+    payload: users,
+  } as const);
 
-export const toggleLoadingStatus = (status: boolean): ToggleStatusLoadingActionType => ({
-  type: TOGGLE_LOADING_STATUS,
-  payload: status,
-});
+export const setCurrentPage = (currentPage: number) =>
+  ({
+    type: UsersReducerType.SET_CURRENT_PAGE,
+    payload: currentPage,
+  } as const);
 
-export const toggleFollowingStatus = (status: boolean, userID: string): ToggleFollowingStatusActionType => ({
-  type: TOGGLE_FOLLOWING_STATUS,
-  payload: { isLoading: status, userID: userID },
-});
+export const setTotalUsersCount = (value: number) =>
+  ({
+    type: UsersReducerType.SET_TOTAL_USER_COUNT,
+    payload: value,
+  } as const);
+
+export const toggleLoadingStatus = (status: boolean) =>
+  ({
+    type: UsersReducerType.TOGGLE_LOADING_STATUS,
+    payload: status,
+  } as const);
+
+export const toggleFollowingStatus = (status: boolean, userID: string) =>
+  ({
+    type: UsersReducerType.TOGGLE_FOLLOWING_STATUS,
+    payload: { isLoading: status, userID: userID },
+  } as const);

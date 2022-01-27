@@ -1,18 +1,30 @@
-import { ADD_POST, SET_STATUS, SET_USER_PROFILE } from '../constants';
-import { AddPostActionType, SetStatusActionType, SetUserProfileActionType } from './types/profile.type';
 import { UserProfileType } from '../reducers/types';
 
-export const addPostAC = (value: string): AddPostActionType => ({
-  type: ADD_POST,
-  payload: value,
-});
+export enum ProfileReducerType {
+  ADD_POST = 'ADD-POST',
+  SET_USER_PROFILE = 'SET_USER_PROFILE',
+  SET_STATUS = 'SET_STATUS',
+}
 
-export const setUserProfile = (profile: UserProfileType): SetUserProfileActionType => ({
-  type: SET_USER_PROFILE,
-  payload: profile,
-});
+export type ProfileActionType =
+  | ReturnType<typeof addPostAC>
+  | ReturnType<typeof setUserProfile>
+  | ReturnType<typeof setUserStatus>;
 
-export const setUserStatus = (status: string): SetStatusActionType => ({
-  type: SET_STATUS,
-  payload: status,
-});
+export const addPostAC = (value: string) =>
+  ({
+    type: ProfileReducerType.ADD_POST,
+    payload: value,
+  } as const);
+
+export const setUserProfile = (profile: UserProfileType) =>
+  ({
+    type: ProfileReducerType.SET_USER_PROFILE,
+    payload: profile,
+  } as const);
+
+export const setUserStatus = (status: string) =>
+  ({
+    type: ProfileReducerType.SET_STATUS,
+    payload: status,
+  } as const);

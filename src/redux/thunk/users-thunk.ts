@@ -8,8 +8,8 @@ import {
   setUsers,
   toggleFollowingStatus,
   toggleLoadingStatus,
+  UsersActionType,
 } from '../actions/users-action';
-import { UsersActionType } from '../actions/types/users.type';
 
 export const getUsers = (currentPage: number, pageSize: number) => (dispatch: Dispatch<UsersActionType>) => {
   dispatch(toggleLoadingStatus(true));

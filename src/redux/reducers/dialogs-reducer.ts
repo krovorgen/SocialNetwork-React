@@ -1,7 +1,6 @@
 import { v1 } from 'uuid';
-import { ADD_MESSAGE } from '../constants';
 import { DialogsStateType } from './types';
-import { DialogsActionType } from '../actions/types/dialogs.type';
+import { DialogsActionType, DialogsReducerType } from '../actions/dialogs-action';
 
 const initialState: DialogsStateType = {
   messagesData: [],
@@ -14,7 +13,7 @@ const initialState: DialogsStateType = {
 
 export const dialogsReducer = (state = initialState, action: DialogsActionType): DialogsStateType => {
   switch (action.type) {
-    case ADD_MESSAGE:
+    case DialogsReducerType.ADD_MESSAGE:
       let newMessage = {
         id: v1(),
         message: action.payload,

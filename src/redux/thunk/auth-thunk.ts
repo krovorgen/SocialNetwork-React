@@ -1,11 +1,9 @@
 import { Dispatch } from 'redux';
-
-import { SetUserDataActionType } from '../actions/types/auth.type';
 import { api } from '../../api';
 import { setUserData } from '../actions/auth-action';
 import { toast } from 'react-toastify';
 
-export const userAuthorization = () => (dispatch: Dispatch<SetUserDataActionType>) => {
+export const userAuthorization = () => (dispatch: Dispatch) => {
   api.authUser().then(({ data }) => {
     data.resultCode === 0 && dispatch(setUserData({ ...data.data, isAuth: true }));
   });

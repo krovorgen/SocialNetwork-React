@@ -1,7 +1,6 @@
 import { Dispatch } from 'redux';
 import { api } from '../../api';
-import { setUserProfile, setUserStatus } from '../actions/profile-action';
-import { ProfileActionType } from '../actions/types/profile.type';
+import { ProfileActionType, setUserProfile, setUserStatus } from '../actions/profile-action';
 import { toast } from 'react-toastify';
 
 export const currentProfileWatching = (userID: string) => (dispatch: Dispatch<ProfileActionType>) => {
