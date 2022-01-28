@@ -5,6 +5,7 @@ import { v1 } from 'uuid';
 import { MenuNavigationMockDataType } from './types';
 
 import styles from './style.module.scss';
+import cn from 'classnames';
 
 const menuNavigationMockData: MenuNavigationMockDataType[] = [
   { id: v1(), iconClass: 'profile', url: '/profile', textLink: 'Profile' },
@@ -16,17 +17,12 @@ const menuNavigationMockData: MenuNavigationMockDataType[] = [
 ];
 
 export const NavBar: FC = () => (
-  <nav className={`${styles['menu']}`}>
-    <ul className="menu__list">
+  <nav className={styles.menu}>
+    <ul className={styles.list}>
       {menuNavigationMockData.map((item) => {
         return (
-          <li key={item.id} className={styles['menu__item']}>
-            <NavLink
-              className={`${styles['menu__link']} ${styles[`menu__link--${item.iconClass}`]}`}
-              activeClassName={styles['menu__link--active']}
-              exact
-              to={`${item.url}`}
-            >
+          <li key={item.id} className={styles.item}>
+            <NavLink className={cn(styles.link)} activeClassName={styles.active} exact to={`${item.url}`}>
               {item.textLink}
             </NavLink>
           </li>

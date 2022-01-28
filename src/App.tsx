@@ -13,7 +13,7 @@ import { ProfileContainer } from './components/organisms/Profile/ProfileContaine
 import { HeaderContainer } from './components/organisms/Header/HeaderContainer';
 import { Login } from './components/organisms/Login';
 
-const App: FC<IAppProps> = () => {
+export const App: FC<IAppProps> = () => {
   return (
     <>
       <div className="container">
@@ -46,5 +46,3 @@ const App: FC<IAppProps> = () => {
     </>
   );
 };
-
-export default App;
