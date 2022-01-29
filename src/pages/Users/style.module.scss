@@ -1,0 +1,23 @@
+.user {
+  .item {
+    display: flex;
+
+    &:not(:last-child) {
+      margin-bottom: 20px;
+    }
+  }
+
+  .avatar {
+    margin-right: 50px;
+    width: 150px;
+  }
+
+  .ava {
+    object-fit: cover;
+  }
+}
+
+.navigation {
+  display: flex;
+  flex-wrap: wrap;
+}

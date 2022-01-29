@@ -1,0 +1,12 @@
+@import "../../../scss/vars";
+@import "../../../scss/mixins";
+
+.form {
+  margin: 0 auto;
+  max-width: 600px;
+}
+
+.element {
+  display: block;
+  margin-bottom: 16px;
+}

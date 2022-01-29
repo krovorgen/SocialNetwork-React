@@ -3,15 +3,15 @@ import { Route } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 
 import { IAppProps } from './types';
-import { Settings } from './components/organisms/Settings';
-import { NavBar } from './components/organisms/NavBar';
-import { News } from './components/organisms/News';
-import { Music } from './components/organisms/Music';
-import { DialogsContainer } from './components/organisms/Dialogs/DialogsContainer';
-import { UsersContainer } from './components/organisms/Users/UsersContainer';
-import { ProfileContainer } from './components/organisms/Profile/ProfileContainer';
-import { HeaderContainer } from './components/organisms/Header/HeaderContainer';
-import { Login } from './components/organisms/Login';
+import { Settings } from './pages/Settings';
+import { NavBar } from './components/NavBar';
+import { News } from './pages/News';
+import { Music } from './pages/Music';
+import { DialogsContainer } from './pages/Dialogs/DialogsContainer';
+import { UsersContainer } from './pages/Users/UsersContainer';
+import { ProfileContainer } from './pages/Profile/ProfileContainer';
+import { HeaderContainer } from './components/Header/HeaderContainer';
+import { Login } from './pages/Login';
 
 export const App: FC<IAppProps> = () => {
   return (
