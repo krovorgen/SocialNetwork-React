@@ -11,7 +11,10 @@ import { compose } from 'redux';
 
 class ProfileAPI extends React.Component<IProfileContainerPropsType> {
   componentDidMount() {
-    let userID: string = this.props.match.params.userID;
+    let userID: number = +this.props.match.params.userID;
+    if (!userID) {
+      userID = this.props.auth?.id || 0;
+    }
     this.props.currentProfileWatching(+userID);
     this.props.getUserStatus(+userID);
   }
@@ -23,6 +26,7 @@ class ProfileAPI extends React.Component<IProfileContainerPropsType> {
 
 let mapStateToProps = (state: RootStateType) => ({
   profile: state.profilePage.profile,
+  auth: state.auth,
 });
 
 export const ProfileContainer = compose<ComponentType>(

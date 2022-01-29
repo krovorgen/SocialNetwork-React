@@ -28,7 +28,9 @@ export const Header: FC<IHeaderProps> = ({ isAuth, login }) => {
           login
         ) : (
           <NavLink to={'/login'}>
-            <Link view="primary">Login</Link>
+            <Link view="primary" Component="span">
+              Login
+            </Link>
           </NavLink>
         )}
         {isAuth ? (

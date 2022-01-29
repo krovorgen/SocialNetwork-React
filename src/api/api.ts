@@ -35,10 +35,10 @@ export const api = {
     return instance.delete<ResponseType<LoginActionUserRT>>(`/auth/login`);
   },
   currentUserProfile(userID: number) {
-    return instance.get<UserProfileType>(`profile/${userID ? userID : '16271'}`);
+    return instance.get<UserProfileType>(`profile/${userID}`);
   },
   getStatus(userID: number) {
-    return instance.get<string>(`profile/status/${userID ? userID : '16271'}`);
+    return instance.get<string>(`profile/status/${userID}`);
   },
   updateStatus(status: string) {
     return instance.put<any>(`profile/status/`, { status });

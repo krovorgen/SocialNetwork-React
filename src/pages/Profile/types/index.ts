@@ -1,4 +1,4 @@
-import { UserProfileType } from '../../../redux/reducers/types';
+import { AuthStateType, UserProfileType } from '../../../redux/reducers/types';
 import { RouteComponentProps } from 'react-router-dom';
 
 export interface IProfileContainerConnectType {
@@ -6,6 +6,7 @@ export interface IProfileContainerConnectType {
   getUserStatus: (userID: number) => void;
   updateUserStatus: (status: string) => void;
   profile: UserProfileType | null;
+  auth: AuthStateType | null;
 }
 
 export interface IWithRouterProfileContainerProps {
