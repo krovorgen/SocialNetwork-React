@@ -1,12 +1,14 @@
 import React, { FC } from 'react';
-import styles from './styles.module.scss';
-import { Button } from '../../../atoms/Button';
 import { Field, Form } from 'react-final-form';
-import { Input } from '../../../atoms/Input';
-import { Checkbox } from '../../../atoms/Checkbox';
-import { composeValidators, required } from '../../../../helpers/validators';
 import { useDispatch } from 'react-redux';
+
+import { composeValidators, required } from '../../../../helpers/validators';
 import { userLogin } from '../../../../redux/thunk/auth-thunk';
+import { Input } from '@alfalab/core-components/input';
+import { Checkbox } from '@alfalab/core-components/checkbox';
+import { Button } from '@alfalab/core-components/button';
+
+import styles from './styles.module.scss';
 
 export type SubmitType = {
   email: string;
@@ -27,31 +29,38 @@ export const LoginForm: FC = () => {
           <label className={styles.element}>
             <Field name="email" validate={composeValidators(required)}>
               {(props) => (
-                <Input
-                  placeholder="email"
-                  error={props.meta && props.meta.touched && props.meta.error}
-                  {...props.input}
-                />
+                <>
+                  <Input
+                    {...props.input}
+                    type="text"
+                    label="email"
+                    block
+                    error={props.meta && props.meta.touched && props.meta.error}
+                  />
+                </>
               )}
             </Field>
           </label>
           <label className={styles.element}>
-            <Field type="password" name="password" validate={composeValidators(required)}>
+            <Field name="password" validate={composeValidators(required)}>
               {(props) => (
                 <Input
-                  placeholder="password"
-                  error={props.meta && props.meta.touched && props.meta.error}
                   {...props.input}
+                  type="password"
+                  label="password"
+                  name="password"
+                  block
+                  error={props.meta && props.meta.touched && props.meta.error}
                 />
               )}
             </Field>
           </label>
           <label className={styles.element}>
             <Field type="checkbox" name="rememberMe">
-              {(props) => <Checkbox {...props.input}>remember me</Checkbox>}
+              {(props) => <Checkbox label="Remember me" {...props.input} />}
             </Field>
           </label>
-          <Button size="full" type="submit" addClass={styles.element}>
+          <Button size="xs" type="submit" block view="secondary" className={styles.element}>
             LOGIN
           </Button>
         </form>

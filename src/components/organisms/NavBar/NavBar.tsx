@@ -8,12 +8,12 @@ import styles from './style.module.scss';
 import cn from 'classnames';
 
 const menuNavigationMockData: MenuNavigationMockDataType[] = [
-  { id: v1(), iconClass: 'profile', url: '/profile', textLink: 'Profile' },
-  { id: v1(), iconClass: 'messages', url: '/dialogs', textLink: 'Messages' },
-  { id: v1(), iconClass: 'news', url: '/news', textLink: 'News' },
-  { id: v1(), iconClass: 'music', url: '/music', textLink: 'Music' },
-  { id: v1(), iconClass: 'settings', url: '/settings', textLink: 'Settings' },
-  { id: v1(), iconClass: 'settings', url: '/users', textLink: 'Users' },
+  { id: v1(), url: '/profile', textLink: 'Profile' },
+  { id: v1(), url: '/dialogs', textLink: 'Messages' },
+  { id: v1(), url: '/news', textLink: 'News' },
+  { id: v1(), url: '/music', textLink: 'Music' },
+  { id: v1(), url: '/settings', textLink: 'Settings' },
+  { id: v1(), url: '/users', textLink: 'Users' },
 ];
 
 export const NavBar: FC = () => (
