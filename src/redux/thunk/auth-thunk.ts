@@ -3,7 +3,7 @@ import { api } from '../../api';
 import { setUserData } from '../actions/auth-action';
 import { toast } from 'react-toastify';
 
-export const userAuthorization = () => (dispatch: Dispatch) => {
+export const userAuthorization = (): any => (dispatch: Dispatch) => {
   return api.authUser().then(({ data }) => {
     data.resultCode === 0 && dispatch(setUserData({ ...data.data, isAuth: true }));
   });
